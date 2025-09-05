@@ -58,8 +58,10 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <nav bind:this={nav} class={classNames} onclick={() => (active = false)}>
-	{@render children?.()}
 	<ul class={baseName + '__ul'} aria-label="navigation path">
+		{#if children}
+			<li class={classnames(baseName + '__li-custom')}>{@render children?.()}</li>
+		{/if}
 		{#each routes as route, i}
 			<li
 				class={classnames(baseName + '__li', route.class)}

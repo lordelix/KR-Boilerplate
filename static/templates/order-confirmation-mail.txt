@@ -17,11 +17,11 @@ Adresse:      <%= address.company || address.salutation %>
               <%= address.firstname + ' ' + address.name %>
               <%= address.address %>
               <%= address.zip + ' ' + address.city %>
-<% if (shippingAddress) { %>
-Versand an:   <%= shippingAddress.company %>
-              <%= shippingAddress.name %>
-              <%= shippingAddress.address %>
-              <%= shippingAddress.zip + ' ' + shippingAddress.city %>
+<% if (deliveryAddress) { %>
+Versand an:   <%= deliveryAddress.company %>
+              <%= deliveryAddress.name %>
+              <%= deliveryAddress.address %>
+              <%= deliveryAddress.zip + ' ' + deliveryAddress.city %>
 
 
 <% } if (message) {

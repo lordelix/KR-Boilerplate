@@ -31,7 +31,7 @@
 
 	const routes = $derived([
 		{
-			name: 'Startseite',
+			name: 'Startseite Shop',
 			path: '/'
 		},
 		...mapGroupToRoutes(data.groups),
@@ -46,9 +46,25 @@
 					path: '/widerrufsrecht'
 				},
 				{
+					name: 'Versandkosten',
+					path: '/agb#versandkosten'
+				}
+			]
+		},
+		{
+			routes: [
+				{
 					name: 'Impressum',
 					path: '/impressum'
 				},
+				{
+					name: 'Datenschutz',
+					path: '/datenschutz'
+				}
+			]
+		},
+		{
+			routes: [
 				{
 					name: 'example.com',
 					path: 'https://example.com'

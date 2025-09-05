@@ -101,11 +101,11 @@
 							{price.formatted}
 						</span>
 						<span class="{baseName}__tax $pl-1/2" data-vat={vat.value}>
-							inkl. {vat.formatted} MwSt.
+							inkl. {vat.formatted} MwSt., zzgl. <Link to="/agb#versandkosten">Versand</Link>
 						</span>
 						<br />
-						{#if quantity.value > 1 && pricePerUnit}
-							<span class="{baseName}__quantity $font-larger">
+						{#if quantity?.value !== 1 && pricePerUnit}
+							<span class="{baseName}__quantity">
 								{quantity.formatted} / {pricePerUnit.formatted}
 							</span>
 						{/if}

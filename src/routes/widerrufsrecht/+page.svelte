@@ -21,12 +21,12 @@
 		Dritter, der nicht Beförderer ist, die Waren in Besitz genommen haben bzw. hat.
 	</p>
 	<p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns</p>
-	<Address {...stammdaten} />
+	<Address {...stammdaten} web="" />
 	<p>
 		(z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen
 		Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte <Link
-			to="/pdf/MusterWiderrufsformular.pdf">Muster-Widerrufsformular</Link> verwenden, das jedoch nicht
-		vorgeschrieben ist.
+			to="/pdf/Widerrufsformular.pdf">Muster-Widerrufsformular</Link> verwenden, das jedoch nicht vorgeschrieben
+		ist.
 	</p>
 	<p>
 		Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des

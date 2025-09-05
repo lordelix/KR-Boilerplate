@@ -37,7 +37,7 @@
 	<thead>
 		<tr>
 			<th>Produkt</th>
-			<th>Menge</th>
+			<th>St.</th>
 			<th>Preis</th>
 		</tr>
 	</thead>
@@ -47,9 +47,9 @@
 				<td width="100%">
 					<Link to="/{product.slug}-p-{product.id}/">
 						{product.name}
-						{#if product.code}<br />
-							<small>({product.code})</small>{/if}
 					</Link>
+					{#if product.code}<br />
+						<small>Art.-Nr.: {product.code}</small>{/if}
 				</td>
 				<td class="$text-center">
 					{#if quantitySelector}
