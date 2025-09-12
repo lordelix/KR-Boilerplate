@@ -1,9 +1,8 @@
 <script>
-	import '$lib/styles/styles.scss'
+	import '$styles/styles.scss'
 
 	import routes from '$routes'
 	import stammdaten from '$stammdaten'
-	import messages from '$lib/messages'
 	import { page } from '$app/stores'
 	import { head } from 'lodash-es'
 </script>
@@ -25,5 +24,4 @@
 	</Wrapper>
 </div>
 
-<MessageBus {messages} />
 <Toplink />

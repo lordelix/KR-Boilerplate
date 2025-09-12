@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import Message from '$lib/boilerplate/components/Message/Message.svelte'
-	import Link from '$lib/boilerplate/components/Link/Link.svelte'
+	import { Link } from '$lib/boilerplate/components'
 
 	if (browser && !$page.url.searchParams.has('error')) {
 		goto('?error=' + $page.status)

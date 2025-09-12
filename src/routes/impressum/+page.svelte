@@ -1,9 +1,14 @@
 <script>
 	import stammdaten from '$lib/stammdaten'
+
+	const { title, web } = stammdaten
 </script>
 
 <svelte:head>
-	<title>Impressum | {stammdaten.title}</title>
+	<title>Impressum | {title}</title>
+	<meta
+		name="description"
+		content="Impressum und rechtliche Hinweise - Kontaktdaten und Verantwortlichkeiten für {web}." />
 </svelte:head>
 
 <h1>Impressum</h1>
