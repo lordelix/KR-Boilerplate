@@ -1,15 +1,17 @@
 <script lang="ts">
 	import './AddressbookEntry.scss'
-	import classNames from 'classnames'
-	import Address from '../Address/Address.svelte'
 	import type { AddressbookEntryProps } from './AddressbookEntry'
+	import { Address } from '..'
+	import { uniqueId } from 'lodash-es'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
+		id = uniqueId('addressbook-entry-'),
+		class: classProp,
+
 		tag = 'div',
 		baseName = 'AddressbookEntry',
-		class: className,
 		entry
 	}: AddressbookEntryProps = $props()
 
@@ -20,13 +22,13 @@
 		mobile: entry.mobile || undefined,
 		fax: entry.fax || undefined,
 		email: entry.email || undefined,
-		web: entry.web || undefined
+		web: entry.web ? entry.web.toString() : undefined
 	})
 
 	let hasAddress = $derived(Object.entries(address).some(e => !!e))
 </script>
 
-<svelte:element this={tag} class={classNames(baseName, className)}>
+<svelte:element this={tag} {id} class={[baseName, classProp]}>
 	<div class="{baseName}__title">
 		{entry.title}
 	</div>

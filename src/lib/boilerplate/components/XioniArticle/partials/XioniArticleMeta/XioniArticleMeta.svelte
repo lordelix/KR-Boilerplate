@@ -7,7 +7,7 @@
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import Fontello from '$lib/boilerplate/components/Fontello/Fontello.svelte'
+	import { Fontello } from '$lib/boilerplate/components'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

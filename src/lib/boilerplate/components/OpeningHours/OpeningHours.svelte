@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './OpeningHours.css'
 
-	import classnames from 'classnames'
 	import OpeningHours from '$lib/boilerplate/utils/OpeningHours'
 
 	// --- [ Components ] ----------------------------------------------------------------------------

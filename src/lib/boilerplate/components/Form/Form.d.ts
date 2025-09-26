@@ -1,16 +1,15 @@
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 import type { XioniApiErrorResponse } from '$lib/boilerplate/xioni/types'
 import type { Snippet } from 'svelte'
 
-export interface FormProps {
-	baseName?: string
+export type FormProps = ComponentBaseProps & {
 	moduleId: number | string
-	class?: string
 
 	// Slots
 	children?: Snippet
 	done?: Snippet
 
 	// Events
-	successHandler?: () => void
-	errorHandler?: (error: XioniApiErrorResponse) => void
+	onSuccess?: Function
+	onError?: (error: XioniApiErrorResponse) => any
 }

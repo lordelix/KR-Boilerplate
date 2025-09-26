@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Select.css'
 
-	import classnames from 'classnames'
 	import randomString from '$lib/boilerplate/utils/randomString'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
@@ -18,7 +17,7 @@
 	export let baseName = 'Select'
 </script>
 
-<div {...$$restProps} class={classnames(baseName, $$props.class)}>
+<div {...$$restProps} class={[baseName, $$props.class]}>
 	{#if label}
 		<label class={baseName + '__label'} for={id}>{label}</label>
 	{/if}
@@ -27,7 +26,7 @@
 		{name}
 		{required}
 		{disabled}
-		class={classnames(baseName + '__input', $$props.class)}
+		class={[baseName + '__input', $$props.class]}
 		bind:value
 		on:change>
 		{#if placeholder}

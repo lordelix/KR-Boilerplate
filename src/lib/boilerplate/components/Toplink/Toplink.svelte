@@ -1,14 +1,23 @@
-<script>
+<script lang="ts">
+	import { onMount, tick } from 'svelte'
+	import type { ToplinkProps } from './Toplink'
 	import './Toplink.scss'
-	import classnames from 'classnames'
+	import { uniqueId } from 'lodash-es'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let baseName = 'Toplink'
+	let {
+		id = uniqueId('toplink-'),
+		class: classProp,
+
+		baseName = 'Toplink',
+		...restProps
+	}: ToplinkProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
 	let isVisible = false
+	const className = $derived([baseName, '$$props.class', !isVisible || baseName + '--visible'])
 
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -18,12 +27,20 @@
 		isVisible = window.scrollY > 200
 	}
 
-	$: className = classnames(baseName, $$props.class, !isVisible || baseName + '--visible')
+	onMount(async () => {
+		await tick()
+
+		if (document.querySelectorAll('.' + baseName).length > 1) {
+			throw new Error(
+				'The <Toplink /> component should only be used once per page. Found multiple instances.'
+			)
+		}
+	})
 </script>
 
 <svelte:window on:scroll|passive={handleOffset} />
 
-<button on:click={scrollToTop} aria-label="Scroll to top" {...$$restProps} class={className}>
+<button onclick={scrollToTop} {id} aria-label="Scroll to top" {...restProps} class={className}>
 	<svg class="{baseName}__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
 		<!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
 		<path

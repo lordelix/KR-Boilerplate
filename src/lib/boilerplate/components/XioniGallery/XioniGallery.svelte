@@ -1,13 +1,18 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import classnames from 'classnames'
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
+
+	import type { XioniGalleryProps } from './XioniGallery.d'
 
 	// --- Props -------------------------------------------------------------------------------------
 
-	export let gallery: XioniCMS.Gallery
-	export let baseName = 'XioniGallery'
-	export let baseLink: string = $page.url.pathname
+	let {
+		id,
+		class: classProp,
+		baseName = 'XioniGallery',
+
+		gallery,
+		baseLink = $page.url.pathname
+	}: XioniGalleryProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -16,7 +21,7 @@
 	}
 </script>
 
-<ul class={classnames(baseName, $$props.class)}>
+<ul {id} class={[baseName, classProp]}>
 	{#each gallery as { id, title, slug }}
 		<li class="{baseName}__item">
 			<a class="{baseName}__item-link" href={makeLink(slug, id)}>{title}</a>

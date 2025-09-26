@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './Grid.scss'
-	import classnames from 'classnames'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
@@ -15,14 +14,14 @@
 	$: className = !size ? createParentClassName() : createChildClassName()
 
 	function createChildClassName() {
-		return classnames(
+		return [
 			'Grid__item',
 			!size ||
 				('' + size)
 					.split(' ')
 					.map(i => `Grid__item--${i}`)
 					.join(' ')
-		)
+		]
 	}
 
 	function createParentClassName() {
@@ -34,10 +33,10 @@
 			className.push('Grid--gap')
 		}
 
-		return classnames(...className)
+		return [...className]
 	}
 </script>
 
-<svelte:element this={tag} {id} class={classnames(className, $$props.class)} data-index={index}>
+<svelte:element this={tag} {id} class={[className, $$props.class]} data-index={index}>
 	<slot />
 </svelte:element>

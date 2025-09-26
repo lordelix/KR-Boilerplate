@@ -5,29 +5,37 @@
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import Figure from '$lib/boilerplate/components/Figure/Figure.svelte'
+	import { Figure } from '$lib/boilerplate/components'
+	import type { XioniArticleContent } from './XioniArticleContent'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let baseName = 'XioniArticleContent'
-	export let title: XioniCMS.ArticleContent['title']
-	export let text: XioniCMS.ArticleContent['text']
-	export let image: XioniCMS.ArticleContent['image'] = undefined
+	let {
+		baseName = 'XioniArticleContent',
+
+		title,
+		image,
+		text
+	}: XioniArticleContent = $props()
+
+	const bem = makeBEM(baseName)
+	const figureBem = makeBEM(baseName + 'Image')
 
 	// -----------------------------------------------------------------------------------------------
 </script>
 
 {#if title}
-	<h3 class="{baseName}__title">
+	<h3 class={bem.element('title')}>
 		{title}
 	</h3>
 {/if}
 {#if text || image}
-	<p class="{baseName}__text">
+	<p class={bem.element('text')}>
 		{#if image}
 			<Figure
-				baseName="{baseName}Image"
-				class="{baseName}Image--{image.align}"
+				baseName={figureBem.block}
+				class={figureBem.modifier(image.align)}
 				src={image.src}
 				alt={image.description}
 				caption={image.description} />

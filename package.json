@@ -1,6 +1,6 @@
 {
 	"name": "boilerplate.ts",
-	"version": "5.3.4",
+	"version": "5.4.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -37,9 +37,7 @@
 		"@glidejs/glide": "^3.7.1",
 		"@types/glidejs__glide": "^3.6.6",
 		"@types/lodash-es": "^4.17.12",
-		"classnames": "^2.5.1",
 		"date-fns": "^4.1.0",
-		"in-view": "^0.6.1",
 		"lodash-es": "^4.17.21",
 		"openapi-fetch": "^0.14.0",
 		"openapi-typescript-fetch": "^2.2.1",

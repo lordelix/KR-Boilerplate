@@ -8,7 +8,6 @@
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Lightbox from '../Lightbox/Lightbox.svelte'
-	import classNames from 'classnames'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 	export let baseName = 'XioniAlbum'
@@ -16,7 +15,7 @@
 </script>
 
 <Lightbox>
-	<ul {...$$restProps} class={classNames(baseName, $$props.class)}>
+	<ul {...$$restProps} class={[baseName, $$props.class]}>
 		{#each images as { src, srcset, description }}
 			<li class="{baseName}__item">
 				<img

@@ -1,13 +1,12 @@
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 import type { Snippet } from 'svelte'
 
-export interface XioniEventProps {
-	baseName?: string
+export type XioniEventProps = ComponentBaseProps & {
 	event: XioniCMS.Event
-	class?: string
 
 	// Slots
 	children?: Snippet
 
 	// Events
-	registrationClickHandler: () => void
+	onRegistrationClick: () => void
 }

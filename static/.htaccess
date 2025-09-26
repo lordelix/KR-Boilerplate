@@ -5,12 +5,26 @@
   <FilesMatch "\.(jpg|png|json)$">
     Header set Cache-Control "public, max-age=28800, must-revalidate"
   </FilesMatch>
+  # Prevent indexing when URL query has error=404 or error=500
+  <If "req('QUERY_STRING') =~ /(?:^|&)error=(?:404|500)(?:&|$)/">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
 </IfModule>
 
 RewriteEngine On
 RewriteBase /
 
 RedirectMatch 404 (.*)?error=404$
+
+# Also add X-Robots-Tag for 500 error query when mod_headers isn't evaluated
+<IfModule mod_rewrite.c>
+RewriteCond %{QUERY_STRING} (?:^|&)error=(404|500)(?:&|$) [NC]
+RewriteRule ^ - [E=NOINDEX:1]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow" env=NOINDEX
+</IfModule>
 
 RewriteRule ^200\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f

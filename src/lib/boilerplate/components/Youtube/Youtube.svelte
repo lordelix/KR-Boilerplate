@@ -1,6 +1,4 @@
 <script lang="ts">
-	import classnames from 'classnames'
-
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Aspect from '../Aspect/Aspect.svelte'
@@ -17,7 +15,7 @@
 	// --- [ Logic ] ---------------------------------------------------------------------------------
 </script>
 
-<Aspect ratio={ratio.join(':')} {...$$restProps} class={classnames(baseName, $$props.class)}>
+<Aspect ratio={ratio.join(':')} {...$$restProps} class={[baseName, $$props.class]}>
 	<iframe
 		class={baseName + '__frame'}
 		src={'https://www.youtube-nocookie.com/embed/' + videoId}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	// import './Link.css'
-	import classnames from 'classnames'
+
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import Fontello from '../Fontello/Fontello.svelte'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Input.scss'
 
-	import classnames from 'classnames'
 	import randomString from '$lib/boilerplate/utils/randomString'
 
 	// --- [ Types ] ---------------------------------------------------------------------------------

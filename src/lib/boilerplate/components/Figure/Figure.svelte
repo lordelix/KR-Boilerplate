@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './Figure.css'
-	import classNames from 'classnames'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
@@ -18,7 +17,7 @@
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 </script>
 
-<figure {...$$restProps} class={classNames(baseName, $$props.class)}>
+<figure {...$$restProps} class={[baseName, $$props.class]}>
 	<img
 		class="{baseName}__image"
 		{src}

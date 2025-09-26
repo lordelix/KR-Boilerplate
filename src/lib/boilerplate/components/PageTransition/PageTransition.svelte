@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { blur } from 'svelte/transition'
 	import { page } from '$app/stores'
-	import classnames from 'classnames'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
@@ -13,7 +12,7 @@
 	<svelte:element
 		this={tag}
 		{...$$restProps}
-		class={classnames(baseName, $$props.class)}
+		class={[baseName, $$props.class]}
 		in:blur={{ duration: 250 }}>
 		<slot />
 	</svelte:element>

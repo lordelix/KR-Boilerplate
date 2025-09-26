@@ -3,7 +3,7 @@
 	export let max = 3
 </script>
 
-<div class="Sceleton" aria-hidden>
+<div class="Sceleton" aria-hidden="true">
 	{#each range(+max) as i}
 		<div class="Sceleton__group" data-id={i}>
 			<div class="Sceleton__item h2" style={`width: ${random(66, 88)}%`}>&nbsp;</div>

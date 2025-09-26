@@ -1,7 +1,6 @@
 import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 
-export type AddressbookEntryProps = ComponentBaseProps & {
-	tag?: string
-	entry: XioniCMS.AddressbookEntry
+export type XioniMenuCardProps = ComponentBaseProps & {
+	menuCard: XioniCMS.MenuCard
 }

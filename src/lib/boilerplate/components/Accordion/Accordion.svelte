@@ -1,17 +1,20 @@
 <script lang="ts">
 	import './Accordion.css'
 
-	import classnames from 'classnames'
 	import { setContext } from 'svelte'
 	import { writable } from 'svelte/store'
+	import { uniqueId } from 'lodash-es'
+
 	import { type AccordionProps } from './Accordion.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
+		id = uniqueId('accordion-'),
+		class: classProp,
 		baseName = 'Accordion',
+
 		children,
-		class: className,
 		...restProps
 	}: AccordionProps = $props()
 
@@ -22,6 +25,6 @@
 	setContext('Accordion:active-item', activeItem)
 </script>
 
-<ul {...restProps} class={classnames(baseName, className)}>
+<ul {id} class={[baseName, classProp]} {...restProps}>
 	{@render children?.()}
 </ul>

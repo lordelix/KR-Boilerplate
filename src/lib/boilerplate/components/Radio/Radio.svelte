@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Radio.css'
 
-	import classnames from 'classnames'
 	import randomString from '$lib/boilerplate/utils/randomString'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------

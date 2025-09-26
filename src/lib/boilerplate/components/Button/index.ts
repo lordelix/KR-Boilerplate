@@ -1,4 +1,2 @@
-import Button from './Button.svelte'
-import type { ButtonProps } from './Button.d.ts'
-
-export { Button, type ButtonProps }
+export { default as Button } from './Button.svelte'
+export { type ButtonProps } from './Button.d'

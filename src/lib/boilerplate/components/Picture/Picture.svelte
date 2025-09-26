@@ -1,27 +1,32 @@
 <script lang="ts">
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import type { PictureProps } from './Picture'
 	import './Picture.css'
 
-	import classnames from 'classnames'
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	// --- [ Types ] ---------------------------------------------------------------------------------
+	let {
+		id,
+		class: classProp,
+		baseName = 'Picture',
 
-	type Source = [string, number, number] | [string, number] | string
+		src,
+		tablet,
+		desktop,
+		widescreen,
+		align,
+		placeholder,
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+		...restProps
+	}: PictureProps = $props()
 
-	export let src: Source
-	export let tablet: Source = ''
-	export let desktop: Source = ''
-	export let widescreen: Source = ''
-	export let align: 'left' | 'right' | undefined = undefined
-	export let placeholder = ''
-	export let baseName = 'Picture'
+	const bem = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 
-	function extractProps(src: Source) {
+	function extractProps(src: PictureProps['src']) {
 		if (typeof src === 'string') {
 			return {
 				srcset: src
@@ -35,11 +40,7 @@
 		}
 	}
 
-	$: className = classnames(
-		baseName,
-		$$props.class as string,
-		!align || [baseName, '--', align].join('')
-	)
+	const className = $derived([baseName, classProp, !align || bem.modifier(align)])
 </script>
 
 <picture>
@@ -52,6 +53,5 @@
 	{#if tablet}
 		<source {...extractProps(tablet)} media="(min-width: 621px)" />
 	{/if}
-	<!-- svelte-ignore a11y-missing-attribute -->
-	<img {...extractProps(src)} {style} {...$$restProps} class={className} />
+	<img {...extractProps(src)} {style} {...restProps} class={className} />
 </picture>

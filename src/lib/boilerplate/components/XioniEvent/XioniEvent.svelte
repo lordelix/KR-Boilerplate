@@ -3,7 +3,6 @@
 
 	import { formatFromTo } from '$lib/boilerplate/utils/formatDate'
 	import { formatISO } from 'date-fns'
-	import classnames from 'classnames'
 
 	// --- [ Types ] ---------------------------------------------------------------------------------
 
@@ -17,6 +16,7 @@
 	import Lightbox from '../Lightbox/Lightbox.svelte'
 	import ButtonRow from '../ButtonRow/ButtonRow.svelte'
 	import Button from '../Button/Button.svelte'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
@@ -26,11 +26,13 @@
 		event,
 
 		// Events
-		registrationClickHandler,
+		onRegistrationClick,
 		...restProps
 	}: XioniEventProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
+
+	const bem = makeBEM(baseName)
 
 	const {
 		teaser,
@@ -66,17 +68,13 @@
 	<Lightbox bind:this={lightbox} {images} />
 {/if}
 
-<div
-	itemscope
-	itemtype="https://schema.org/Event"
-	{...restProps}
-	class={classnames(baseName, className)}>
+<div itemscope itemtype="https://schema.org/Event" {...restProps} class={[bem.block, className]}>
 	<meta itemprop="startDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="endDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="organizer" content={organizer} />
 
 	{#if image || images?.length}
-		<div class="{baseName}__image-wrapper">
+		<div class={bem.element('image-wrapper')}>
 			{#if image}
 				<Picture
 					ex-class={baseName + '__image'}
@@ -138,10 +136,8 @@
 
 	<ButtonRow class={baseName + '__metadata'}>
 		{#if allowRegistration}
-			<Button
-				fontello="ticket"
-				onclick={registrationClickHandler}
-				class={baseName + '__registration'}>Jetzt anmelden</Button>
+			<Button fontello="ticket" onClick={onRegistrationClick} class={baseName + '__registration'}
+				>Jetzt anmelden</Button>
 		{/if}
 
 		{#if ticketshop && !allowRegistration}

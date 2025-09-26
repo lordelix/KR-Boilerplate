@@ -1,13 +1,21 @@
 <script lang="ts">
+	import type { ContainerProps } from './Container'
 	import './Container.scss'
-	import classname from 'classnames'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let baseName = 'Checkbox'
-	export let tag = 'div'
+	let {
+		id,
+		class: classProp,
+		baseName = 'Checkbox',
+
+		tag = 'div',
+
+		children,
+		...restProps
+	}: ContainerProps = $props()
 </script>
 
-<svelte:element this={tag} {...$$restProps} class={classname(baseName, $$props.class)}>
-	<slot />
+<svelte:element this={tag} {...restProps} class={[baseName, classProp]}>
+	{@render children()}
 </svelte:element>

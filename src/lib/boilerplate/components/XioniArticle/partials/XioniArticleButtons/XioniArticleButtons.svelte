@@ -1,29 +1,36 @@
 <script lang="ts">
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
+	import type { XioniArticleButtonsProps } from './XioniArticleButtons'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import ButtonRow from '../../../ButtonRow/ButtonRow.svelte'
-	import Button from '../../../Button/Button.svelte'
+	import { Button, ButtonRow } from '$lib/boilerplate/components'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	export let pdf: XioniCMS.Article['pdf']
-	export let website: XioniCMS.Article['website']
-	export let baseName = 'XioniArticleButtons'
+	let {
+		id,
+		class: classProp,
+		baseName = 'XioniArticleButtons',
+
+		pdf,
+		website
+	}: XioniArticleButtonsProps = $props()
+
+	const bem = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 </script>
 
-<ButtonRow class={baseName}>
+<ButtonRow {id} class={[bem.block, classProp]}>
 	{#if pdf}
-		<Button to={pdf.src} class="{baseName}__pdf" fontello="file-pdf">
+		<Button to={pdf.src} class={bem.element('pdf')} fontello="file-pdf">
 			{pdf.title}
 		</Button>
 	{/if}
 
 	{#if website}
-		<Button to={website.toString()} class="{baseName}__website" fontello="link">
+		<Button to={website.toString()} class={bem.element('website')} fontello="link">
 			{website.host}
 		</Button>
 	{/if}

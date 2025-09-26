@@ -1,35 +1,35 @@
 <script lang="ts">
 	import { useMailer } from '$lib/boilerplate/xioni/mailer/Message'
 	import { writable } from 'svelte/store'
-	import classnames from 'classnames'
 
 	import type { XioniApiErrorResponse } from '$lib/boilerplate/xioni/types'
 	import type { SchemaMailerMessageRequestBody } from '$lib/boilerplate/xioni/api/api.d'
-	import type { FormProps } from './Form'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import Message from '../Message/Message.svelte'
-	import Modal from '../Modal/Modal.svelte'
-	import LoadingIndicator from '../LoadingIndicator/LoadingIndicator.svelte'
+	import { LoadingIndicator, Message, Modal, type FormProps } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		baseName = 'Form',
-		moduleId,
-		successHandler = () => void 0,
-		errorHandler = () => void 0,
+		id,
 		class: className,
+		baseName = 'Form',
+
+		moduleId,
+
+		onSuccess,
+		onError,
+
 		children,
 		done
 	}: FormProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
-	let formEl: HTMLFormElement
-	let doneModalEl: Modal
-	let errorModalEl: Modal
+	let formRef: HTMLFormElement
+	let doneModalRef: Modal
+	let errorModalRef: Modal
 
 	const formMail = useMailer()
 	const formError = writable<XioniApiErrorResponse | undefined>()
@@ -39,7 +39,7 @@
 	export function submit(e: Event) {
 		e.preventDefault()
 
-		const formData = new FormData(formEl)
+		const formData = new FormData(formRef)
 		formData.set('module-id', moduleId.toString())
 
 		isLoading.set(true)
@@ -48,21 +48,27 @@
 		formMail
 			.send(formData as unknown as SchemaMailerMessageRequestBody)
 			.then(() => {
-				formEl.reset()
+				formRef.reset()
 				isFormDone.set(true)
-				doneModalEl.open()
-				successHandler()
+				doneModalRef.open()
+
+				if (onSuccess) {
+					onSuccess()
+				}
 			})
 			.catch(error => {
 				formError.set(error)
-				errorModalEl.open()
-				errorHandler(error)
+				errorModalRef.open()
+
+				if (onError) {
+					onError(error)
+				}
 			})
 			.finally(() => isLoading.set(false))
 	}
 </script>
 
-<form class={classnames(baseName, className)} bind:this={formEl} onsubmit={submit}>
+<form class={[baseName, className]} bind:this={formRef} onsubmit={submit}>
 	{@render children?.()}
 </form>
 
@@ -70,7 +76,7 @@
 	<LoadingIndicator />
 {/if}
 
-<Modal bind:this={doneModalEl}>
+<Modal bind:this={doneModalRef}>
 	{#if done}
 		{@render done?.()}
 	{:else}
@@ -78,7 +84,7 @@
 	{/if}
 </Modal>
 
-<Modal bind:this={errorModalEl}>
+<Modal bind:this={errorModalRef}>
 	<Message class="{baseName}__errors" type="error">
 		<ul>
 			{#each Object.entries($formError?.details || []) as [key, values]}

@@ -1,13 +1,13 @@
-export type ButtonProps = {
-	class?: string
-	baseName?: string
+import type { FontelloProps } from '../Fontello/Fontello'
+
+export type ButtonProps = ComponentBaseProps & {
 	children?: Snippet
 
 	onClick?: Function
 
 	variant?: 'primary' | 'secondary'
 	disabled?: boolean
-	fontello?: string
+	fontello?: FontelloProps['name']
 	isLoading?: boolean
 	rel?: 'follow' | 'nofollow noopener'
 	target?: '_blank'

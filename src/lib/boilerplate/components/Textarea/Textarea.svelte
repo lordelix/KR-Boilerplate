@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Textarea.scss'
 
-	import classnames from 'classnames'
 	import randomString from '$lib/boilerplate/utils/randomString'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
@@ -16,12 +15,13 @@
 	export let baseName = 'Textarea'
 </script>
 
-<div {...$$restProps} class={classnames(baseName, $$props.class)}>
+<div {...$$restProps} class={[baseName, $$props.class]}>
 	{#if label}
 		<label class={baseName + '__label'} for={id}>
 			{label}
 			{#if required}*{/if}
 		</label>
 	{/if}
-	<textarea class={baseName + '__input'} {required} {id} {name} {rows} {placeholder} bind:value />
+	<textarea class={baseName + '__input'} {required} {id} {name} {rows} {placeholder} bind:value
+	></textarea>
 </div>

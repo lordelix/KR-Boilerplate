@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Pagination.scss'
 
-	import classNames from 'classnames'
 	import { range } from 'lodash-es'
 	import type { PaginationProps } from './Pagination'
 

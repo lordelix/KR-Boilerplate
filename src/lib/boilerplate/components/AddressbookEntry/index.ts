@@ -1,3 +1,1 @@
-import AddressbookEntry from './AddressbookEntry.svelte'
-
-export default AddressbookEntry
+export { default as AddressbookEntry } from './AddressbookEntry.svelte'

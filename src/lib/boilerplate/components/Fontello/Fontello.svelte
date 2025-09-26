@@ -1,8 +1,7 @@
 <script lang="ts">
-	import classnames from 'classnames'
+	import type { FontelloProps } from './Fontello'
 
-	export let name = 'wine'
-	export let baseName = 'Fontello'
+	let { baseName = 'Fontello', class: _class, name, onClick }: FontelloProps = $props()
 </script>
 
-<i class={classnames($$props.class, baseName, 'fontello-' + name)} aria-hidden="true" on:click />
+<i class={[baseName, _class, 'fontello-' + name]} aria-hidden="true" onclick={onClick}></i>

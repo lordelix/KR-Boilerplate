@@ -2,7 +2,6 @@
 	import './Checkbox.scss'
 
 	import { uniqueId } from 'lodash-es'
-	import classnames from 'classnames'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

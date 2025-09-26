@@ -5,7 +5,6 @@
 	import { goto } from '$app/navigation'
 	import { LOCALE } from '$lib/boilerplate/constants'
 	import { page } from '$app/stores'
-	import classnames from 'classnames'
 
 	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 
@@ -27,7 +26,7 @@
 	const { title, date, image, teaser, author } = article
 </script>
 
-<svelte:element this={tag} {...$$restProps} class={classnames(baseName, $$props.class)}>
+<svelte:element this={tag} {...$$restProps} class={[baseName, $$props.class]}>
 	{#if image}
 		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 		<img

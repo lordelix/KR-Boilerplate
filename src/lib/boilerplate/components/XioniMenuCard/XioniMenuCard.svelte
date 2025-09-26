@@ -1,16 +1,13 @@
 <script lang="ts">
 	import './XioniMenuCard.scss'
-	import classnames from 'classnames'
-
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
+	import type { XioniMenuCardProps } from './XioniMenuCard.d'
 
 	// --- Props -------------------------------------------------------------------------------------
 
-	export let menuCard: XioniCMS.MenuCard
-	export let baseName = 'XioniMenuCard'
+	let { id, class: classProp, menuCard, baseName = 'XioniMenuCard' }: XioniMenuCardProps = $props()
 </script>
 
-<ol class={classnames(baseName, $$props.class)}>
+<ol {id} class={[baseName, classProp]}>
 	{#each menuCard as group}
 		<li class="{baseName}__group">
 			<h3 class="{baseName}__group-name">{group.name}</h3>

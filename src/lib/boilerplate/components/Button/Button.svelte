@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Button.scss'
 
-	import classnames from 'classnames'
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { ButtonProps } from './Button'
@@ -13,17 +12,21 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		baseName = 'Button',
-		children,
+		id,
 		class: classProp,
+		baseName = 'Button',
+
 		disabled = false,
-		fontello = '',
+		fontello,
 		isLoading = false,
 		rel = 'nofollow noopener',
 		target,
 		to,
 		variant,
+
+		children,
 		onClick,
+
 		...restProps
 	}: ButtonProps = $props()
 
@@ -36,14 +39,14 @@
 		target = '_blank'
 	}
 
-	const classNames = classnames(
+	const classNames = [
 		block,
 		classProp,
 		variant ? modifier(variant) : null,
 		disabled ? modifier('disabled') : null,
 		!to || modifier('anchor'),
 		!isLoading || modifier('loading')
-	)
+	]
 
 	function handleClick() {
 		if (disabled || !onClick) return

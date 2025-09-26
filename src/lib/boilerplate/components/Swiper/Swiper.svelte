@@ -3,7 +3,7 @@
 
 	import { onMount } from 'svelte'
 	import { uniqueId } from 'lodash-es'
-	import classnames from 'classnames'
+
 	import Glide from '@glidejs/glide'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
@@ -49,7 +49,7 @@
 	})
 </script>
 
-<div {id} class={classnames(baseName, $$props.class, 'glide')} bind:this={slider}>
+<div {id} class={[baseName, $$props.class, 'glide']} bind:this={slider}>
 	<div class="glide__track" data-glide-el="track">
 		<div class="glide__slides">
 			{#if images && images.length}

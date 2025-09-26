@@ -4,9 +4,9 @@
 	import { format } from '$lib/boilerplate/utils/formatDate'
 	import { goto } from '$app/navigation'
 	import { LOCALE } from '$lib/boilerplate/constants'
-	import { page } from '$app/stores'
-	import classnames from 'classnames'
+	import { page } from '$app/state'
 
+	import type { XioniEventTileProps } from './XioniEventTile.d'
 	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
@@ -15,11 +15,17 @@
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let event: XioniCMS.Event
-	export let baseName = 'XioniEventTile'
-	export let linkText: string = 'Mehr erfahren'
-	export let tag: string = 'div'
-	export let link: string | undefined = `${$page.url.pathname}${event.slug}_${event.id}/`
+	let {
+		id,
+		class: className,
+		baseName = 'XioniEventTile',
+
+		event,
+		linkText = 'Mehr erfahren',
+		tag = 'div',
+		link = `${$page.url.pathname}${event.slug}_${event.id}/`,
+		...restProps
+	}: XioniEventTileProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -35,8 +41,8 @@
 	itemscope
 	data-tags={tagsToString(tags)}
 	itemtype="https://schema.org/Event"
-	{...$$restProps}
-	class={classnames(baseName, $$props.class)}>
+	{...restProps}
+	class={[baseName, className]}>
 	<meta itemprop="startDate" content={format(starts, 'yyyy-MM-dd')} />
 	<meta itemprop="endDate" content={format(ends, 'yyyy-MM-dd')} />
 	<meta itemprop="organizer" content={organizer} />

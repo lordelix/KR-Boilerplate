@@ -1,25 +1,36 @@
 <script lang="ts">
 	import './Wrapper.scss'
 
-	import classNames from 'classnames'
+	import { uniqueId } from 'lodash-es'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import type { WrapperProps } from './Wrapper.d'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	export let tag: string = 'div'
-	export let responsive: boolean = false
-	export let size: 'smaller' | 'small' | 'large' | undefined = undefined
-	export let baseName = 'Wrapper'
+	let {
+		id = uniqueId('wrapper'),
+		class: classProp,
+		baseName = 'Wrapper',
+
+		tag = 'div',
+		responsive = false,
+		size,
+
+		children,
+		...restProps
+	}: WrapperProps = $props()
+	const bem = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 
-	const className = classNames(
-		baseName,
-		size ? `${baseName}--${size}` : undefined,
-		responsive ? `${baseName}--responsive` : undefined,
-		$$props.class
-	)
+	const className = [
+		bem.block,
+		size ? bem.modifier(size) : undefined,
+		responsive ? bem.modifier('responsive') : undefined,
+		classProp
+	]
 </script>
 
-<svelte:element this={tag} {...$$restProps} class={className}>
-	<slot />
+<svelte:element this={tag} {...restProps} class={className}>
+	{@render children()}
 </svelte:element>

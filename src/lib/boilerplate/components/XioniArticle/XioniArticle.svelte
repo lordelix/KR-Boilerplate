@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './XioniArticle.scss'
 
-	import classnames from 'classnames'
 	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
@@ -20,7 +19,7 @@
 	const { author, date, content, image, pdf, teaser, title, website } = article
 </script>
 
-<article {...$$restProps} class={classnames(baseName, $$props.class)}>
+<article {...$$restProps} class={[baseName, $$props.class]}>
 	{#if image}
 		<Figure baseName="{baseName}Image" src={image.src} caption={image.description} />
 	{/if}

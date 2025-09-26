@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './LoadingIndicator.scss'
 
-	import classnames from 'classnames'
 	import { createEventDispatcher, onMount } from 'svelte'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
@@ -29,7 +28,7 @@
 	})
 </script>
 
-<dialog bind:this={dialog} class={classnames(baseName, $$props.class)}>
+<dialog bind:this={dialog} class={[baseName, $$props.class]}>
 	<div class={baseName + '__animation'}>
 		<div class={baseName + '__animation--dot'}></div>
 		<div class={baseName + '__animation--dot'}></div>

@@ -1,16 +1,21 @@
 <script lang="ts">
 	import './Address.css'
-	import classnames from 'classnames'
+
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { AddressProps } from './Address.d'
+	import { uniqueId } from 'lodash-es'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import Link from '../Link/Link.svelte'
-	import Mail from '../Mail/Mail.svelte'
-	import Fontello from '../Fontello/Fontello.svelte'
+	import { Fontello, Mail } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
+
 	let {
+		id = uniqueId('address-'),
+		class: classProp,
+		baseName = 'Address',
+
 		name,
 		owner,
 		street,
@@ -21,52 +26,52 @@
 		email,
 		web,
 
-		class: className,
-		baseName = 'Address',
 		children
 	}: AddressProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
+
+	const bem = makeBEM(baseName)
 </script>
 
-<ol class={classnames(baseName, className)}>
+<ol {id} class={[bem.block, classProp]}>
 	{#if name}
-		<li class="{baseName}__name">{name}</li>
+		<li class={bem.element('name')}>{name}</li>
 	{/if}
 	{#if owner}
-		<li class="{baseName}__owner">{owner}</li>
+		<li class={bem.element('owner')}>{owner}</li>
 	{/if}
 	{#if street}
-		<li class="{baseName}__street">{street}</li>
+		<li class={bem.element('street')}>{street}</li>
 	{/if}
 	{#if town}
-		<li class="{baseName}__town">{town}</li>
+		<li class={bem.element('town')}>{town}</li>
 	{/if}
 	{@render children?.()}
 	{#if phone}
-		<li class="{baseName}__phone">
+		<li class={bem.element('phone')}>
 			<Fontello name="phone" />&nbsp;<a href={'tel:' + phone} aria-label="Telefonnummer anrufen"
 				>{phone}</a>
 		</li>
 	{/if}
 	{#if mobile}
-		<li class="{baseName}__mobile">
+		<li class={bem.element('mobile')}>
 			<Fontello name="phone" />&nbsp;<a href={'tel:' + mobile} aria-label="Mobilnummer anrufen"
 				>{mobile}</a>
 		</li>
 	{/if}
 	{#if fax}
-		<li class="{baseName}__fax">
+		<li class={bem.element('fax')}>
 			<Fontello name="fax" />&nbsp;{fax}
 		</li>
 	{/if}
 	{#if email}
-		<li class="{baseName}__email">
+		<li class={bem.element('email')}>
 			<Mail to={email} aria-label="E-Mail schreiben" />
 		</li>
 	{/if}
 	{#if web}
-		<li class="{baseName}__web">
+		<li class={bem.element('web')}>
 			<Fontello name="globe" />&nbsp;{web}
 		</li>
 	{/if}

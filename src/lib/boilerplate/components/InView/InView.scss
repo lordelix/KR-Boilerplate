@@ -4,7 +4,7 @@
 
 :where(.InView--fade) {
 	transition: {
-		delay: 250ms;
+		delay: 500ms;
 		property: opacity;
 		duration: 3s;
 	}
@@ -13,7 +13,7 @@
 :where(.InView--fade-rtl) {
 	transform: translateX(10%);
 	transition: {
-		delay: 150ms;
+		delay: 250ms;
 		property: opacity, transform;
 		duration: 2s;
 	}
@@ -22,7 +22,7 @@
 :where(.InView--fade-ltr) {
 	transform: translateX(-10%);
 	transition: {
-		delay: 150ms;
+		delay: 250ms;
 		property: opacity, transform;
 		duration: 2s;
 	}
@@ -38,7 +38,7 @@
 :where(.InView--scale) {
 	transform: scale(0.75);
 	transition: {
-		delay: 150ms;
+		delay: 250ms;
 		property: transform, opacity;
 		duration: 2s;
 	}

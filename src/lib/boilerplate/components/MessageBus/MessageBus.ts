@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash-es'
 // --- [ Types ] -----------------------------------------------------------------------------------
 
 import type MessageComponent from '../Message/Message.svelte'
-import type { ComponentProps } from 'svelte'
+import type { ComponentBaseProps } from 'svelte'
 
 export namespace MessageBus {
 	export interface Message {
@@ -12,7 +12,7 @@ export namespace MessageBus {
 		message: string
 		config?: {
 			id?: string
-			type?: ComponentProps<MessageComponent>['type']
+			type?: ComponentBaseProps<MessageComponent>['type']
 			timeout?: number
 		}
 	}

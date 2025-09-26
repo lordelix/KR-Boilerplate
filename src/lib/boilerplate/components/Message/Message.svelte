@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Message.scss'
 
-	import classnames from 'classnames'
 	import { createEventDispatcher } from 'svelte'
 	import Fontello from '../Fontello/Fontello.svelte'
 

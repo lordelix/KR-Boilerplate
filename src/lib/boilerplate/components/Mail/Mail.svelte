@@ -1,8 +1,6 @@
 <script lang="ts">
 	import './Mail.css'
 
-	import classnames from 'classnames'
-
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Fontello from '../Fontello/Fontello.svelte'

@@ -85,5 +85,5 @@
 </Modal>
 
 {#each lightboxImages as { src, alt }}
-	<img {src} {alt} hidden aria-hidden loading="lazy" />
+	<img {src} {alt} hidden aria-hidden="true" loading="lazy" />
 {/each}
