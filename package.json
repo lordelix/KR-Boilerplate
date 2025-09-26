@@ -1,6 +1,6 @@
 {
 	"name": "boilerplate.ts",
-	"version": "5.4.0",
+	"version": "5.4.0-0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -10,7 +10,11 @@
 		"format": "prettier --plugin-search-dir . --write .",
 		"generate-api-specs": "npx openapi-typescript https://api.klickrhein.de/v6/openapi.yaml -o ./src/lib/boilerplate/xioni/api/api.d.ts --make-paths-enum --root-types",
 		"postinstall": "npm run generate-api-specs",
-		"update": "npx npm-check-updates"
+		"update": "npx npm-check-updates",
+		"version:prerelease": "npm version prerelease --no-git-tag-version",
+		"version:patch": "npm version patch --no-git-tag-version",
+		"version:minor": "npm version minor --no-git-tag-version",
+		"version:major": "npm version major --no-git-tag-version"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.9",
