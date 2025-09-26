@@ -1,8 +1,6 @@
 import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
 export type AddressProps = ComponentBaseProps & {
-	children?: Snippet
-
 	name?: string
 	owner?: string
 	street?: string
@@ -12,4 +10,5 @@ export type AddressProps = ComponentBaseProps & {
 	fax?: string
 	email?: string
 	web?: string
+	children?: Snippet
 }

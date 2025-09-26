@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './AddressbookEntry.scss'
-	import type { AddressbookEntryProps } from './AddressbookEntry'
+	import type { AddressbookEntryProps } from './AddressbookEntry.d'
 	import { Address } from '..'
 	import { uniqueId } from 'lodash-es'
 
@@ -8,10 +8,9 @@
 
 	let {
 		id = uniqueId('addressbook-entry-'),
-		class: classProp,
-
-		tag = 'div',
 		baseName = 'AddressbookEntry',
+		class: classProp,
+		tag = 'div',
 		entry
 	}: AddressbookEntryProps = $props()
 

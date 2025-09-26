@@ -52,7 +52,7 @@ export type { InViewProps } from './InView/InView.d'
 
 // Input
 export { default as Input } from './Input/Input.svelte'
-export type { InputProps, InputPropsType } from './Input/Input.d'
+export type { InputProps, InputType } from './Input/Input.d'
 
 // Lightbox
 export { default as Lightbox } from './Lightbox/Lightbox.svelte'
@@ -126,7 +126,6 @@ export { default as XioniArticleTile } from './XioniArticleTile/XioniArticleTile
 export { default as XioniEvent } from './XioniEvent/XioniEvent.svelte'
 export type { XioniEventProps } from './XioniEvent/XioniEvent.d'
 
-export { default as XioniEventRegistration } from './XioniEventRegistration/XioniEventRegistration.svelte'
 export { default as XioniEventTile } from './XioniEventTile/XioniEventTile.svelte'
 export { default as XioniGallery } from './XioniGallery/XioniGallery.svelte'
 export { default as XioniMenuCard } from './XioniMenuCard/XioniMenuCard.svelte'

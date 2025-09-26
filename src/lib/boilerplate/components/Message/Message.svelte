@@ -1,46 +1,55 @@
 <script lang="ts">
 	import './Message.scss'
 
-	import { createEventDispatcher } from 'svelte'
+	import type { MessageProps } from './Message.d'
 	import Fontello from '../Fontello/Fontello.svelte'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
+	import { uniqueId } from 'lodash-es'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let type: 'error' | 'info' | 'success' | undefined = undefined
-	export let title: string | number | undefined = undefined
-	export let inline = false
-	export let tag = 'div'
-	export let closable = false
+	let {
+		id = uniqueId('message-'),
+		baseName = 'Message',
+		class: classProp,
+		type,
+		title,
+		inline,
+		tag = 'div',
+		closable,
+		code,
+		children,
+		onClose,
+		...restProps
+	}: MessageProps = $props()
 
-	// -----------------------------------------------------------------------------------------------
-
-	const emit = createEventDispatcher()
-	const baseName = $$props['ex-class'] || 'Message'
-
-	$: className = classnames(
-		baseName,
-		$$props.class,
-		!type || baseName + '--' + type,
-		!inline || baseName + '--inline',
-		!closable || baseName + '--closable'
-	)
+	const { block, element, modifier } = makeBEM(baseName)
 </script>
 
-<svelte:element this={tag} class={className}>
+<svelte:element
+	this={tag}
+	{...restProps}
+	class={[
+		block,
+		classProp,
+		{
+			[modifier(type)]: !!type,
+			[modifier('inline')]: inline,
+			[modifier('closable')]: closable
+		}
+	]}>
 	{#if closable}
-		<Fontello name="cancel" class="{baseName}__close-button" on:click={() => emit('close')} />
+		<Fontello name="cancel" class={element('close-button')} onClick={onClose} />
 	{/if}
 	{#if title}
-		<h4 class={baseName + '__title'}>
+		<h4 class={element('title')}>
 			{title}
 		</h4>
 	{/if}
-	{#if $$slots.default}
-		<slot />
+	{#if children}
+		{@render children()}
 	{/if}
-	{#if $$slots.code}
-		<pre><slot name="code" /></pre>
+	{#if code}
+		<pre>{@render code()}</pre>
 	{/if}
 </svelte:element>

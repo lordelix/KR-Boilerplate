@@ -30,7 +30,7 @@
 	// -----------------------------------------------------------------------------------------------
 
 	const tag = to ? 'a' : 'span'
-	const classNames = classnames(bem.block, className, !fontello || bem.modifier('has-icon'))
+	const classNames = [bem.block, className, !fontello || bem.modifier('has-icon')]
 
 	if (to && isExternalURL(to) && !target) {
 		rel = 'nofollow noopener'

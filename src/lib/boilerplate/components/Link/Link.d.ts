@@ -1,15 +1,12 @@
 import type { Snippet } from 'svelte'
+import type { FontelloProps } from '../Fontello/Fontello'
 
-export type LinkProps = {
-	class?: string | undefined
-	children?: Snippet
-
-	baseName?: string
+export type LinkProps = ComponentBaseProps & {
 	to?: string
 	target?: '_blank' | '_self'
-	fontello?: string
+	fontello?: FontelloProps['name']
 	rel?: 'follow' | 'nofollow noopener'
 	label?: string
-
 	onClick?: () => void
+	children?: Snippet
 }

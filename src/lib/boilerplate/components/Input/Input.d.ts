@@ -1,4 +1,6 @@
-export enum InputPropsType {
+import type { HTMLInputAttributes } from 'svelte/elements'
+
+export enum InputType {
 	DATE = 'date',
 	EMAIL = 'email',
 	FILE = 'file',
@@ -7,16 +9,16 @@ export enum InputPropsType {
 	TEXT = 'text'
 }
 
-export interface InputProps {
-	label: string
+export type InputProps = ComponentBaseProps & {
+	label?: string
 	max?: number
 	min?: number
 	name?: string
 	placeholder?: string
 	readonly?: boolean
 	required?: boolean
-	type?: InputPropsType
-	value: string
+	type?: InputType
+	value?: string
 	error?: string
 	multiple?: boolean
 }

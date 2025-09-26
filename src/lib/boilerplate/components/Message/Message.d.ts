@@ -1,0 +1,13 @@
+import type { Snippet } from 'svelte'
+import type { HTMLAttributes } from 'svelte/elements'
+
+export type MessageProps = ComponentBaseProps & {
+	type?: 'error' | 'info' | 'success'
+	title?: string | number
+	inline?: boolean
+	tag?: string
+	closable?: boolean
+	children?: Snippet
+	code?: Snippet
+	onClose?: () => any
+}

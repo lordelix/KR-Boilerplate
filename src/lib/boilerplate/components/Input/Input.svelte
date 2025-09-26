@@ -5,30 +5,28 @@
 
 	// --- [ Types ] ---------------------------------------------------------------------------------
 
-	import { type InputProps, InputPropsType } from './Input.d'
+	import { type InputProps, InputType } from './Input.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let label: InputProps['label'] = ''
-	export let name: InputProps['name'] = 'input'
-	export let placeholder: InputProps['placeholder'] = ''
-	export let readonly: InputProps['readonly'] = undefined
-	export let required: InputProps['required'] = undefined
-	export let type: InputProps['type'] = InputPropsType.TEXT
-	export let value: InputProps['value'] = ''
-	export let error: InputProps['error'] = ''
-	export let multiple: InputProps['multiple'] = false
-	export let id = 'input-' + randomString()
-	export let baseName = 'Input'
+	let {
+		id = 'input-' + randomString(),
+		baseName = 'Input',
+		class: classProp,
+		label,
+		name,
+		placeholder,
+		readonly,
+		required,
+		type = InputType.TEXT,
+		value,
+		error,
+		multiple = false,
+		...restProps
+	}: InputProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
-	$: className = classnames(
-		baseName,
-		$$props.class,
-		!!error ? baseName + '--has-error' : null,
-		!!readonly ? baseName + '--read-only' : null
-	)
 	const inputProps = {
 		name,
 		placeholder,
@@ -39,7 +37,12 @@
 	}
 </script>
 
-<div class={className}>
+<div
+	class={[
+		baseName,
+		classProp,
+		{ [baseName + '--has-error']: !!error, [baseName + '--read-only']: !!readonly }
+	]}>
 	{#if label}
 		<label class={baseName + '__label'} for={id}>
 			{label}
@@ -47,5 +50,5 @@
 			{#if required}*{/if}
 		</label>
 	{/if}
-	<input {id} {...inputProps} {...$$restProps} class={baseName + '__input'} bind:value />
+	<input {id} {...inputProps} {...restProps} class={baseName + '__input'} bind:value />
 </div>

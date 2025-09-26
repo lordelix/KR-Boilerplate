@@ -1,23 +1,29 @@
 <script lang="ts">
 	import './Figure.css'
+	import type { FigureProps } from './Figure.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let src: string
-	export let alt = ''
-	export let width: string | number | undefined = undefined
-	export let height: string | number | undefined = undefined
-	export let caption = ''
-	export let loading: HTMLImageElement['loading'] | undefined = undefined
-	export let placeholder = ''
-	export let baseName = 'Figure'
+	let {
+		src,
+		alt,
+		width,
+		height,
+		caption,
+		loading,
+		placeholder,
+
+		baseName = 'Figure',
+		class: className,
+		...restProps
+	}: FigureProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 </script>
 
-<figure {...$$restProps} class={[baseName, $$props.class]}>
+<figure {...restProps} class={[baseName, className]}>
 	<img
 		class="{baseName}__image"
 		{src}

@@ -1,9 +1,5 @@
-export type PaginationProps = {
-	baseName?: string
-	class?: string
-
+export type PaginationProps = ComponentBaseProps & {
 	pagesCount: number
 	currentPage: number
-
-	clickHandler: (page: number) => void
+	onPageClick: (page: number) => void
 }

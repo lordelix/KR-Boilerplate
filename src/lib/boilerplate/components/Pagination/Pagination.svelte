@@ -2,34 +2,31 @@
 	import './Pagination.scss'
 
 	import { range } from 'lodash-es'
-	import type { PaginationProps } from './Pagination'
+	import type { PaginationProps } from './Pagination.d'
 
 	let {
+		id,
 		baseName = 'Pagination',
 		class: className,
 
 		currentPage,
 		pagesCount,
-
-		clickHandler,
+		onPageClick,
 		...restProps
 	}: PaginationProps = $props()
 </script>
 
-<div class={classNames(baseName, className)} {...restProps}>
+<div {id} class={[baseName, className]} {...restProps}>
 	{#each range(1, pagesCount) as page}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<span
 			aria-label="Zu Seite {page}"
-			class={classNames(
-				'Pagination__item',
-				page === currentPage ? 'Pagination__item--current' : null
-			)}
+			class={`Pagination__item ${page === currentPage ? 'Pagination__item--current' : ''}`}
 			onclick={() => {
-				if (page === currentPage && typeof clickHandler === 'function') return
+				if (page === currentPage && typeof onPageClick === 'function') return
 
-				clickHandler(page)
+				onPageClick(page)
 			}}>
 			{page}
 		</span>
