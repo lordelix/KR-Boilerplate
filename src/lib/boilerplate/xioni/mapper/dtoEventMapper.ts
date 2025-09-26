@@ -33,5 +33,9 @@ export function mapDtoEvent(dto: SchemaEvent): XioniCMS.Event {
 		event.tags = dto.tags
 	}
 
+	if (dto.flags) {
+		event.flags = dto.flags
+	}
+
 	return event
 }
