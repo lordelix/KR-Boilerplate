@@ -1,9 +1,8 @@
-export type FontelloProps = {
-	class?: string
-	baseName?: string
-	name: IconName
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
-	onClick?: () => void
+export type FontelloProps = ComponentBaseProps & {
+	name: IconName
+	onClick?: Function
 }
 
 type IconName =

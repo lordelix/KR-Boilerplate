@@ -1,6 +1,14 @@
 @use 'sass:color';
 
-$button-primary-color: rgb(82, 82, 174);
+.Button {
+	--primary-background: rgb(82, 82, 174);
+	--primary-border: 1px solid rgb(82, 82, 174);
+	--primary-color: #fff;
+
+	--secondary-background: rgb(193, 193, 219);
+	--secondary-border: 1px solid rgb(168, 168, 214);
+	--secondary-color: rgb(13, 13, 94);
+}
 
 :where(.Button) {
 	align-items: center;
@@ -26,9 +34,15 @@ $button-primary-color: rgb(82, 82, 174);
 }
 
 :where(.Button--primary) {
-	background-color: $button-primary-color;
-	border-color: $button-primary-color;
-	color: white;
+	background-color: var(--primary-background);
+	border: var(--primary-border);
+	color: var(--primary-color);
+}
+
+:where(.Button--secondary) {
+	background-color: var(--secondary-background);
+	border: var(--secondary-border);
+	color: var(--secondary-color);
 }
 
 :where(.Button__icon)::before {
@@ -41,10 +55,6 @@ $button-primary-color: rgb(82, 82, 174);
 :where(.Button__text) {
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-:where(.Button:not(:disabled, .Button--primary):hover) {
-	background-color: color.mix(black, white, 5%);
 }
 
 :where(.Button:disabled) {

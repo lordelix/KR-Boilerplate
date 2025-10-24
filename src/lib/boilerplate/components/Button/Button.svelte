@@ -3,16 +3,19 @@
 
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import { uniqueId } from 'lodash-es'
 	import type { ButtonProps } from './Button'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Fontello from '../Fontello/Fontello.svelte'
+	import type { Component } from 'svelte'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
+	export declare const MyComponent: Component<ButtonProps> {}
+
 	let {
-		id,
 		class: classProp,
 		baseName = 'Button',
 
@@ -23,10 +26,9 @@
 		target,
 		to,
 		variant,
-
-		children,
 		onClick,
 
+		children,
 		...restProps
 	}: ButtonProps = $props()
 
@@ -56,7 +58,7 @@
 </script>
 
 {#if !to}
-	<button onclick={handleClick} {disabled} {...restProps} class={classNames}>
+	<button onclick={handleClick} {disabled} class={classNames} {...restProps}>
 		{#if fontello}
 			<Fontello baseName={element('icon')} name={fontello} />&nbsp;
 		{/if}
@@ -65,7 +67,7 @@
 		</span>
 	</button>
 {:else}
-	<a href={to} onclick={handleClick} {target} {...restProps} class={classNames}>
+	<a href={to} onclick={handleClick} {target} class={classNames} {...restProps}>
 		{#if fontello}
 			<Fontello baseName={element('icon')} name={fontello} />&nbsp;
 		{/if}

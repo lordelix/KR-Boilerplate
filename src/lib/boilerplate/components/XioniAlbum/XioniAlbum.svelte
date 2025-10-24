@@ -1,21 +1,26 @@
 <script lang="ts">
 	import './XioniAlbum.scss'
 
-	// --- [ Types ] ---------------------------------------------------------------------------------
-
 	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Lightbox from '../Lightbox/Lightbox.svelte'
+	import type { XioniAlbumProps } from './XioniAlbum'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
-	export let baseName = 'XioniAlbum'
-	export let images: XioniCMS.Album['images'] = []
+	// --- [ Setup ] ---------------------------------------------------------------------------------
+
+	let {
+		class: classProp,
+		baseName = 'XioniAlbum',
+
+		images = [],
+		...restProps
+	}: XioniAlbumProps = $props()
 </script>
 
 <Lightbox>
-	<ul {...$$restProps} class={[baseName, $$props.class]}>
+	<ul class={[baseName, classProp]} {...restProps}>
 		{#each images as { src, srcset, description }}
 			<li class="{baseName}__item">
 				<img

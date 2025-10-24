@@ -4,10 +4,11 @@
 }
 
 :where(.Textarea__label) {
+	position: relative;
 	display: block;
 	background: #eee;
 	padding: 0.25rem 0.666rem;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	border: 1px solid lightgray;
 	border-bottom: 0 none;
 	border-top-left-radius: 0.25rem;
@@ -15,7 +16,11 @@
 	user-select: none;
 }
 
-:where(.Textarea__label + .Textarea__input) {
+:where(.Textarea--required) .Textarea__label::after {
+	content: ' *';
+}
+
+:where(.Textarea__label) + .Textarea__input {
 	border-top: 0 none;
 }
 
@@ -23,7 +28,7 @@
 	width: 100%;
 	padding: 0.666rem;
 	margin: 0;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-family: sans-serif;
 	border: 1px solid lightgray;
 	border-radius: 0;

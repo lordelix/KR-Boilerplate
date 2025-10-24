@@ -4,10 +4,17 @@
 
 	// --- Props -------------------------------------------------------------------------------------
 
-	let { id, class: classProp, menuCard, baseName = 'XioniMenuCard' }: XioniMenuCardProps = $props()
+	let {
+		class: classProp,
+		baseName = 'XioniMenuCard',
+
+		menuCard,
+
+		...restProps
+	}: XioniMenuCardProps = $props()
 </script>
 
-<ol {id} class={[baseName, classProp]}>
+<ol class={[baseName, classProp]} {...restProps}>
 	{#each menuCard as group}
 		<li class="{baseName}__group">
 			<h3 class="{baseName}__group-name">{group.name}</h3>

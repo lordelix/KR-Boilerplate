@@ -1,10 +1,14 @@
 <script lang="ts">
+	import { uniqueId } from 'lodash-es'
 	import './Figure.css'
 	import type { FigureProps } from './Figure.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
+		baseName = 'Figure',
+		class: classProp,
+
 		src,
 		alt,
 		width,
@@ -13,8 +17,6 @@
 		loading,
 		placeholder,
 
-		baseName = 'Figure',
-		class: className,
 		...restProps
 	}: FigureProps = $props()
 
@@ -23,7 +25,7 @@
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 </script>
 
-<figure {...restProps} class={[baseName, className]}>
+<figure class={[baseName, classProp]} {...restProps}>
 	<img
 		class="{baseName}__image"
 		{src}

@@ -9,39 +9,39 @@
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Fontello from '../Fontello/Fontello.svelte'
+	import type { SwiperProps } from './Swiper'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	export let autoplay: number = 0
-	export let focusAt: 'center' | number = 'center'
-	export let gap: number = 0
-	export let images: { src: string; alt: string }[] | undefined = undefined
-	export let perView: number = 1
-	export let speed: number = 1500 // animationDuration
-	export let startAt: number = 0
-	export let type: 'slider' | 'carousel' = 'carousel'
-	export let nav: boolean = true
-	export let config: object | undefined = undefined // Optional full config model
-	export let baseName = 'Swiper'
+	let {
+		id = uniqueId('swiper-'),
+		class: classProp,
+		baseName = 'Swiper',
 
-	// -----------------------------------------------------------------------------------------------
+		images = [],
+		nav = true,
+		options,
+
+		children,
+		...restProps
+	}: SwiperProps = $props()
 
 	let slider: HTMLElement
 	let swiper: any
 
-	const id = uniqueId('swiper-')
-	const glideConfig = config || {
-		autoplay,
-		focusAt,
-		gap,
-		perView,
-		animationDuration: speed || 1500,
-		startAt,
-		type
-	}
+	const glideOptions = {
+		autoplay: 0,
+		focusAt: 'center',
+		gap: 0,
+		perView: 1,
+		animationDuration: 1500,
+		startAt: 0,
+		type: 'slider',
+		...options
+	} as Glide.Options
 
 	onMount(() => {
-		swiper = new Glide('#' + id, glideConfig)
+		swiper = new Glide('#' + id, glideOptions)
 		slider
 			.querySelectorAll('.glide__slides > *')
 			.forEach(slide => slide.classList.add('glide__slide'))
@@ -49,15 +49,15 @@
 	})
 </script>
 
-<div {id} class={[baseName, $$props.class, 'glide']} bind:this={slider}>
+<div class={[baseName, classProp, 'glide']} bind:this={slider} {...restProps}>
 	<div class="glide__track" data-glide-el="track">
 		<div class="glide__slides">
-			{#if images && images.length}
+			{#if images.length}
 				{#each images as { src, alt }}
 					<img {src} {alt} />
 				{/each}
 			{:else}
-				<slot />
+				{@render children?.()}
 			{/if}
 		</div>
 	</div>
@@ -65,13 +65,13 @@
 		<button
 			aria-label="Vorheriges Bild zeigen"
 			class={`${baseName}__button ${baseName}__button--prev`}
-			on:click={() => swiper.go('<')}>
+			onclick={() => swiper.go('<')}>
 			<Fontello baseName={`${baseName}__button-icon`} name="left-open" />
 		</button>
 		<button
 			aria-label="Nächstes Bild zeigen"
 			class={`${baseName}__button ${baseName}__button--next`}
-			on:click={() => swiper.go('>')}>
+			onclick={() => swiper.go('>')}>
 			<Fontello baseName={`${baseName}__button-icon`} name="right-open" />
 		</button>
 	{/if}

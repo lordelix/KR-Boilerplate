@@ -1,11 +1,19 @@
-<script>
+<script lang="ts">
 	import './ButtonRow.scss'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	import type { ButtonRowProps } from './ButtonRow'
 
-	const baseName = 'ButtonRow'
+	let {
+		class: classProp,
+		baseName = 'ButtonRow',
+
+		children,
+		...restProps
+	}: ButtonRowProps = $props()
+
+	// --- [ Props ] ---------------------------------------------------------------------------------
 </script>
 
-<div class={[baseName, $$props.class]}>
-	<slot />
+<div class={[baseName, classProp]} {...restProps}>
+	{@render children?.()}
 </div>

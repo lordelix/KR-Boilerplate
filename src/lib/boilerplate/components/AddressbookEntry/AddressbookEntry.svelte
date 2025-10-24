@@ -8,10 +8,13 @@
 
 	let {
 		id = uniqueId('addressbook-entry-'),
-		baseName = 'AddressbookEntry',
 		class: classProp,
+		baseName = 'AddressbookEntry',
+
 		tag = 'div',
-		entry
+		entry,
+
+		...restProps
 	}: AddressbookEntryProps = $props()
 
 	let address = $derived({
@@ -27,7 +30,7 @@
 	let hasAddress = $derived(Object.entries(address).some(e => !!e))
 </script>
 
-<svelte:element this={tag} {id} class={[baseName, classProp]}>
+<svelte:element this={tag} {id} class={[baseName, classProp]} {...restProps}>
 	<div class="{baseName}__title">
 		{entry.title}
 	</div>
@@ -38,10 +41,7 @@
 		{@html entry.description}
 	</div>
 	{#if hasAddress}
-		<Address {...address} class="{baseName}__address">
-			<li class="Address__room">
-				{entry.room}
-			</li>
-		</Address>
+		<Address {...address} class="{baseName}__address" />
+		{entry.room}
 	{/if}
 </svelte:element>

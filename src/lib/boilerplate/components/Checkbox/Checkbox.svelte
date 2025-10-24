@@ -33,6 +33,6 @@
 		type="checkbox"
 		{value}
 		bind:checked
-		onchange={onChange} />
+		onchange={() => onChange?.()} />
 	<span class={baseName + '__label'}>{@html label}</span>
 </label>

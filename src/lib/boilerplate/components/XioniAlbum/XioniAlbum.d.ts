@@ -1,6 +1,5 @@
 import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
-import type { Snippet } from 'svelte'
 
-export type XioniEventProps = {
-	event: XioniCMS.Event
+export type XioniAlbumProps = {
+	images: XioniCMS.Album['images']
 } & ComponentBaseProps

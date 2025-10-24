@@ -9,19 +9,29 @@
 	import Buttons from './partials/XioniArticleButtons/XioniArticleButtons.svelte'
 	import Meta from './partials/XioniArticleMeta/XioniArticleMeta.svelte'
 	import Content from './partials/XioniArticleContent/XioniArticleContent.svelte'
+	import type { XioniArticleProps } from './XioniArticle'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	export let article: XioniCMS.Article
-	export let baseName = 'XioniArticle'
+	const {
+		class: classProp,
+		baseName = 'XioniArticle',
 
-	// -----------------------------------------------------------------------------------------------
-	const { author, date, content, image, pdf, teaser, title, website } = article
+		article,
+
+		...restProps
+	}: XioniArticleProps = $props()
+
+	const { author, date, content, image, pdf, teaser, title, website } = $derived(article)
 </script>
 
-<article {...$$restProps} class={[baseName, $$props.class]}>
+<article class={[baseName, classProp]} {...restProps}>
 	{#if image}
-		<Figure baseName="{baseName}Image" src={image.src} caption={image.description} />
+		<Figure
+			baseName="{baseName}Image"
+			src={image.src}
+			caption={image.description || undefined}
+			alt={title} />
 	{/if}
 
 	<h1 class="{baseName}__title">

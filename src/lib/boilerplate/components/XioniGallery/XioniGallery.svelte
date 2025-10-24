@@ -6,12 +6,13 @@
 	// --- Props -------------------------------------------------------------------------------------
 
 	let {
-		id,
 		class: classProp,
 		baseName = 'XioniGallery',
 
 		gallery,
-		baseLink = $page.url.pathname
+		baseLink = $page.url.pathname,
+
+		...restProps
 	}: XioniGalleryProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
@@ -21,7 +22,7 @@
 	}
 </script>
 
-<ul {id} class={[baseName, classProp]}>
+<ul class={[baseName, classProp]} {...restProps}>
 	{#each gallery as { id, title, slug }}
 		<li class="{baseName}__item">
 			<a class="{baseName}__item-link" href={makeLink(slug, id)}>{title}</a>

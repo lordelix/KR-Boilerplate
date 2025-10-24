@@ -6,7 +6,6 @@
 
 	// --- [ Types ] ---------------------------------------------------------------------------------
 
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 	import type { XioniEventProps } from './XioniEvent'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
@@ -23,10 +22,9 @@
 	let {
 		baseName = 'XioniEvent',
 		class: className,
+
 		event,
 
-		// Events
-		onRegistrationClick,
 		...restProps
 	}: XioniEventProps = $props()
 
@@ -51,7 +49,6 @@
 	let lightbox = $state<Lightbox>()
 
 	const images = event.images || []
-	const allowRegistration = flags ? flags.includes('anmeldung') : false
 	const maxImages = 5
 	const imageRow = (function () {
 		if (images.length === maxImages) {
@@ -68,7 +65,12 @@
 	<Lightbox bind:this={lightbox} {images} />
 {/if}
 
-<div itemscope itemtype="https://schema.org/Event" {...restProps} class={[bem.block, className]}>
+<div
+	itemscope
+	itemtype="https://schema.org/Event"
+	{...restProps}
+	class={[bem.block, className]}
+	data-flags={flags.join()}>
 	<meta itemprop="startDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="endDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="organizer" content={organizer} />
@@ -135,12 +137,7 @@
 	{/if}
 
 	<ButtonRow class={baseName + '__metadata'}>
-		{#if allowRegistration}
-			<Button fontello="ticket" onClick={onRegistrationClick} class={baseName + '__registration'}
-				>Jetzt anmelden</Button>
-		{/if}
-
-		{#if ticketshop && !allowRegistration}
+		{#if ticketshop}
 			<Button to={ticketshop.toString()} fontello="ticket">Zum Ticketshop</Button>
 		{/if}
 

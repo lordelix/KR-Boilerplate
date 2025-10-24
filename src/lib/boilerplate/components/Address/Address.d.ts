@@ -10,5 +10,4 @@ export type AddressProps = ComponentBaseProps & {
 	fax?: string
 	email?: string
 	web?: string
-	children?: Snippet
 }

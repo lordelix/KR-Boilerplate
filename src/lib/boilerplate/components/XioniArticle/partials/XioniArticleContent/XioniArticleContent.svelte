@@ -12,6 +12,7 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
+		class: classProp,
 		baseName = 'XioniArticleContent',
 
 		title,

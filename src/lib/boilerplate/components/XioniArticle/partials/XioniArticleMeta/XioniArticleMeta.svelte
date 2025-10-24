@@ -8,18 +8,22 @@
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import { Fontello } from '$lib/boilerplate/components'
+	import type { XioniArticleMetaProps } from './XioniArticleMeta'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let author: XioniCMS.Article['author'] = ''
-	export let date: XioniCMS.Article['date'] | undefined = undefined
+	let {
+		class: classProp,
+		baseName = 'XioniArticleMeta',
 
-	// -----------------------------------------------------------------------------------------------
+		author,
+		date,
 
-	export let baseName = 'XioniArticleMeta'
+		...restProps
+	}: XioniArticleMetaProps = $props()
 </script>
 
-<ul class={baseName}>
+<ul class={[baseName, classProp]} {...restProps}>
 	{#if author}
 		<li class="{baseName}__author">
 			<Fontello name="user" />

@@ -1,6 +1,6 @@
 {
 	"name": "boilerplate.ts",
-	"version": "5.4.0-3",
+	"version": "5.4.0-4",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -18,14 +18,14 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/kit": "^2.47.1",
+		"@sveltejs/kit": "^2.47.3",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@types/eslint": "^9.6.1",
-		"@typescript-eslint/eslint-plugin": "^8.46.1",
-		"@typescript-eslint/parser": "^8.46.1",
-		"eslint": "^9.37.0",
+		"@typescript-eslint/eslint-plugin": "^8.46.2",
+		"@typescript-eslint/parser": "^8.46.2",
+		"eslint": "^9.38.0",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-svelte": "^3.12.4",
+		"eslint-plugin-svelte": "^3.12.5",
 		"openapi-typescript": "^7.10.1",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
@@ -34,7 +34,7 @@
 		"sveltekit-autoimport": "^1.8.1",
 		"tslib": "^2.8.1",
 		"typescript": "^5.9.3",
-		"vite": "^7.1.10"
+		"vite": "^7.1.12"
 	},
 	"type": "module",
 	"dependencies": {
@@ -46,7 +46,7 @@
 		"openapi-fetch": "^0.15.0",
 		"openapi-typescript-fetch": "^2.2.1",
 		"opening_hours": "^3.9.0",
-		"svelte": "^5.40.2",
+		"svelte": "^5.41.3",
 		"svelte-preprocess": "^6.0.3"
 	}
 }

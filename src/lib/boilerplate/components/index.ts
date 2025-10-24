@@ -11,13 +11,6 @@ export { type AddressProps } from './Address/Address.d'
 export { default as AddressbookEntry } from './AddressbookEntry/AddressbookEntry.svelte'
 export { type AddressbookEntryProps } from './AddressbookEntry/AddressbookEntry.d'
 
-// Aspect
-export { default as Aspect } from './Aspect/Aspect.svelte'
-
-// Auxiliary
-export { default as LoadSpinner } from './Auxiliary/LoadSpinner.svelte'
-export { default as Sceleton } from './Auxiliary/Sceleton.svelte'
-
 // Button
 export { default as Button } from './Button/Button.svelte'
 export type { ButtonProps } from './Button/Button.d'
@@ -28,9 +21,6 @@ export { default as Checkbox } from './Checkbox/Checkbox.svelte'
 
 // Client
 export { default as Client } from './Client/Client.svelte'
-
-// Container
-export { default as Container } from './Container/Container.svelte'
 
 // Figure
 export { default as Figure } from './Figure/Figure.svelte'

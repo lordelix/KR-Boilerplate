@@ -9,7 +9,6 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id,
 		class: classProp,
 		baseName = 'XioniArticleButtons',
 
@@ -22,7 +21,7 @@
 	// -----------------------------------------------------------------------------------------------
 </script>
 
-<ButtonRow {id} class={[bem.block, classProp]}>
+<ButtonRow class={[bem.block, classProp]}>
 	{#if pdf}
 		<Button to={pdf.src} class={bem.element('pdf')} fontello="file-pdf">
 			{pdf.title}

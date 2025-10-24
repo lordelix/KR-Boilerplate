@@ -1,15 +1,14 @@
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 import type { FontelloProps } from '../Fontello/Fontello'
 
-export type ButtonProps = ComponentBaseProps & {
+export type ButtonProps = {
 	children?: Snippet
-
-	onClick?: Function
-
-	variant?: 'primary' | 'secondary'
 	disabled?: boolean
 	fontello?: FontelloProps['name']
 	isLoading?: boolean
+	onClick?: Function
 	rel?: 'follow' | 'nofollow noopener'
 	target?: '_blank'
 	to?: string
-}
+	variant?: 'primary' | 'secondary'
+} & ComponentBaseProps

@@ -1,10 +1,10 @@
 import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
-export type CheckboxProps = ComponentBaseProps & {
-	checked?: boolean
+export type TextareaProps = {
 	label?: string
 	name: string
+	placeholder?: string
 	required?: boolean
-	value?: string
-	onChange?: Function
-}
+	rows?: number | string
+	value: string
+} & ComponentBaseProps

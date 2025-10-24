@@ -8,7 +8,6 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('wrapper'),
 		class: classProp,
 		baseName = 'Wrapper',
 
@@ -31,6 +30,6 @@
 	]
 </script>
 
-<svelte:element this={tag} {...restProps} class={className}>
+<svelte:element this={tag} class={className} {...restProps}>
 	{@render children()}
 </svelte:element>

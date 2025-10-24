@@ -1,6 +1,12 @@
-export type ComponentBaseProps = {
-	id?: string
-	class?: string
-	baseName?: string
-	[key: string]: string // Restprops
+declare global {
+	type ComponentBaseProps = {
+		baseName?: string
+		[key: string]: any
+	}
+
+	type Prettify<T> = {
+		[K in keyof T]: T[K]
+	} & {}
 }
+
+export {}

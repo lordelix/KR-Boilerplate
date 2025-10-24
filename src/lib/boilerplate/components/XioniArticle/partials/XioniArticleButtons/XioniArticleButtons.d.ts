@@ -1,6 +1,7 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
+export type XioniArticleButtonsProps = {
+	class?: string
+	baseName?: string
 
-export type XioniArticleButtonsProps = ComponentBaseProps & {
 	pdf?: XioniCMS.Article['pdf']
 	website?: XioniCMS.Article['website']
 }

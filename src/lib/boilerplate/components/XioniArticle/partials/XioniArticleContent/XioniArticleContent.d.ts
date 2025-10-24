@@ -1,4 +1,5 @@
 export type XioniArticleContent = {
+	class?: string
 	baseName?: string
 
 	title: XioniCMS.ArticleContent['title']

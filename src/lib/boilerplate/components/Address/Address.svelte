@@ -9,7 +9,7 @@
 
 	import { Fontello, Mail } from '..'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
 		id = uniqueId('address-'),
@@ -26,15 +26,13 @@
 		email,
 		web,
 
-		children
+		...restProps
 	}: AddressProps = $props()
-
-	// -----------------------------------------------------------------------------------------------
 
 	const bem = makeBEM(baseName)
 </script>
 
-<ol {id} class={[bem.block, classProp]}>
+<ol {id} class={[bem.block, classProp]} {...restProps}>
 	{#if name}
 		<li class={bem.element('name')}>{name}</li>
 	{/if}
@@ -47,7 +45,6 @@
 	{#if town}
 		<li class={bem.element('town')}>{town}</li>
 	{/if}
-	{@render children?.()}
 	{#if phone}
 		<li class={bem.element('phone')}>
 			<Fontello name="phone" />&nbsp;<a href={'tel:' + phone} aria-label="Telefonnummer anrufen"

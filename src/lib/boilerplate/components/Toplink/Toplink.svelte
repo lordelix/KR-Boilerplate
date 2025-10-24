@@ -1,18 +1,12 @@
 <script lang="ts">
+	import './Toplink.scss'
+
 	import { onMount, tick } from 'svelte'
 	import type { ToplinkProps } from './Toplink'
-	import './Toplink.scss'
-	import { uniqueId } from 'lodash-es'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	let {
-		id = uniqueId('toplink-'),
-		class: classProp,
-
-		baseName = 'Toplink',
-		...restProps
-	}: ToplinkProps = $props()
+	let { class: classProp, baseName = 'Toplink', ...restProps }: ToplinkProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -40,7 +34,7 @@
 
 <svelte:window on:scroll|passive={handleOffset} />
 
-<button onclick={scrollToTop} {id} aria-label="Scroll to top" {...restProps} class={className}>
+<button onclick={scrollToTop} aria-label="Scroll to top" class={className} {...restProps}>
 	<svg class="{baseName}__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
 		<!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
 		<path

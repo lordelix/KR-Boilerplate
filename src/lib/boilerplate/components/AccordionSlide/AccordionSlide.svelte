@@ -13,8 +13,10 @@
 	let {
 		id = uniqueId('accordion-side-'),
 		class: classProp,
-		title,
 		baseName = 'AccordionSlide',
+
+		title,
+
 		children,
 		...restProps
 	}: AccordionSlideProps = $props()

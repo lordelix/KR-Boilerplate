@@ -16,14 +16,13 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		id,
 		class: className,
 		baseName = 'XioniEventTile',
 
 		event,
 		linkText = 'Mehr erfahren',
 		tag = 'div',
-		link = `${$page.url.pathname}${event.slug}_${event.id}/`,
+		link = `${page.url.pathname}${event.slug}_${event.id}/`,
 		...restProps
 	}: XioniEventTileProps = $props()
 
@@ -41,8 +40,8 @@
 	itemscope
 	data-tags={tagsToString(tags)}
 	itemtype="https://schema.org/Event"
-	{...restProps}
-	class={[baseName, className]}>
+	class={[baseName, className]}
+	{...restProps}>
 	<meta itemprop="startDate" content={format(starts, 'yyyy-MM-dd')} />
 	<meta itemprop="endDate" content={format(ends, 'yyyy-MM-dd')} />
 	<meta itemprop="organizer" content={organizer} />

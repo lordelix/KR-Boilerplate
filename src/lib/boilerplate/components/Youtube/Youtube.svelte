@@ -1,27 +1,29 @@
 <script lang="ts">
-	// --- [ Components ] ----------------------------------------------------------------------------
+	import './YouTube.css'
 
-	import Aspect from '../Aspect/Aspect.svelte'
+	import { uniqueId } from 'lodash-es'
+	import type { YouTubeProps } from './YouTube'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	export let ratio: [number, number] = [16, 9]
-	export let videoId: string
-	export let allow: Array<
-		'autoplay' | 'clipboard-write' | 'encrypted-media' | 'picture-in-picture'
-	> = ['encrypted-media']
-	export let baseName = 'Youtube'
+	let {
+		id = uniqueId('button-'),
+		class: classProp,
+		baseName = 'YouTube',
 
-	// --- [ Logic ] ---------------------------------------------------------------------------------
+		videoId = false,
+		allow = ['encrypted-media'],
+
+		...restProps
+	}: YouTubeProps = $props()
 </script>
 
-<Aspect ratio={ratio.join(':')} {...$$restProps} class={[baseName, $$props.class]}>
+<div class={[baseName, classProp]} {...restProps}>
 	<iframe
 		class={baseName + '__frame'}
 		src={'https://www.youtube-nocookie.com/embed/' + videoId}
 		title="Youtube video player"
 		frameborder="0"
 		allow={allow.join('; ')}
-		allowfullscreen
-		style="width: 100%; height: 100%;" />
-</Aspect>
+		allowfullscreen></iframe>
+</div>

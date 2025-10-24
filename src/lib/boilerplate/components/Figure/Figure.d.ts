@@ -1,6 +1,6 @@
 import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
-export type FigureProps = ComponentBaseProps & {
+export type FigureProps = {
 	src: string
 	alt: string
 	width?: string | number
@@ -8,4 +8,4 @@ export type FigureProps = ComponentBaseProps & {
 	caption?: string
 	loading?: HTMLImageElement['loading']
 	placeholder?: string
-}
+} & ComponentBaseProps

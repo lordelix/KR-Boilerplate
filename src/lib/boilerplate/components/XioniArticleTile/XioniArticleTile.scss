@@ -1,4 +1,5 @@
 @use '$lib/boilerplate/styles/mixins' as mixins;
+
 :where(.XioniArticleTile) {
 	padding: 1rem;
 	display: flow-root;
