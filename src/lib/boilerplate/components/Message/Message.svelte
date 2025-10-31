@@ -1,9 +1,9 @@
 <script lang="ts">
 	import './Message.scss'
+	import { uniqueId } from 'lodash-es'
 
 	import type { MessageProps } from './Message.d'
 	import Fontello from '../Fontello/Fontello.svelte'
-	import { uniqueId } from 'lodash-es'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
@@ -33,7 +33,7 @@
 		block,
 		classProp,
 		{
-			[modifier(type)]: !!type,
+			[modifier(type as string)]: !!type,
 			[modifier('inline')]: inline,
 			[modifier('closable')]: closable
 		}

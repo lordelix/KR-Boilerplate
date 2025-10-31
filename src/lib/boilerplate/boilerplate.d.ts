@@ -1,7 +1,7 @@
 declare global {
 	type ComponentBaseProps = {
 		baseName?: string
-		[key: string]: any
+		[key: string]: unknown
 	}
 
 	type Prettify<T> = {
