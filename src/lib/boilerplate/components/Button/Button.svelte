@@ -3,17 +3,13 @@
 
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
-	import { uniqueId } from 'lodash-es'
 	import type { ButtonProps } from './Button'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Fontello from '../Fontello/Fontello.svelte'
-	import type { Component } from 'svelte'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
-
-	export declare const MyComponent: Component<ButtonProps> {}
 
 	let {
 		class: classProp,
