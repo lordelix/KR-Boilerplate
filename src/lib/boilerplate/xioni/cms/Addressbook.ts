@@ -86,13 +86,29 @@ export function useAddressbook(clientOptions?: ClientOptions) {
 		}
 	}
 
+	async function getEntry(moduleId: number, id: number) {
+		const data = await fetchWithErrorHandling(() =>
+			client.GET(ApiPaths.getEntry, {
+				params: {
+					path: { moduleId, entryId: id }
+				}
+			})
+		)
+
+		return {
+			entry: data.entry ? mapDtoAddressbookEntry(data.entry) : null
+		}
+	}
+
 	// --- Mappers -----------------------------------------------------------------------------------
 
 	return {
 		getCategories,
-		getEntries
+		getEntries,
+		getEntry
 	}
 }
 
 export const getCategories = useAddressbook().getCategories
 export const getEntries = useAddressbook().getEntries
+export const getEntry = useAddressbook().getEntry
