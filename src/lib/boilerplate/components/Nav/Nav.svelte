@@ -9,6 +9,7 @@
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Burger from '../NavBurger/NavBurger.svelte'
+	import { XioniShopCartButton as CartButton } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
@@ -114,4 +115,7 @@
 	</ul>
 </nav>
 
-<Burger {active} on:click={() => (active = !active)} />
+<div class="{baseName}__button-row">
+	<CartButton />
+	<Burger {active} on:click={() => (active = !active)} />
+</div>

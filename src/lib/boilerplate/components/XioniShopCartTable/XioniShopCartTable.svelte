@@ -37,21 +37,21 @@
 	<thead>
 		<tr>
 			<th>Produkt</th>
-			<th>St.</th>
+			<th>Stück</th>
 			<th>Preis</th>
 		</tr>
 	</thead>
 	<tbody>
 		{#each products || [] as { product, total, quantity }}
 			<tr>
-				<td width="100%">
+				<td width="98%">
 					<Link to="/{product.slug}-p-{product.id}/">
 						{product.name}
 					</Link>
 					{#if product.code}<br />
 						<small>Art.-Nr.: {product.code}</small>{/if}
 				</td>
-				<td class="$text-center">
+				<td class="$text-center" width="1%">
 					{#if quantitySelector}
 						<Select
 							options={range(0, 37)}
@@ -63,7 +63,7 @@
 						{quantity}
 					{/if}
 				</td>
-				<td class="$text-right">
+				<td class="$text-right" width="1%">
 					{total.formatted}
 				</td>
 			</tr>

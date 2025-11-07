@@ -18,14 +18,12 @@
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	const { element, modifier } = makeBEM(baseName)
-	const hasItems = $derived(!!$CART.products.length)
-	const classNames = $derived(classnames(classProp, hasItems && modifier('has-items')))
+	const { modifier } = makeBEM(baseName)
+	const classNames = $derived(
+		classnames(classProp, modifier('item-count-' + $CART.products.length || '0'))
+	)
 </script>
 
-<Button to="/checkout" {baseName} fontello="basket" {...restProps} class={classNames}
-	>Warenkorb
-	{#if !!$CART.products.length}
-		<span class={element('indicator')}>{$CART.products.length}</span>
-	{/if}
+<Button to="/checkout" {baseName} fontello="basket" class={classNames} {...restProps}>
+	<span hidden>Warenkorb</span>
 </Button>

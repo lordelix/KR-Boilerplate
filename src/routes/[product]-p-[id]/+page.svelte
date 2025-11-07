@@ -38,10 +38,6 @@
 	<title>{product.name} | Online Shop</title>
 </svelte:head>
 
-<div class="$py-2">
-	<XioniShopCartButton />
-</div>
-
 {#if product}
 	<XioniShopProduct {product} onAddToCart={addToCartHandler} />
 	<hr />

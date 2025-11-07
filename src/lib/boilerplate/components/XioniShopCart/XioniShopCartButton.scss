@@ -4,51 +4,66 @@ $button-primary-color: #5252ae;
 	align-items: center;
 	background-color: white;
 	border-radius: 3px;
-	border: 1px solid #333;
+	border: 1px solid #e6e6e6;
 	box-sizing: border-box;
 	cursor: pointer;
-	display: inline-flex;
 	font-family: inherit;
 	font-size: 1rem;
 	line-height: 1.5rem;
-	padding: 0.5rem 1rem;
-	text-align: center;
+	padding: 0.5rem;
 	text-decoration: none;
 	transition: all 0.25s;
 	user-select: none;
-	white-space: nowrap;
+	position: relative;
+	color: #666;
 }
 
-:where(.XioniShopCartButton):hover {
-	box-shadow: 0px 12px 24px -6px rgb(0 0 0 / 30%);
+:where(.XioniShopCartButton):before {
+	color: $button-primary-color;
+	content: '';
+	font-size: 1.5rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: translate(33%, -33%);
 }
 
-:where(.XioniShopCartButton--has-items) {
-	background-color: $button-primary-color;
-	border-color: $button-primary-color;
-	color: white;
+:where(.XioniShopCartButton--item-count-1):before {
+	content: '➊';
 }
 
-:where(.XioniShopCartButton__indicator) {
-	&:after {
-		content: ')';
-	}
-
-	&:before {
-		content: '(';
-	}
+:where(.XioniShopCartButton--item-count-2):before {
+	content: '➋';
 }
 
-// :where(.XioniShopCartButton__indicator):before {
-// 	content: '(';
-// }
+:where(.XioniShopCartButton--item-count-3):before {
+	content: '➌';
+}
 
-// :where(.XioniShopCartButton__indicator):after {
-// 	content: ')';
-// }
+:where(.XioniShopCartButton--item-count-4):before {
+	content: '➍';
+}
 
-// :where(.Button--primary) {
-// 	background-color: $button-primary-color;
-// 	border-color: $button-primary-color;
-// 	color: white;
-// }
+:where(.XioniShopCartButton--item-count-5):before {
+	content: '➎';
+}
+
+:where(.XioniShopCartButton--item-count-6):before {
+	content: '➏';
+}
+
+:where(.XioniShopCartButton--item-count-7):before {
+	content: '➐';
+}
+
+:where(.XioniShopCartButton--item-count-8):before {
+	content: '➑';
+}
+
+:where(.XioniShopCartButton--item-count-9):before {
+	content: '➒';
+}
+
+:where(.XioniShopCartButton--item-count-10):before {
+	content: '➓';
+}

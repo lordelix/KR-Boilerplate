@@ -16,10 +16,6 @@
 	<title>{group.name} | Online Shop</title>
 </svelte:head>
 
-<div class="$py-2">
-	<XioniShopCartButton />
-</div>
-
 <h1 class="h3">
 	{#each group.path || [] as { id, name, slug }}
 		<Link to="/{slug}-c-{id}/">

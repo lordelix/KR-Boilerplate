@@ -1,3 +1,5 @@
+import type { ComponentProps } from 'svelte'
+
 export type ButtonProps = {
 	class?: string
 	baseName?: string
@@ -12,4 +14,4 @@ export type ButtonProps = {
 	rel?: 'follow' | 'nofollow noopener'
 	target?: '_blank'
 	to?: string
-}
+} & ComponentProps
