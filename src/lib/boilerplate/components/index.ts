@@ -2,7 +2,6 @@
 export { default as Accordion } from './Accordion/Accordion.svelte'
 export { default as AccordionSlide } from './AccordionSlide/AccordionSlide.svelte'
 export { default as Address } from './Address/Address.svelte'
-export { default as Aspect } from './Aspect/Aspect.svelte'
 export { default as Button } from './Button/Button.svelte'
 export { default as ButtonRow } from './ButtonRow/ButtonRow.svelte'
 export { default as Checkbox } from './Checkbox/Checkbox.svelte'

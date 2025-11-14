@@ -1,11 +1,11 @@
 <script lang="ts">
 	import './XioniShopCartButton.scss'
 
-	import { Button } from '../Button'
 	import { CART } from '$lib/stores'
 	import classnames from 'classnames'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { XioniShopCartButtonProps } from './XioniShopCartButton'
+	import { Button } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
