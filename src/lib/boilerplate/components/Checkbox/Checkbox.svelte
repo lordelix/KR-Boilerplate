@@ -5,7 +5,6 @@
 	import { uniqueId } from 'lodash-es'
 
 	let {
-		id = uniqueId('checkbox-'),
 		class: classProp,
 		baseName = 'Checkbox',
 
@@ -26,7 +25,6 @@
 
 <label {...restProps} class={[baseName, classProp, { [baseName + '--active']: checked }]}>
 	<input
-		{id}
 		{name}
 		{required}
 		class={baseName + '__input'}

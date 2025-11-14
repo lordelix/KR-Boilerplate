@@ -3,14 +3,12 @@
 
 	import { setContext } from 'svelte'
 	import { writable } from 'svelte/store'
-	import { uniqueId } from 'lodash-es'
 
 	import { type AccordionProps } from './Accordion.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('accordion-'),
 		class: classProp,
 		baseName = 'Accordion',
 
@@ -25,6 +23,6 @@
 	setContext('Accordion:active-item', activeItem)
 </script>
 
-<ul {id} class={[baseName, classProp]} {...restProps}>
+<ul class={[baseName, classProp]} {...restProps}>
 	{@render children?.()}
 </ul>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 export namespace XioniCMS {
 	export interface Article {
 		id: number

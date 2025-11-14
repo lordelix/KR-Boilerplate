@@ -9,7 +9,6 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('message-'),
 		baseName = 'Message',
 		class: classProp,
 		type,

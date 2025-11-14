@@ -3,7 +3,6 @@
 
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { AddressProps } from './Address.d'
-	import { uniqueId } from 'lodash-es'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
@@ -12,7 +11,6 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('address-'),
 		class: classProp,
 		baseName = 'Address',
 
@@ -32,7 +30,7 @@
 	const bem = makeBEM(baseName)
 </script>
 
-<ol {id} class={[bem.block, classProp]} {...restProps}>
+<ol class={[bem.block, classProp]} {...restProps}>
 	{#if name}
 		<li class={bem.element('name')}>{name}</li>
 	{/if}

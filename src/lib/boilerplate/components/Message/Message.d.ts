@@ -1,5 +1,5 @@
 import type { Snippet } from 'svelte'
-import type { HTMLAttributes } from 'svelte/elements'
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
 export type MessageProps = ComponentBaseProps & {
 	type?: 'error' | 'info' | 'success'
@@ -9,5 +9,5 @@ export type MessageProps = ComponentBaseProps & {
 	closable?: boolean
 	children?: Snippet
 	code?: Snippet
-	onClose?: () => any
+	onClose?: () => unknown
 }
