@@ -116,6 +116,6 @@
 </nav>
 
 <div class="{baseName}__button-row">
-	<CartButton />
+	<CartButton class="{baseName}__cart-button" hideEmpty />
 	<Burger {active} on:click={() => (active = !active)} />
 </div>

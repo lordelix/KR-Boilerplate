@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './XioniShopNav.css'
-	import { page } from '$app/stores'
 	import classnames from 'classnames'
 
 	import type { XioniShop } from '$lib/boilerplate/xioni/types'

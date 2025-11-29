@@ -1,4 +1,5 @@
 import type { KyResponse } from 'ky'
+import appConfig from '$lib/app.config'
 import { createClient, createShopUrl } from '../api/client'
 
 // --- Factory -------------------------------------------------------------------------------------
@@ -10,6 +11,10 @@ export function usePayment() {
 		try {
 			const { orderId } = await client
 				.post<{ orderId: string }>(createShopUrl('payment/paypal/create'), {
+					headers: {
+						'api-key': appConfig.shopApiKey,
+						'content-type': 'application/json'
+					},
 					body: JSON.stringify({ transactionId })
 				})
 				.json()
@@ -25,6 +30,10 @@ export function usePayment() {
 	async function capturePayPalTransaction(orderId: string): Promise<boolean> {
 		try {
 			await client.post(createShopUrl('payment/paypal/capture'), {
+				headers: {
+					'api-key': appConfig.shopApiKey,
+					'content-type': 'application/json'
+				},
 				body: JSON.stringify({ orderId })
 			})
 

@@ -1,5 +1,9 @@
 @use '$lib/styles/Nav' as var;
 
+.Nav__cart-button .XioniShopCartButton__text {
+	display: none;
+}
+
 @media (width < var.$Nav-breakpoint) {
 	:where(.Nav) {
 		position: fixed;

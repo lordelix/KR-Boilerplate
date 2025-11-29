@@ -13,3 +13,11 @@ $Nav-breakpoint: 9999px;
 	@media (width < $Nav-breakpoint) {
 	}
 }
+
+.NavBurger {
+	@media (width < 1024px) {
+		&__text {
+			display: none;
+		}
+	}
+}

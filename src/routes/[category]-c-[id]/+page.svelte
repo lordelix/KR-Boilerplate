@@ -16,6 +16,8 @@
 	<title>{group.name} | Online Shop</title>
 </svelte:head>
 
+<XioniShopCartButton class="$inline-block $mb $hidden@mobile" />
+
 <h1 class="h3">
 	{#each group.path || [] as { id, name, slug }}
 		<Link to="/{slug}-c-{id}/">

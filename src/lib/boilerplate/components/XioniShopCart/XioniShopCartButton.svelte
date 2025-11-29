@@ -2,7 +2,6 @@
 	import './XioniShopCartButton.scss'
 
 	import { CART } from '$lib/stores'
-	import classnames from 'classnames'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { XioniShopCartButtonProps } from './XioniShopCartButton'
 	import { Button } from '..'
@@ -12,18 +11,25 @@
 	let {
 		baseName = 'XioniShopCartButton',
 		class: classProp,
+		hideEmpty = false,
+		text = 'Warenkorb',
 		onClick,
 		...restProps
 	}: XioniShopCartButtonProps = $props()
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	const { modifier } = makeBEM(baseName)
-	const classNames = $derived(
-		classnames(classProp, modifier('item-count-' + $CART.products.length || '0'))
-	)
+	const itemsCount = $derived($CART.products.length)
+	const { modifier, element } = makeBEM(baseName)
+	const classNames = $derived([
+		baseName,
+		itemsCount > 0 ? modifier('item-count-' + itemsCount) : undefined,
+		classProp
+	])
 </script>
 
-<Button to="/checkout" {baseName} fontello="basket" class={classNames} {...restProps}>
-	<span hidden>Warenkorb</span>
-</Button>
+{#if !(hideEmpty && !itemsCount)}
+	<Button to="/checkout" {baseName} fontello="basket" class={classNames} {...restProps}>
+		{text}
+	</Button>
+{/if}

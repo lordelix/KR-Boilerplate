@@ -38,6 +38,8 @@
 	<title>{product.name} | Online Shop</title>
 </svelte:head>
 
+<XioniShopCartButton class="$inline-block $mb $hidden@mobile" />
+
 {#if product}
 	<XioniShopProduct {product} onAddToCart={addToCartHandler} />
 	<hr />
