@@ -6,11 +6,9 @@
 }
 
 :where(.XioniShopProduct__image) {
-	float: left;
 	max-height: 640px;
 
 	@include mixin.breakpoint('tablet-up') {
-		aspect-ratio: 3/4;
 		object-fit: contain;
 		cursor: pointer;
 	}

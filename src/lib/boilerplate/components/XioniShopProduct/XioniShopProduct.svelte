@@ -81,7 +81,7 @@
 		</ul>
 
 		<Grid gap>
-			<Grid size="tablet-2-5">
+			<Grid size="tablet-2-5" class="$text-center">
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 				<img
