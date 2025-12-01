@@ -9,7 +9,7 @@ type NavRoute = {
 	path?: string
 	name?: string
 	class?: string
-	routes?: Route[]
+	routes?: NavRoute[]
 	target?: '_blank'
 	title?: string
 }

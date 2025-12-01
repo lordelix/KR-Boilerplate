@@ -7,4 +7,4 @@
 	})
 </script>
 
-<svelte:element this="script" type="application/ld+json">{stringifiedData}</svelte:element>
+<svelte:element this={'script'} type="application/ld+json">{stringifiedData}</svelte:element>

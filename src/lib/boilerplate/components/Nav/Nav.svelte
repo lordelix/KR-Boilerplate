@@ -3,7 +3,7 @@
 
 	import { page } from '$app/state'
 	import { throttle } from 'lodash-es'
-	import type { NavProps, NavRoute } from './Nav.d.ts'
+	import type { NavProps } from './Nav.d.ts'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 

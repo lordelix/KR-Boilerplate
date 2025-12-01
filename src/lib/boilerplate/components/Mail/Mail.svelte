@@ -46,7 +46,7 @@
 	{...restProps}
 	class={[baseName, classProp]}>
 	{#if fontello}
-		<Fontello baseName={baseName + '__icon'} name={fontello} />
+		<Fontello baseName={baseName + '__icon'} name={fontello} />&nbsp;
 	{/if}
 	<span class={baseName + '__address'}>
 		{#if children}

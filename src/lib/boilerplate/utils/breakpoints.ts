@@ -11,7 +11,7 @@ export const IS_TABLET = readable(
 export const IS_DESKTOP = readable(false, makeBreakpoint('(min-width: 1025px)'))
 
 function makeBreakpoint(breakpoint: string) {
-	return function (set: Function) {
+	return function (set: (value: boolean) => void) {
 		if (!browser) return
 
 		const observer = window.matchMedia(breakpoint)

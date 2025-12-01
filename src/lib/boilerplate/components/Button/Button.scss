@@ -45,13 +45,6 @@
 	color: var(--secondary-color);
 }
 
-:where(.Button__icon)::before {
-	margin: {
-		left: 0 !important;
-		right: 0 !important;
-	}
-}
-
 :where(.Button__text) {
 	overflow: hidden;
 	text-overflow: ellipsis;

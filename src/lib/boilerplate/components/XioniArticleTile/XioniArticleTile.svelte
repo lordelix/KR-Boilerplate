@@ -67,7 +67,7 @@
 		{@html teaser}
 	</p>
 	{#if link}
-		<Link to={link} class="{baseName}__link $pointer $row-reverse" fontello="angle-right">
+		<Link to={link} class="{baseName}__link $flex $pointer $row-reverse" fontello="angle-right">
 			{linkText}
 		</Link>
 	{/if}

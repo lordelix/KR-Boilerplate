@@ -1,5 +1,5 @@
 <script lang="ts">
-	// import './Link.css'
+	import './Link.css'
 
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import Fontello from '../Fontello/Fontello.svelte'
@@ -65,7 +65,7 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<svelte:element
 		this={tag}
-		class={className}
+		class={[className]}
 		href={to}
 		{target}
 		{rel}
@@ -78,5 +78,3 @@
 		{/if}
 	</svelte:element>
 {/if}
-
-<style lang="scss" src="./Link.css"></style>

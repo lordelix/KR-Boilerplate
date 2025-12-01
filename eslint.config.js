@@ -1,74 +1,44 @@
-import js from '@eslint/js'
-import tsPlugin from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
-import sveltePlugin from 'eslint-plugin-svelte'
-import svelteParser from 'svelte-eslint-parser'
-import prettier from 'eslint-config-prettier'
+import prettier from 'eslint-config-prettier';
+import { fileURLToPath } from 'node:url';
+import { includeIgnoreFile } from '@eslint/compat';
+import js from '@eslint/js';
+import svelte from 'eslint-plugin-svelte';
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import ts from 'typescript-eslint';
+import svelteConfig from './svelte.config.js';
 
-export default [
-	// Global ignores (replaces .eslintignore)
-	{
-		ignores: [
-			'.DS_Store',
-			'node_modules',
-			'htdocs/**',
-			'build/**',
-			'.svelte-kit/**',
-			'package/**',
-			'.env',
-			'.env.*',
-			'!.env.example',
-			'pnpm-lock.yaml',
-			'package-lock.json',
-			'yarn.lock',
-			'*.cjs'
-		]
-	},
+const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
-	// Base JavaScript/TypeScript configuration
+export default defineConfig(
+	includeIgnoreFile(gitignorePath),
+	js.configs.recommended,
+	...ts.configs.recommended,
+	...svelte.configs.recommended,
+	prettier,
+	...svelte.configs.prettier,
 	{
-		files: ['**/*.js', '**/*.ts'],
 		languageOptions: {
-			parser: tsParser,
-			parserOptions: {
-				sourceType: 'module',
-				ecmaVersion: 2020
-			},
-			globals: {
-				browser: true,
-				es2017: true,
-				node: true
-			}
+			globals: { ...globals.browser, ...globals.node }
 		},
-		plugins: {
-			'@typescript-eslint': tsPlugin
-		},
-		rules: {
-			...js.configs.recommended.rules,
-			...tsPlugin.configs.recommended.rules,
-			'@typescript-eslint/ban-types': 'off'
+		rules: { // typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
+			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+			"no-undef": 'off'
 		}
 	},
-
-	// Svelte configuration
 	{
-		files: ['**/*.svelte'],
+		files: [
+			'**/*.svelte',
+			'**/*.svelte.ts',
+			'**/*.svelte.js'
+		],
 		languageOptions: {
-			parser: svelteParser,
 			parserOptions: {
-				parser: tsParser,
-				sourceType: 'module',
-				ecmaVersion: 2020
+				projectService: true,
+				extraFileExtensions: ['.svelte'],
+				parser: ts.parser,
+				svelteConfig
 			}
-		},
-		plugins: {
-			svelte: sveltePlugin
-		},
-		rules: {
-			...sveltePlugin.configs.recommended.rules
 		}
-	},
-
-	// Prettier configuration (should be last)
-	prettier
-]
+	}
+);
