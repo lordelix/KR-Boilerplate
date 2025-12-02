@@ -14,7 +14,6 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('swiper-'),
 		class: classProp,
 		baseName = 'Swiper',
 
@@ -27,8 +26,9 @@
 	}: SwiperProps = $props()
 
 	let slider: HTMLElement
-	let swiper: any
+	let swiper: Glide
 
+	const id = uniqueId('swiper-')
 	const glideOptions = {
 		autoplay: 0,
 		focusAt: 'center',
