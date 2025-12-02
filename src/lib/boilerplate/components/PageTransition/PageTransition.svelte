@@ -1,19 +1,20 @@
 <script lang="ts">
 	import { blur } from 'svelte/transition'
-	import { page } from '$app/stores'
+	import { page } from '$app/state'
+	import type { PageTransitionProps } from './PageTransition'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let tag = 'div'
-	export let baseName = 'PageTransition'
+	let {
+		tag = 'div',
+		class: className,
+		baseName = 'PageTransition',
+		children
+	}: PageTransitionProps = $props()
 </script>
 
-{#key $page.url.pathname}
-	<svelte:element
-		this={tag}
-		{...$$restProps}
-		class={[baseName, $$props.class]}
-		in:blur={{ duration: 250 }}>
-		<slot />
+{#key page.url.pathname}
+	<svelte:element this={tag as string} class={[baseName, className]} in:blur={{ duration: 250 }}>
+		{@render children?.()}
 	</svelte:element>
 {/key}

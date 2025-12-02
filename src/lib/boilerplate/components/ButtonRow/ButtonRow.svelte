@@ -6,7 +6,6 @@
 	let {
 		class: classProp,
 		baseName = 'ButtonRow',
-
 		children,
 		...restProps
 	}: ButtonRowProps = $props()

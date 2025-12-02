@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores'
-
+	import { page } from '$app/state'
 	import type { XioniGalleryProps } from './XioniGallery.d'
 
 	// --- Props -------------------------------------------------------------------------------------
@@ -8,10 +7,8 @@
 	let {
 		class: classProp,
 		baseName = 'XioniGallery',
-
 		gallery,
-		baseLink = $page.url.pathname,
-
+		baseLink = page.url.pathname,
 		...restProps
 	}: XioniGalleryProps = $props()
 

@@ -19,14 +19,7 @@
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	let {
-		baseName = 'XioniEvent',
-		class: className,
-
-		event,
-
-		...restProps
-	}: XioniEventProps = $props()
+	let { baseName = 'XioniEvent', class: className, event, ...restProps }: XioniEventProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 

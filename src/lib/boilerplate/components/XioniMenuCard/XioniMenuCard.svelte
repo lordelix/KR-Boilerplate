@@ -7,9 +7,7 @@
 	let {
 		class: classProp,
 		baseName = 'XioniMenuCard',
-
 		menuCard,
-
 		...restProps
 	}: XioniMenuCardProps = $props()
 </script>

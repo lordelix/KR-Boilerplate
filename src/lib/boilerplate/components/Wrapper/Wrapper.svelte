@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Wrapper.scss'
 
-	import { uniqueId } from 'lodash-es'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { WrapperProps } from './Wrapper.d'
 

@@ -1,8 +1,6 @@
 <script lang="ts">
 	import './XioniAlbum.scss'
 
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
-
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Lightbox from '../Lightbox/Lightbox.svelte'

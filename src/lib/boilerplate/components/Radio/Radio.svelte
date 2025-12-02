@@ -23,7 +23,7 @@
 <label {...restProps} class={[baseName, classProp, { [baseName + '--active']: checked }]}>
 	<input
 		{checked}
-		{id}
+		id={id as string}
 		{name}
 		{required}
 		{value}

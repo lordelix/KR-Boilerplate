@@ -18,7 +18,6 @@
 	let {
 		class: className,
 		baseName = 'XioniEventTile',
-
 		event,
 		linkText = 'Mehr erfahren',
 		tag = 'div',

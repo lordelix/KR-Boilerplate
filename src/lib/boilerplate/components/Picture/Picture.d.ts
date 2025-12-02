@@ -1,12 +1,10 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
-
 type Source = [string, number, number] | [string, number] | string
 
-export type PictureProps = ComponentBaseProps & {
+export type PictureProps = {
 	src: Source
 	tablet?: Source
 	desktop?: Source
 	widescreen?: Source
 	align?: 'left' | 'right'
 	placeholder?: string
-}
+} & ComponentBaseProps

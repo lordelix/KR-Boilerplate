@@ -1,13 +1,11 @@
 <script lang="ts">
 	import './YouTube.css'
 
-	import { uniqueId } from 'lodash-es'
 	import type { YouTubeProps } from './YouTube'
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('button-'),
 		class: classProp,
 		baseName = 'YouTube',
 
