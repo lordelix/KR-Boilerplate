@@ -8,7 +8,6 @@
 	let {
 		baseName = 'Figure',
 		class: classProp,
-
 		src,
 		alt,
 		width,
@@ -16,7 +15,6 @@
 		caption,
 		loading,
 		placeholder,
-
 		...restProps
 	}: FigureProps = $props()
 

@@ -1,10 +1,14 @@
 <script lang="ts">
-	export let data: Record<string, any>
+	import type { LinkedDataProps } from './LinkedData.d'
 
-	const stringifiedData = JSON.stringify({
-		'@context': 'https://schema.org',
-		...data
-	})
+	let { data }: LinkedDataProps = $props()
+
+	const stringifiedData = $derived(
+		JSON.stringify({
+			'@context': 'https://schema.org',
+			...data
+		})
+	)
 </script>
 
 <svelte:element this={'script'} type="application/ld+json">{stringifiedData}</svelte:element>

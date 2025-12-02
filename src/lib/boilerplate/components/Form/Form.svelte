@@ -1,29 +1,25 @@
 <script lang="ts">
 	import { useMailer } from '$lib/boilerplate/xioni/mailer/Message'
 	import { writable } from 'svelte/store'
-
 	import type { XioniApiErrorResponse } from '$lib/boilerplate/xioni/types'
 	import type { SchemaMailerMessageRequestBody } from '$lib/boilerplate/xioni/api/api.d'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
-	import { LoadingIndicator, Message, Modal, type FormProps } from '..'
+	import type { FormProps } from './Form.d'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import { Message, Modal } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		id,
 		class: className,
 		baseName = 'Form',
-
 		moduleId,
-
-		onSuccess,
-		onError,
-
 		children,
-		done
+		done,
+		onSuccess,
+		onError
 	}: FormProps = $props()
+
+	const { block, element } = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -40,8 +36,8 @@
 		e.preventDefault()
 
 		const formData = new FormData(formRef)
-		formData.set('module-id', moduleId.toString())
 
+		formData.set('module-id', moduleId.toString())
 		isLoading.set(true)
 		formError.set(undefined)
 
@@ -68,13 +64,9 @@
 	}
 </script>
 
-<form class={[baseName, className]} bind:this={formRef} onsubmit={submit}>
+<form class={[block, className]} bind:this={formRef} onsubmit={submit}>
 	{@render children?.()}
 </form>
-
-{#if $isLoading}
-	<LoadingIndicator />
-{/if}
 
 <Modal bind:this={doneModalRef}>
 	{#if done}
@@ -85,7 +77,7 @@
 </Modal>
 
 <Modal bind:this={errorModalRef}>
-	<Message class="{baseName}__errors" type="error">
+	<Message class={element('errors')} type="error">
 		<ul>
 			{#each Object.entries($formError?.details || []) as [key, values]}
 				<li>

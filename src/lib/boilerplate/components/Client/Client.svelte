@@ -1,14 +1,14 @@
-<script>
+<script lang="ts">
 	import { browser as isBrowser, building as isBuilding } from '$app/environment'
+	import type { ClientProps } from './Client.d'
 
-	export let browser = false
-	export let server = false
+	let { browser, server, children }: ClientProps = $props()
 </script>
 
-{#if $$slots.browser && isBrowser && !isBuilding}
-	<slot name="browser" />
-{:else if $$slots.server && !isBrowser}
-	<slot name="server" />
+{#if browser && isBrowser && !isBuilding}
+	{@render children()}
+{:else if server && !isBrowser}
+	{@render children()}
 {:else if (browser && isBrowser) || (server && !isBrowser)}
-	<slot />
+	{@render children()}
 {/if}

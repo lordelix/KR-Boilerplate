@@ -54,9 +54,6 @@ export type { LinkProps } from './Link/Link.d'
 // LinkedData
 export { default as LinkedData } from './LinkedData/LinkedData.svelte'
 
-// LoadingIndicator
-export { default as LoadingIndicator } from './LoadingIndicator/LoadingIndicator.svelte'
-
 // Mail
 export { default as Mail } from './Mail/Mail.svelte'
 
@@ -71,9 +68,6 @@ export type { ModalProps } from './Modal/Modal.d'
 export { default as Nav } from './Nav/Nav.svelte'
 export type { NavProps, NavRoute } from './Nav/Nav.d'
 export { default as NavBurger } from './NavBurger/NavBurger.svelte'
-
-// OpeningHours
-export { default as OpeningHours } from './OpeningHours/OpeningHours.svelte'
 
 // PageTransition
 export { default as PageTransition } from './PageTransition/PageTransition.svelte'

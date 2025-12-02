@@ -1,5 +1,3 @@
-import type { HTMLInputAttributes } from 'svelte/elements'
-
 export enum InputType {
 	DATE = 'date',
 	EMAIL = 'email',

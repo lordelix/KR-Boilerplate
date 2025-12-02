@@ -7,6 +7,9 @@ const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: vitePreprocess(),
+	compilerOptions: {
+		runes: true
+	},
 	output: {
 		preloadStrategy: 'preload-mjs'
 	},
