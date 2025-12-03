@@ -5,6 +5,8 @@
 	import stammdaten from '$stammdaten'
 	import { page } from '$app/stores'
 	import { head } from 'lodash-es'
+
+	const { children } = $props()
 </script>
 
 <svelte:head>
@@ -20,7 +22,7 @@
 <div data-layout="root">
 	<Nav {routes} sticky />
 	<Wrapper tag="main">
-		<slot />
+		{@render children?.()}
 	</Wrapper>
 </div>
 

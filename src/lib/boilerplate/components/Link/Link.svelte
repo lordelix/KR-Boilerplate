@@ -13,14 +13,11 @@
 		baseName = 'Link',
 		children,
 		class: className,
-
 		to,
 		target,
 		fontello,
 		rel,
-		label,
-
-		onClick = () => undefined
+		label
 	}: LinkProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
@@ -32,7 +29,7 @@
 	const tag = to ? 'a' : 'span'
 	const classNames = [bem.block, className, !fontello || bem.modifier('has-icon')]
 
-	if (to && isExternalURL(to) && !target) {
+	if (to && !target && isExternalURL(to)) {
 		rel = 'nofollow noopener'
 		target = '_blank'
 	}
@@ -47,34 +44,15 @@
 	}
 </script>
 
-{#if fontello}
-	<span class={classNames}>
-		{#if fontello}
-			<Fontello class={bem.element('icon')} name={fontello} />&nbsp;
-		{/if}
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<svelte:element this={tag} href={to} {target} {rel} aria-label={label} onclick={onClick}>
-			{#if children}
-				{@render children()}
-			{:else}
-				{trimScheme(to)}
-			{/if}
-		</svelte:element>
-	</span>
-{:else}
-	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<svelte:element
-		this={tag}
-		class={[className]}
-		href={to}
-		{target}
-		{rel}
-		aria-label={label}
-		onclick={onClick}>
+<span class={classNames}>
+	{#if fontello}
+		<Fontello class={bem.element('icon')} name={fontello} />&nbsp;
+	{/if}
+	<svelte:element this={tag} href={to} {target} {rel} aria-label={label}>
 		{#if children}
 			{@render children()}
 		{:else}
 			{trimScheme(to)}
 		{/if}
 	</svelte:element>
-{/if}
+</span>
