@@ -14,6 +14,6 @@ export default function mapAddressbookEntryToAddress(
 		mobile: mobile ?? undefined,
 		fax: fax ?? undefined,
 		email: email ?? undefined,
-		web: web ? web.hostname : undefined
+		web: web ? web.toString() : undefined
 	}
 }

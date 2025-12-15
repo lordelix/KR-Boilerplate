@@ -1,5 +1,3 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
-
 export type AddressProps = ComponentBaseProps & {
 	name?: string
 	owner?: string

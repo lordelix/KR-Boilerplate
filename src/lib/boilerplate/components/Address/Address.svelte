@@ -1,12 +1,9 @@
 <script lang="ts">
 	import './Address.css'
-
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { AddressProps } from './Address.d'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
 	import { Fontello, Mail } from '..'
+	import Link from '../Link/Link.svelte'
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
@@ -67,7 +64,11 @@
 	{/if}
 	{#if web}
 		<li class={bem.element('web')}>
-			<Fontello name="globe" />&nbsp;{web}
+			{#if web.startsWith('http')}
+				<Link to={web} fontello="globe" />
+			{:else}
+				<Fontello name="globe" />&nbsp;{web}
+			{/if}
 		</li>
 	{/if}
 </ol>

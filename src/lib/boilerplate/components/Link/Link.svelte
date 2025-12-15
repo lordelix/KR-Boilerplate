@@ -39,8 +39,8 @@
 
 		if (!isExternalURL(link)) return link
 
-		const { hostname } = new URL(link)
-		return hostname
+		const { hostname, pathname } = new URL(link)
+		return hostname + pathname
 	}
 </script>
 
