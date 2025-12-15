@@ -9,27 +9,30 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		baseName = 'XioniShopCartButton',
 		class: classProp,
 		hideEmpty = false,
 		text = 'Warenkorb',
-		onClick,
 		...restProps
 	}: XioniShopCartButtonProps = $props()
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
+	const { block, modifier } = makeBEM('XioniShopCartButton')
 	const itemsCount = $derived($CART.products.length)
-	const { modifier, element } = makeBEM(baseName)
 	const classNames = $derived([
-		baseName,
+		block,
 		itemsCount > 0 ? modifier('item-count-' + itemsCount) : undefined,
 		classProp
 	])
 </script>
 
 {#if !(hideEmpty && !itemsCount)}
-	<Button to="/checkout" {baseName} fontello="basket" class={classNames} {...restProps}>
+	<Button
+		to="/checkout"
+		baseName={block}
+		fontello="basket"
+		class={classNames.join(' ')}
+		{...restProps}>
 		{text}
 	</Button>
 {/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Button, Grid, PayPalButtons, Wrapper } from '$lib/boilerplate/components/index.js'
 	import { format } from '$lib/boilerplate/utils/formatDate.js'
 	import { useOrder } from '$lib/boilerplate/xioni/shop/Order.js'
 	import { usePayment } from '$lib/boilerplate/xioni/shop/Payment.js'
@@ -6,13 +7,9 @@
 	import shopConfig from '$lib/app.config'
 	import type { XioniShop } from '$lib/boilerplate/xioni/types'
 
-	// --- [ Components ] ----------------------------------------------------------------------------
-
-	import { Button, Grid, PayPalButtons, Wrapper } from '$lib/boilerplate/components/index.js'
-
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let data
+	const { data } = $props()
 
 	// -----------------------------------------------------------------------------------------------
 

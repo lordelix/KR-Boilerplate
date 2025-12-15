@@ -1,18 +1,24 @@
 <script lang="ts">
+	import type { PayPalButtonsProps } from './PayPalButtons.d'
 	import {
 		loadScript,
 		type OnClickActions,
 		type PayPalButtonsComponentOptions
 	} from '@paypal/paypal-js'
 	import { uniqueId } from 'lodash-es'
-	import { createEventDispatcher, onMount } from 'svelte'
+	import { onMount } from 'svelte'
 
-	export let clientId: string
-	export let options: PayPalButtonsComponentOptions['style'] | null = null
-	export let createOrderHandler: PayPalButtonsComponentOptions['createOrder']
-	export let onApproveHandler: PayPalButtonsComponentOptions['onApprove']
+	let {
+		clientId,
+		options = null,
+		createOrderHandler,
+		onApproveHandler,
+		onclick,
+		onerror,
+		class: className,
+		...restProps
+	}: PayPalButtonsProps = $props()
 
-	const emit = createEventDispatcher()
 	const buttonId = uniqueId('paypal-buttons-')
 	const style = {
 		layout: 'horizontal',
@@ -24,13 +30,13 @@
 	} as PayPalButtonsComponentOptions['style']
 
 	async function onClickHandler(data: unknown, actions: OnClickActions) {
-		emit('click', { data, actions })
+		onclick?.({ data, actions })
 
 		return
 	}
 
 	async function onErrorHandler(error: unknown) {
-		emit('error', error)
+		onerror?.(error)
 
 		return
 	}
@@ -41,18 +47,20 @@
 		loadScript({ clientId, currency: 'EUR' }).then(paypal => {
 			if (!paypal) return
 
-			// @ts-ignore no, this can NOT possibly be undefined ^^
-			paypal
-				.Buttons({
-					style: style,
-					createOrder: createOrderHandler,
-					onApprove: onApproveHandler,
-					onClick: onClickHandler,
-					onError: onErrorHandler
-				})
-				.render('#' + buttonId)
+			setTimeout(() => {
+				// @ts-ignore no, this can NOT possibly be undefined ^^
+				paypal
+					.Buttons({
+						style: style,
+						createOrder: createOrderHandler,
+						onApprove: onApproveHandler,
+						onClick: onClickHandler,
+						onError: onErrorHandler
+					})
+					.render('#' + buttonId)
+			}, 250)
 		})
 	})
 </script>
 
-<div id={buttonId} style="display:inline-flex"></div>
+<div {...restProps} id={buttonId} class={className} style="display:inline-flex"></div>

@@ -3,40 +3,50 @@
 
 	import { getContext } from 'svelte'
 	import { slide } from 'svelte/transition'
-	import classnames from 'classnames'
+	import { uniqueId } from 'lodash-es'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import type { AccordionSlideProps } from './AccordionSlide'
 	import type { Writable } from 'svelte/store'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	// --- [ Setup ] ---------------------------------------------------------------------------------
 
-	export let title: string
-	export let baseName = 'AccordionSlide'
+	let {
+		id = uniqueId('accordion-side-'),
+		class: classProp,
+		baseName = 'AccordionSlide',
+
+		title,
+
+		children,
+		...restProps
+	}: AccordionSlideProps = $props()
+
+	const bem = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 
-	const id = Math.random()
-	const activeItem = getContext('Accordion:active-item') as Writable<null | number>
+	const activeItem = getContext('Accordion:active-item') as Writable<null | string>
 
-	$: collapsed = id !== $activeItem
-	$: className = classnames(
+	let collapsed = $derived(id !== $activeItem)
+	let className = $derived([
 		baseName,
-		$$props.class,
-		!!collapsed || `${baseName}--expanded`,
-		!collapsed || `${baseName}--collapsed`
-	)
+		classProp,
+		!!collapsed || bem.modifier('expanded'),
+		!collapsed || bem.modifier('collapsed')
+	])
 
 	function handleClick() {
 		activeItem.set($activeItem === id ? null : id)
 	}
 </script>
 
-<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<li on:click={handleClick} on:keypress {...$$restProps} class={className}>
+<li {id} onclick={handleClick} class={className} {...restProps}>
 	<h5 class="{baseName}__title">
 		{title}
 	</h5>
 	{#if !collapsed}
 		<div in:slide out:slide class="{baseName}__content">
-			<slot />
+			{@render children()}
 		</div>
 	{/if}
 </li>

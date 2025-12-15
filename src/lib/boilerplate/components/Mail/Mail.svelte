@@ -1,24 +1,29 @@
 <script lang="ts">
 	import './Mail.css'
-
-	import classnames from 'classnames'
+	import type { MailProps } from './Mail.d.ts'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Fontello from '../Fontello/Fontello.svelte'
+	import { uniqueId } from 'lodash-es'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let to: string
-	export let fontello: string = 'mail'
-	export let subject: string | undefined = undefined
-	export let body: string | undefined = undefined
+	let {
+		id = uniqueId('mail-'),
+		class: classProp,
+		baseName = 'Mail',
+		to,
+		fontello = 'mail',
+		subject,
+		body,
+		children,
+		...restProps
+	}: MailProps = $props()
 
 	// --- [ Logic ] ---------------------------------------------------------------------------------
 
 	const obfuscatedEmail = to.replaceAll('@', '&#64;').replaceAll('.de', '&#8228;&#100;&#101;')
-	const baseName = $$props['ex-class'] || 'Mail'
-	const className = classnames(baseName, $$props.class)
 
 	function makeHref() {
 		const link = new URL('mailto:' + to)
@@ -35,17 +40,17 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore event_directive_deprecated -->
 <span
 	on:click|preventDefault={() => (location.href = makeHref())}
-	{...$$restProps}
-	class={className}>
+	{...restProps}
+	class={[baseName, classProp]}>
 	{#if fontello}
-		<Fontello baseName={baseName + '__icon'} name={fontello} />
+		<Fontello baseName={baseName + '__icon'} name={fontello} />&nbsp;
 	{/if}
 	<span class={baseName + '__address'}>
-		{#if $$slots.default}
-			<slot />
+		{#if children}
+			{@render children()}
 		{:else}
 			{@html obfuscatedEmail}
 		{/if}

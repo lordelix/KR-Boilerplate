@@ -1,27 +1,40 @@
 <script lang="ts">
-	import './Textarea.scss'
+	import './Textarea.css'
 
-	import classnames from 'classnames'
-	import randomString from '$lib/boilerplate/utils/randomString'
+	import type { TextareaProps } from './Textarea'
+	import { uniqueId } from 'lodash-es'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let label: string | boolean = false
-	export let name = 'textarea'
-	export let placeholder: string | null = null
-	export let required = false
-	export let rows: number | null | undefined = 4
-	export let value = ''
-	export let id = 'text-' + randomString()
-	export let baseName = 'Textarea'
+	let {
+		id = uniqueId('textarea-'),
+		class: classProp,
+		baseName = 'Textarea',
+
+		label,
+		name,
+		rows = 4,
+		value = $bindable(),
+		placeholder,
+		required = false,
+
+		...restProps
+	}: TextareaProps = $props()
+
+	const bem = makeBEM(baseName)
 </script>
 
-<div {...$$restProps} class={classnames(baseName, $$props.class)}>
+<div class={[baseName, required ? bem.modifier('required') : undefined, classProp]} {...restProps}>
 	{#if label}
-		<label class={baseName + '__label'} for={id}>
-			{label}
-			{#if required}*{/if}
-		</label>
+		<label class={bem.element('label')} for={id}> {label} </label>
 	{/if}
-	<textarea class={baseName + '__input'} {required} {id} {name} {rows} {placeholder} bind:value />
+	<textarea
+		class={baseName + '__input'}
+		{required}
+		{id}
+		{name}
+		rows={Number(rows)}
+		{placeholder}
+		bind:value></textarea>
 </div>

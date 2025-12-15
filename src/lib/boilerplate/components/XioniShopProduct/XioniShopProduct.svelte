@@ -3,22 +3,19 @@
 
 	import { IS_MOBILE } from '$lib/boilerplate/utils/breakpoints'
 	import { page } from '$app/state'
-	import classnames from 'classnames'
 	import type { XioniShopProductProps } from './XioniShopProduct'
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import { Button, Grid, Link, Modal } from '$lib/boilerplate/components'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	const {
 		product,
-		baseName = 'XioniShopProduct',
 		basePath = page.url.pathname + '/../',
-
 		class: className,
-
 		onAddToCart
 	}: XioniShopProductProps = $props()
 
@@ -42,6 +39,8 @@
 	// svelte-ignore non_reactive_update
 	let productImageModal: Modal
 
+	const { block, element } = makeBEM('XioniShopProduct')
+
 	function imageClickHandler() {
 		if ($IS_MOBILE) return
 
@@ -56,18 +55,18 @@
 </script>
 
 {#if product.id}
-	<div class={classnames(baseName, className)} itemscope itemtype="https://schema.org/Product">
+	<div class={[block, className]} itemscope itemtype="https://schema.org/Product">
 		<meta itemprop="productID" content={code} />
 		<meta itemprop="price" content={price.value} />
 
-		<ul class="{baseName}__breadcrubs">
+		<ul class={element('breadcrubs')}>
 			{#each path || [] as { id, name, slug }}
-				<li class="{baseName}__breadcrubs-crub">
+				<li class={element('breadcrubs-crub')}>
 					<Link to="{basePath}{slug}-c-{id}">{name}</Link>
 				</li>
 			{/each}
 		</ul>
-		<h2 class="{baseName}__name $mb-2 $mt-1/2" itemprop="name">
+		<h2 class={[element('name'), '$mb-2 $mt-1/2']} itemprop="name">
 			{name}
 		</h2>
 
@@ -85,7 +84,7 @@
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 				<img
-					class="{baseName}__image $mb-2@mobile"
+					class={[element('image'), '$mb-2@mobile']}
 					src={image?.src || 'https://cdn.klickrhein.de/shop/product-placeholder.png'}
 					alt={name}
 					onclick={imageClickHandler}
@@ -93,19 +92,19 @@
 			</Grid>
 			<Grid size="tablet-3-5">
 				{#if teaser}
-					<p class="{baseName}__teaser">{@html teaser}</p>
+					<p class={element('teaser')}>{@html teaser}</p>
 				{/if}
 				{#if price}
-					<div class="{baseName}__price-box">
-						<span class="{baseName}__price" data-price={price.value}>
+					<div class={element('price-box')}>
+						<span class={element('price')} data-price={price.value}>
 							{price.formatted}
 						</span>
-						<span class="{baseName}__tax $pl-1/2" data-vat={vat.value}>
+						<span class={[element('tax'), '$pl-1/2']} data-vat={vat.value}>
 							inkl. {vat.formatted} MwSt., zzgl. <Link to="/agb#versandkosten">Versand</Link>
 						</span>
 						<br />
 						{#if quantity?.value !== 1 && pricePerUnit}
-							<span class="{baseName}__quantity">
+							<span class={element('quantity')}>
 								{quantity.formatted} / {pricePerUnit.formatted}
 							</span>
 						{/if}
@@ -114,18 +113,18 @@
 					<Button
 						variant="primary"
 						onClick={addToCartHandler}
-						class="{baseName}__add-to-cart-button"
+						class={element('add-to-cart-button')}
 						fontello="basket">
 						In den Warenkorb
 					</Button>
 				{/if}
 
 				{#if description}
-					<p class="{baseName}__description" itemprop="description">{@html description}</p>
+					<p class={element('description')} itemprop="description">{@html description}</p>
 				{/if}
 
 				{#if legal}
-					<p class="{baseName}__legal-info">
+					<p class={element('legal-info')}>
 						{@html legal}
 					</p>
 				{/if}
@@ -135,7 +134,7 @@
 
 	<Modal bind:this={productImageModal} title={name}>
 		<img
-			class="{baseName}__image-presentation"
+			class={element('image-presentation')}
 			src={image?.src || 'https://cdn.klickrhein.de/shop/product-placeholder.png'}
 			alt={name} />
 	</Modal>

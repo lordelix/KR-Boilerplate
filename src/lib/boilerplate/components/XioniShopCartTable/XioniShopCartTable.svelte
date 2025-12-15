@@ -1,39 +1,36 @@
 <script lang="ts">
 	import './XioniShopCartTable.scss'
-
-	import { createEventDispatcher } from 'svelte'
+	import { Link } from '..'
 	import { range } from 'lodash-es'
-	import classNames from 'classnames'
-
-	// --- [ Types ] ---------------------------------------------------------------------------------
-
-	import type { XioniShop } from '$lib/boilerplate/xioni/types'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
 	import Select from '../Select/Select.svelte'
-	import { Link } from '../Link'
+	import type { XioniShopCartTableProps } from './XioniShopCartTable.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let products: XioniShop.Cart['products']
-	export let supplementalCost: XioniShop.Cart['supplementalCost']
-	export let shipping: XioniShop.Cart['shipping']
-	export let total: XioniShop.Cart['total']
-	export let quantitySelector = false
-	export let readOnly = false
-	export let baseName = 'XioniShopCartTable'
+	let {
+		class: className,
+		products = [],
+		supplementalCost,
+		shipping,
+		total,
+		quantitySelector = false,
+		readOnly = false,
+		onProductQuantityUpdate,
+		...restProps
+	}: XioniShopCartTableProps = $props()
+
+	const baseName = 'XioniShopCartTable'
 
 	// -----------------------------------------------------------------------------------------------
 
-	const emit = createEventDispatcher()
-
 	function update(productId: number, { target }: any) {
-		emit('product-quantity-update', { productId, quantity: +target.value })
+		if (onProductQuantityUpdate) {
+			onProductQuantityUpdate(productId, +target.value)
+		}
 	}
 </script>
 
-<table {...$$restProps} class={classNames(baseName, $$props.class)}>
+<table class={[baseName, className]} {...restProps}>
 	<thead>
 		<tr>
 			<th>Produkt</th>
@@ -42,7 +39,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each products || [] as { product, total, quantity }}
+		{#each products as { product, total, quantity }}
 			<tr>
 				<td width="98%">
 					<Link to="/{product.slug}-p-{product.id}/">
@@ -58,7 +55,7 @@
 							values={range(0, 37)}
 							value={quantity}
 							disabled={readOnly}
-							on:change={event => update(product.id, event)} />
+							onChange={(event: any) => update(product.id, event)} />
 					{:else}
 						{quantity}
 					{/if}

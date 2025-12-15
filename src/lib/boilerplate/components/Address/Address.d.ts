@@ -1,8 +1,6 @@
-export interface AddressProps {
-	baseName?: string
-	class?: string
-	children?: Snippet
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
+export type AddressProps = ComponentBaseProps & {
 	name?: string
 	owner?: string
 	street?: string

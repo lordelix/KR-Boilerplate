@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Button.scss'
 
-	import classnames from 'classnames'
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { ButtonProps } from './Button'
@@ -13,17 +12,19 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		baseName = 'Button',
-		children,
 		class: classProp,
+		baseName = 'Button',
+
 		disabled = false,
-		fontello = '',
+		fontello,
 		isLoading = false,
 		rel = 'nofollow noopener',
 		target,
 		to,
 		variant,
 		onClick,
+
+		children,
 		...restProps
 	}: ButtonProps = $props()
 
@@ -36,16 +37,14 @@
 		target = '_blank'
 	}
 
-	const classNames = $derived(
-		classnames(
-			block,
-			classProp,
-			variant ? modifier(variant) : null,
-			disabled ? modifier('disabled') : null,
-			!to || modifier('anchor'),
-			!isLoading || modifier('loading')
-		)
-	)
+	const classNames = [
+		block,
+		classProp,
+		variant ? modifier(variant) : null,
+		disabled ? modifier('disabled') : null,
+		!to || modifier('anchor'),
+		!isLoading || modifier('loading')
+	]
 
 	function handleClick() {
 		if (disabled || !onClick) return
@@ -55,7 +54,7 @@
 </script>
 
 {#if !to}
-	<button onclick={handleClick} {disabled} {...restProps} class={classNames}>
+	<button onclick={handleClick} {disabled} class={classNames} {...restProps}>
 		{#if fontello}
 			<Fontello baseName={element('icon')} name={fontello} />&nbsp;
 		{/if}
@@ -64,7 +63,7 @@
 		</span>
 	</button>
 {:else}
-	<a href={to} onclick={handleClick} {target} {...restProps} class={classNames}>
+	<a href={to} onclick={handleClick} {target} class={classNames} {...restProps}>
 		{#if fontello}
 			<Fontello baseName={element('icon')} name={fontello} />&nbsp;
 		{/if}

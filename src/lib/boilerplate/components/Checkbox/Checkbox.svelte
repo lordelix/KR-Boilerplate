@@ -1,38 +1,36 @@
 <script lang="ts">
 	import './Checkbox.scss'
 
+	import type { CheckboxProps } from './Checkbox.d'
 	import { uniqueId } from 'lodash-es'
-	import classnames from 'classnames'
 
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	let {
+		class: classProp,
+		baseName = 'Checkbox',
 
-	export let checked = false
-	export let label = ''
-	export let name = 'checkbox'
-	export let required = false
-	export let value = 'on'
-	export let baseName = 'Checkbox'
+		checked = $bindable(),
+		label,
+		name,
+		required,
+		value = 'on',
+		onChange,
 
-	// -----------------------------------------------------------------------------------------------
+		...restProps
+	}: CheckboxProps = $props()
 
 	if (label && required) {
 		label += '*'
 	}
-
-	const id = uniqueId(`input-checkbox-${name}-`)
-
-	$: className = classnames(baseName, $$props.class, !checked || baseName + '--active')
 </script>
 
-<label {...$$restProps} class={className}>
+<label {...restProps} class={[baseName, classProp, { [baseName + '--active']: checked }]}>
 	<input
-		{id}
 		{name}
 		{required}
 		class={baseName + '__input'}
 		type="checkbox"
 		{value}
 		bind:checked
-		on:change />
+		onchange={() => onChange?.()} />
 	<span class={baseName + '__label'}>{@html label}</span>
 </label>

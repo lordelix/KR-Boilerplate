@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Modal.scss'
 
-	import classnames from 'classnames'
 	import { onMount } from 'svelte'
 
 	import type { ModalProps } from './Modal'
@@ -17,8 +16,8 @@
 		children,
 		footer,
 
-		closeHandler,
-		openHandler
+		onClose,
+		onOpen
 	}: ModalProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
@@ -28,13 +27,13 @@
 	export function close() {
 		modal.close()
 
-		if (closeHandler) closeHandler()
+		if (onClose) onClose()
 	}
 
 	export function open() {
 		modal.showModal()
 
-		if (openHandler) openHandler()
+		if (onOpen) onOpen()
 	}
 
 	function onKeyDown({ key }: KeyboardEvent) {
@@ -46,7 +45,7 @@
 	})
 </script>
 
-<dialog bind:this={modal} class={classnames(baseName, className)}>
+<dialog bind:this={modal} class={[baseName, className]}>
 	<button class="{baseName}__close-button" onclick={close}>Schließen</button>
 	{#if title}
 		<header class="{baseName}__header">{title}</header>

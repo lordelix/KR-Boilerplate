@@ -11,6 +11,6 @@ export interface ModalProps {
 	footer?: Snippet
 
 	// Events
-	closeHandler?: () => void
-	openHandler?: () => void
+	onClose?: () => void
+	onOpen?: () => void
 }

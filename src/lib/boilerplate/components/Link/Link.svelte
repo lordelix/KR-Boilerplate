@@ -1,25 +1,35 @@
 <script lang="ts">
 	import './Link.css'
-	import classnames from 'classnames'
+
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import Fontello from '../Fontello/Fontello.svelte'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
+
+	import type { LinkProps } from './Link.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let to: string | undefined = undefined
-	export let target: '_blank' | undefined = undefined
-	export let fontello: string = ''
-	export let rel: 'follow' | 'nofollow noopener' = 'nofollow noopener'
-	export let label: string = ''
-	export let exClass: string | undefined = undefined
+	let {
+		baseName = 'Link',
+		children,
+		class: className,
+		to,
+		target,
+		fontello,
+		rel,
+		label
+	}: LinkProps = $props()
+
+	// -----------------------------------------------------------------------------------------------
+
+	const bem = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 
 	const tag = to ? 'a' : 'span'
-	const baseName = exClass || 'Link'
-	const className = classnames(baseName, $$props.class, !fontello || baseName + '--has-icon')
+	const classNames = [bem.block, className, !fontello || bem.modifier('has-icon')]
 
-	if (to && isExternalURL(to)) {
+	if (to && !target && isExternalURL(to)) {
 		rel = 'nofollow noopener'
 		target = '_blank'
 	}
@@ -34,27 +44,15 @@
 	}
 </script>
 
-{#if fontello}
-	<span class={className}>
-		{#if fontello}
-			<Fontello class={baseName + '__icon'} name={fontello} />&nbsp;
-		{/if}
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<svelte:element this={tag} href={to} {target} {rel} aria-label={label} on:click>
-			{#if $$slots.default}
-				<slot />
-			{:else}
-				{trimScheme(to)}
-			{/if}
-		</svelte:element>
-	</span>
-{:else}
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<svelte:element this={tag} class={className} href={to} {target} {rel} aria-label={label} on:click>
-		{#if $$slots.default}
-			<slot />
+<span class={classNames}>
+	{#if fontello}
+		<Fontello class={bem.element('icon')} name={fontello} />&nbsp;
+	{/if}
+	<svelte:element this={tag} href={to} {target} {rel} aria-label={label}>
+		{#if children}
+			{@render children()}
 		{:else}
 			{trimScheme(to)}
 		{/if}
 	</svelte:element>
-{/if}
+</span>

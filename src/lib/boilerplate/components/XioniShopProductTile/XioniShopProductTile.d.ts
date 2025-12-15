@@ -1,8 +1,6 @@
 import type { XioniShop } from '$lib/boilerplate/xioni/types'
+import type { HTMLAttributes } from 'svelte/elements'
 
 export type ProductTileProps = {
-	class?: string
-	baseName?: string
-
 	product: XioniShop.Product
-}
+} & HTMLAttributes<HTMLElement>

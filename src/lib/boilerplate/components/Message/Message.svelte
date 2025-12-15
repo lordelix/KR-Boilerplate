@@ -1,47 +1,49 @@
 <script lang="ts">
 	import './Message.scss'
-
-	import classnames from 'classnames'
-	import { createEventDispatcher } from 'svelte'
+	import type { MessageProps } from './Message.d'
 	import Fontello from '../Fontello/Fontello.svelte'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let type: 'error' | 'info' | 'success' | undefined = undefined
-	export let title: string | number | undefined = undefined
-	export let inline = false
-	export let tag = 'div'
-	export let closable = false
+	let {
+		type = undefined,
+		title = undefined,
+		inline = false,
+		tag = 'div',
+		closable = false,
+		onclose,
+		class: className,
+		children,
+		code,
+		...restProps
+	}: MessageProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
-	const emit = createEventDispatcher()
-	const baseName = $$props['ex-class'] || 'Message'
+	const baseName = restProps['ex-class'] || 'Message'
 
-	$: className = classnames(
+	let computedClassName = $derived([
 		baseName,
-		$$props.class,
+		className,
 		!type || baseName + '--' + type,
 		!inline || baseName + '--inline',
 		!closable || baseName + '--closable'
-	)
+	])
 </script>
 
-<svelte:element this={tag} class={className}>
+<svelte:element this={tag} class={computedClassName} {...restProps}>
 	{#if closable}
-		<Fontello name="cancel" class="{baseName}__close-button" on:click={() => emit('close')} />
+		<Fontello name="cancel" class="{baseName}__close-button" onclick={onclose} />
 	{/if}
 	{#if title}
 		<h4 class={baseName + '__title'}>
 			{title}
 		</h4>
 	{/if}
-	{#if $$slots.default}
-		<slot />
+	{#if children}
+		{@render children()}
 	{/if}
-	{#if $$slots.code}
-		<pre><slot name="code" /></pre>
+	{#if code}
+		<pre>{@render code()}</pre>
 	{/if}
 </svelte:element>

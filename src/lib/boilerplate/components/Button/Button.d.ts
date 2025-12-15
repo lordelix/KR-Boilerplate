@@ -1,17 +1,15 @@
-import type { ComponentProps } from 'svelte'
+import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
+import type { Snippet } from 'svelte'
+import type { FontelloProps } from '../Fontello/Fontello'
 
 export type ButtonProps = {
-	class?: string
-	baseName?: string
 	children?: Snippet
-
-	onClick?: Function
-
-	variant?: 'primary' | 'secondary'
 	disabled?: boolean
-	fontello?: string
+	fontello?: FontelloProps['name']
 	isLoading?: boolean
+	onClick?: () => unknown
 	rel?: 'follow' | 'nofollow noopener'
 	target?: '_blank'
 	to?: string
-} & ComponentProps
+	variant?: 'primary' | 'secondary'
+} & ComponentBaseProps

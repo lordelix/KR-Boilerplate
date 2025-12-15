@@ -1,25 +1,31 @@
 <script lang="ts">
 	import './Wrapper.scss'
-
-	import classNames from 'classnames'
+	import type { WrapperProps } from './Wrapper.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let tag: string = 'div'
-	export let responsive: boolean = false
-	export let size: 'smaller' | 'small' | 'large' | undefined = undefined
-	export let baseName = 'Wrapper'
+	let {
+		tag = 'div',
+		responsive = false,
+		size,
+		baseName = 'Wrapper',
+		children,
+		class: className,
+		...restProps
+	}: WrapperProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
-	const className = classNames(
+	const computedClassName = $derived([
 		baseName,
 		size ? `${baseName}--${size}` : undefined,
 		responsive ? `${baseName}--responsive` : undefined,
-		$$props.class
-	)
+		className
+	])
 </script>
 
-<svelte:element this={tag} {...$$restProps} class={className}>
-	<slot />
+<svelte:element this={tag} {...restProps} class={computedClassName}>
+	{#if children}
+		{@render children()}
+	{/if}
 </svelte:element>

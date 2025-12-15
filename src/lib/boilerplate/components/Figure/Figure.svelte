@@ -1,24 +1,29 @@
 <script lang="ts">
+	import { uniqueId } from 'lodash-es'
 	import './Figure.css'
-	import classNames from 'classnames'
+	import type { FigureProps } from './Figure.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let src: string
-	export let alt = ''
-	export let width: string | number | undefined = undefined
-	export let height: string | number | undefined = undefined
-	export let caption = ''
-	export let loading: HTMLImageElement['loading'] | undefined = undefined
-	export let placeholder = ''
-	export let baseName = 'Figure'
+	let {
+		baseName = 'Figure',
+		class: classProp,
+		src,
+		alt,
+		width,
+		height,
+		caption,
+		loading,
+		placeholder,
+		...restProps
+	}: FigureProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 </script>
 
-<figure {...$$restProps} class={classNames(baseName, $$props.class)}>
+<figure class={[baseName, classProp]} {...restProps}>
 	<img
 		class="{baseName}__image"
 		{src}

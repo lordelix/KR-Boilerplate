@@ -1,7 +1,6 @@
 <script lang="ts">
 	import './Nav.scss'
 
-	import classnames from 'classnames'
 	import { page } from '$app/state'
 	import { throttle } from 'lodash-es'
 	import type { NavProps } from './Nav.d.ts'
@@ -9,11 +8,10 @@
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Burger from '../NavBurger/NavBurger.svelte'
-	import { XioniShopCartButton as CartButton } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	let { routes, baseName = 'Nav', sticky, class: className, children }: NavProps = $props()
+	let { routes, baseName = 'Nav', sticky, class: className }: NavProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -21,14 +19,12 @@
 	let active = $state(false)
 	let hoverState: number = $state(-1)
 
-	let classNames = $derived(
-		classnames(
-			baseName,
-			className,
-			!active || baseName + '--active',
-			!sticky || baseName + '--sticky'
-		)
-	)
+	let classNames = $derived([
+		baseName,
+		className,
+		!active || baseName + '--active',
+		!sticky || baseName + '--sticky'
+	])
 
 	function handleOffset() {
 		const className = baseName + '--offset'
@@ -60,23 +56,20 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <nav bind:this={nav} class={classNames} onclick={() => (active = false)}>
 	<ul class={baseName + '__ul'} aria-label="navigation path">
-		{#if children}
-			<li class={classnames(baseName + '__li-custom')}>{@render children?.()}</li>
-		{/if}
 		{#each routes as route, i}
 			<li
-				class={classnames(baseName + '__li', route.class)}
+				class={[baseName + '__li', route.class]}
 				onmouseenter={() => (hoverState = i)}
 				onmouseleave={() => (hoverState = -1)}>
 				{#if route.name}
 					<svelte:element
 						this={route.path ? 'a' : 'span'}
 						id="route-{i}"
-						class={classnames(
+						class={[
 							baseName + '__a',
 							isActivePath(route.path) ? baseName + '__a--active' : null,
 							isCurrentPath(route.path) ? baseName + '__a--current' : null
-						)}
+						]}
 						href={route.path}
 						target={route.target}
 						title={route.title}
@@ -86,20 +79,16 @@
 				{/if}
 
 				{#if !!route.routes?.length}
-					<ul
-						class={classnames(
-							baseName + '__ul-ul',
-							hoverState !== i || baseName + '__ul-ul--visible'
-						)}>
+					<ul class={[baseName + '__ul-ul', hoverState !== i || baseName + '__ul-ul--visible']}>
 						{#each route.routes as subRoute, o}
 							<li class={baseName + '__li-li'}>
 								<a
 									id="route-{i}-{o}"
-									class={classnames(
+									class={[
 										baseName + '__a-a',
 										isActivePath(subRoute.path) ? baseName + '__a-a--active' : undefined,
 										subRoute.class
-									)}
+									]}
 									aria-current={isActivePath(subRoute.path) ? 'page' : undefined}
 									href={subRoute.path}
 									target={subRoute.target}
@@ -115,7 +104,4 @@
 	</ul>
 </nav>
 
-<div class="{baseName}__button-row">
-	<CartButton class="{baseName}__cart-button" hideEmpty />
-	<Burger {active} on:click={() => (active = !active)} />
-</div>
+<Burger {active} onclick={() => (active = !active)} />

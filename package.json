@@ -34,7 +34,6 @@
 	"dependencies": {
 		"@paypal/paypal-js": "8.4.2",
 		"@types/lodash-es": "4.17.12",
-		"classnames": "2.5.1",
 		"date-fns": "4.1.0",
 		"ky": "1.14.0",
 		"lodash-es": "4.17.21",

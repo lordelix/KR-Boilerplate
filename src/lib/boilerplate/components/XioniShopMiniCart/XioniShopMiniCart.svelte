@@ -1,20 +1,17 @@
 <script lang="ts">
-	import classnames from 'classnames'
-
-	// --- [ Types ] ---------------------------------------------------------------------------------
-
-	import type { XioniShop } from '$lib/boilerplate/xioni/types'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import type { XioniShopMiniCartProps } from './XioniShopMiniCart.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let cart: XioniShop.Cart
-	export let baseName = 'XioniShopMiniCart'
+	let { cart, class: className, ...restProps }: XioniShopMiniCartProps = $props()
+	const bem = makeBEM('XioniShopMiniCart')
 
 	// -----------------------------------------------------------------------------------------------
 </script>
 
-<section {...$$restProps} class={classnames(baseName, $$props.class)}>
-	<div class="{baseName}__title">Warenkorb:</div>
+<section {...restProps} class={[bem.block, className]}>
+	<div class={bem.element('title')}>Warenkorb:</div>
 	<ul class="$mt $font-small">
 		{#each cart.products as { product, quantity }}
 			<li class="$overflow-ellipsis">

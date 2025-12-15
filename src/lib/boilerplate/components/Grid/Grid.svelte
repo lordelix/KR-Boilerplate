@@ -1,43 +1,55 @@
 <script lang="ts">
 	import './Grid.scss'
-	import classnames from 'classnames'
+	import type { GridProps } from './Grid.d'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let tag: string = 'div'
-	export let gap: 0 | 2 | 4 | 6 | 8 | boolean = 0
-	export let size: string | boolean = false
-	export let id: string | undefined = undefined
-	export let index: number | string | undefined = undefined
+	let {
+		class: className,
+		baseName = 'Grid',
+		tag = 'div',
+		gap = 0,
+		size = false,
+		index,
+		children,
+		...restProps
+	}: GridProps = $props()
+
+	// --- [ BEM ] -----------------------------------------------------------------------------------
+
+	const { block, element, modifier } = makeBEM(baseName)
 
 	// --- [ Logic ] ---------------------------------------------------------------------------------
 
-	$: className = !size ? createParentClassName() : createChildClassName()
+	const computedClassName = $derived(!size ? createParentClassName() : createChildClassName())
 
 	function createChildClassName() {
-		return classnames(
-			'Grid__item',
+		return [
+			element('item'),
 			!size ||
 				('' + size)
 					.split(' ')
-					.map(i => `Grid__item--${i}`)
+					.map(i => element('item--' + i))
 					.join(' ')
-		)
+		]
 	}
 
 	function createParentClassName() {
-		const className = ['Grid']
+		const classNames = [block]
 
 		if (gap && typeof gap === 'number') {
-			className.push(`Grid--gap-${gap}`)
+			classNames.push(modifier(`gap-${gap}`))
 		} else if (gap) {
-			className.push('Grid--gap')
+			classNames.push(modifier('gap'))
 		}
 
-		return classnames(...className)
+		return [...classNames]
 	}
 </script>
 
-<svelte:element this={tag} {id} class={classnames(className, $$props.class)} data-index={index}>
-	<slot />
+<svelte:element this={tag} class={[computedClassName, className]} data-index={index} {...restProps}>
+	{#if children}
+		{@render children()}
+	{/if}
 </svelte:element>

@@ -1,21 +1,25 @@
 <script lang="ts">
 	import './XioniShopOrderTable.scss'
-
-	import classNames from 'classnames'
-
-	// --- [ Types ] ---------------------------------------------------------------------------------
-
-	import type { XioniShop } from '$lib/boilerplate/xioni/types'
+	import type { XioniShopOrderTableProps } from './XioniShopOrderTable.d'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let cart: XioniShop.Order['cart']
-	export let total: XioniShop.Order['total']
-	export let shippingCost: XioniShop.Order['shippingCost']
-	export let baseName = 'XioniShopOrderTable'
+	let {
+		cart,
+		total,
+		shippingCost,
+		baseName = 'XioniShopOrderTable',
+		class: className,
+		...restProps
+	}: XioniShopOrderTableProps = $props()
+
+	// --- [ BEM ] -----------------------------------------------------------------------------------
+
+	const { block } = makeBEM(baseName)
 </script>
 
-<table {...$$restProps} class={classNames(baseName, $$props.class)}>
+<table {...restProps} class={[block, className]}>
 	<thead>
 		<tr>
 			<th>Produkt</th>

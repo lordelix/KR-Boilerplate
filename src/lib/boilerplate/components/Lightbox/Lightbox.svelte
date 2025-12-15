@@ -1,31 +1,36 @@
 <script lang="ts">
 	import './Lightbox.scss'
+	import type { LightboxProps } from './Lightbox.d'
 	import { onMount } from 'svelte'
 
-	// --- [ Types ] ---------------------------------------------------------------------------------
+	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Modal from '../Modal/Modal.svelte'
 	import Fontello from '../Fontello/Fontello.svelte'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	export let images: {
-		src: string
-		alt: string
-	}[] = []
+	let {
+		images = [],
+		baseName = 'Lightbox',
+		children,
+		class: className,
+		...restProps
+	}: LightboxProps = $props()
 
 	// --- [ Logic ] ---------------------------------------------------------------------------------
 
 	let lightbox: HTMLElement
 	let modal: Modal
-	let lightboxImages = images
-	let index = -1
+	let lightboxImages = $state([...images])
+	let index = $state(-1)
 
-	$: activeImage = lightboxImages[index] || {}
+	const bem = makeBEM(baseName)
+	const activeImage = $derived(lightboxImages[index] || {})
 
 	export function open(i: number = -1): void {
 		if (i >= 0) index = i
-
 		modal.open()
 	}
 
@@ -52,38 +57,46 @@
 	onMount(getImages)
 </script>
 
-<div class="Lightbox" bind:this={lightbox}>
-	<slot />
+<div class={[baseName, className]} bind:this={lightbox} {...restProps}>
+	{#if children}
+		{@render children()}
+	{/if}
 </div>
-<Modal class="Lightbox__modal" bind:this={modal}>
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
+<Modal class={bem.element('modal')} bind:this={modal}>
+	<!-- svelte-ignore event_directive_deprecated -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="Lightbox__navigate Lightbox__navigate--prev"
-		class:$invisible={!(lightboxImages.length > 2)}
+		class={[
+			bem.element('navigate'),
+			bem.elementModifier('navigate')('prev'),
+			{ $invisible: !(lightboxImages.length > 2) }
+		]}
 		on:keydown
 		on:click={slideBack}>
 		<Fontello name="left-open" />
 	</div>
 
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div
-		class="Lightbox__navigate Lightbox__navigate--next"
-		class:$invisible={!(lightboxImages.length > 2)}
+		class={[
+			bem.element('navigate'),
+			bem.elementModifier('navigate')('next'),
+			{ $invisible: !(lightboxImages.length > 2) }
+		]}
 		on:keydown
 		on:click={slideForward}>
 		<Fontello name="right-open" />
 	</div>
 
 	{#if activeImage.alt}
-		<div class="Lightbox__textbox">
+		<div class={bem.element('textbox')}>
 			<p class="$m-0">
 				{activeImage.alt}
 			</p>
 		</div>
 	{/if}
-	<img class="Lightbox__active-image" src={activeImage.src} alt={activeImage.alt} />
+	<img class={bem.element('active-image')} src={activeImage.src} alt={activeImage.alt} />
 </Modal>
 
 {#each lightboxImages as { src, alt }}
-	<img {src} {alt} hidden aria-hidden loading="lazy" />
+	<img {src} {alt} hidden aria-hidden="true" loading="lazy" />
 {/each}

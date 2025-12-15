@@ -2,7 +2,6 @@
 	import { CART, ORDER } from '$lib/stores'
 	import { goto } from '$app/navigation'
 	import { head, isEmpty, omitBy } from 'lodash-es'
-	import { InputPropsType } from '$lib/boilerplate/components/Input/Input.d'
 	import { IS_MOBILE } from '$lib/boilerplate/utils/breakpoints'
 	import { useOrder } from '$lib/boilerplate/xioni/shop/Order'
 
@@ -13,6 +12,7 @@
 		Checkbox,
 		Grid,
 		Input,
+		InputType,
 		Message,
 		Select,
 		Textarea,
@@ -21,10 +21,10 @@
 
 	// -----------------------------------------------------------------------------------------------
 
-	let isLoading = false
-	let showShippingForm = !!$ORDER.deliveryAddress
-	let formBodyErrors: string[] | undefined = undefined
-	let formMessageError: string | undefined = undefined
+	let isLoading = $state(false)
+	let showShippingForm = $state(!!$ORDER.deliveryAddress)
+	let formBodyErrors: string[] | undefined = $state(undefined)
+	let formMessageError: string | undefined = $state(undefined)
 
 	// Form bindings
 	let address = { ...$ORDER.address }
@@ -120,7 +120,7 @@
 		</Grid>
 		<Grid size="1">
 			<Input
-				type={InputPropsType.TEL}
+				type={InputType.TEL}
 				bind:value={address.phone}
 				name="phone"
 				label="Telefonnummer"
@@ -134,7 +134,7 @@
 	<Checkbox
 		class="$my"
 		checked={!showShippingForm}
-		on:change={toggleShippingForm}
+		onChange={toggleShippingForm}
 		label="Lieferadresse entspricht der Rechnungsadresse" />
 
 	{#if showShippingForm}
