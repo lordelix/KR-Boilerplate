@@ -92,6 +92,55 @@ export default function useEvents(clientOptions?: ClientOptions) {
 		}
 	}
 
+	async function getEventsByCommune(
+		commune: string,
+		{ limit, offset, order, endsAfter, startsAfter, endsBefore, parts }: GetEventsQuery = {}
+	): Promise<GetEventsResponse> {
+		const query: operations['getEvents']['parameters']['query'] = {}
+
+		if (limit && limit > 0) {
+			query.limit = Number(limit)
+		}
+
+		if (order) {
+			query.order = order
+		}
+
+		if (offset && offset > 0) {
+			query.offset = Number(offset)
+		}
+
+		if (parts && parts.length) {
+			query.parts = parts
+		}
+
+		if (startsAfter) {
+			query.startsAfter = startsAfter.toDateString()
+		}
+
+		if (endsBefore) {
+			query.endsBefore = endsBefore.toDateString()
+		}
+
+		if (endsAfter) {
+			query.endsAfter = endsAfter.toDateString()
+		}
+
+		const data = await fetchWithErrorHandling(() =>
+			client.GET(ApiPaths.getEventsByCommune, {
+				params: {
+					query,
+					path: { communeId: commune }
+				}
+			})
+		)
+
+		return {
+			meta: data.meta as GetEventsResponse['meta'],
+			events: data.events.map(mapDtoEvent)
+		}
+	}
+
 	/**
 	 * Get a single XioniEvent
 	 *
@@ -123,11 +172,46 @@ export default function useEvents(clientOptions?: ClientOptions) {
 		}
 	}
 
+	/**
+	 * Get a single XioniEvent
+	 *
+	 * @param id XioniEvent id
+	 * @returns XioniEvent
+	 */
+
+	async function getEventByCommune(commune: string, eventId: number): Promise<GetEventResponse> {
+		try {
+			const { data, error } = await client.GET(ApiPaths.getEventByCommune, {
+				params: {
+					path: { communeId: commune, eventId }
+				}
+			})
+
+			// Forward to catch block
+			// TODO: Get rid of data check
+			if (error || !data) throw error
+
+			return {
+				event: mapDtoEvent(data.event as SchemaEvent)
+			}
+		} catch (error) {
+			if (dev) {
+				console.error(error)
+			}
+
+			throw error
+		}
+	}
+
 	return {
 		getEvents,
-		getEvent
+		getEventsByCommune,
+		getEvent,
+		getEventByCommune
 	}
 }
 
 export const getEvents = useEvents().getEvents
+export const getEventsByCommune = useEvents().getEventsByCommune
 export const getEvent = useEvents().getEvent
+export const getEventByCommune = useEvents().getEventByCommune

@@ -22,17 +22,17 @@
 
 	// -----------------------------------------------------------------------------------------------
 
+	// svelte-ignore state_referenced_locally
 	const bem = makeBEM(baseName)
+	const tag = $derived(to ? 'a' : 'span')
+	const classNames = $derived([bem.block, className, !fontello || bem.modifier('has-icon')])
 
-	// -----------------------------------------------------------------------------------------------
-
-	const tag = to ? 'a' : 'span'
-	const classNames = [bem.block, className, !fontello || bem.modifier('has-icon')]
-
-	if (to && !target && isExternalURL(to)) {
-		rel = 'nofollow noopener'
-		target = '_blank'
-	}
+	$effect(() => {
+		if (to && !target && isExternalURL(to)) {
+			rel = 'nofollow noopener'
+			target = '_blank'
+		}
+	})
 
 	function trimScheme(link: typeof to) {
 		if (!link) return ''
@@ -40,7 +40,8 @@
 		if (!isExternalURL(link)) return link
 
 		const { hostname, pathname } = new URL(link)
-		return hostname + pathname
+
+		return pathname.length > 1 ? hostname + pathname : hostname
 	}
 </script>
 

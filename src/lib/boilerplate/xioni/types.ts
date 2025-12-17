@@ -34,9 +34,10 @@ export namespace XioniCMS {
 		image: Image | null
 		duration: string // Let's see if we can format this later
 		pdf: PDF | null
-		website: URL | null
+		commune: string | null
 		ticketshopURL: URL | null
 		organizer: string | null
+		ownerURL: URL | null
 		coordinates: [number, number] | null
 		images?: Image[]
 		tags?: { id: number; name: string }[]

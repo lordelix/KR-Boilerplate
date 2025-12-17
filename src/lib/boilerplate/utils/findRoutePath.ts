@@ -2,6 +2,7 @@ type Route = {
 	path?: string
 	name: string
 	class?: string
+	meta?: unknown
 	routes?: Route[]
 	target?: '_blank'
 }
