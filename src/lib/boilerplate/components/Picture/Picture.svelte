@@ -1,7 +1,8 @@
 <script lang="ts">
+	import './Picture.css'
+
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { PictureProps } from './Picture'
-	import './Picture.css'
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
@@ -16,14 +17,17 @@
 		widescreen,
 		align,
 		placeholder,
+		alt = '',
 
 		...restProps
 	}: PictureProps = $props()
 
+	// svelte-ignore state_referenced_locally
 	const bem = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
 
+	// svelte-ignore state_referenced_locally
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 
 	function extractProps(src: PictureProps['src']) {
