@@ -19,22 +19,11 @@
 		readonly,
 		required,
 		type = InputType.TEXT,
-		value,
+		value = $bindable(),
 		error,
 		multiple = false,
 		...restProps
 	}: InputProps = $props()
-
-	// -----------------------------------------------------------------------------------------------
-
-	const inputProps = {
-		name,
-		placeholder,
-		required,
-		readonly,
-		type,
-		multiple
-	}
 </script>
 
 <div
@@ -50,5 +39,15 @@
 			{#if required}*{/if}
 		</label>
 	{/if}
-	<input {id} {...inputProps} {...restProps} class={baseName + '__input'} bind:value />
+	<input
+		{id}
+		{name}
+		{placeholder}
+		{required}
+		{readonly}
+		{type}
+		{multiple}
+		{...restProps}
+		class={baseName + '__input'}
+		bind:value />
 </div>

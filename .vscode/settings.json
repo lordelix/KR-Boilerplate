@@ -4,9 +4,7 @@
 		"missing-declaration": "ignore",
 		"a11y-click-events-have-key-events": "ignore"
 	},
-	"search.exclude": {
-		// "**/boilerplate": true
-	},
+	"search.exclude": {},
 	"files.exclude": {
 		".svelte-kit": true,
 		".eslint*": true,

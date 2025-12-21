@@ -1,10 +1,9 @@
-<script>
+<script lang="ts">
 	import '$styles/styles.scss'
 
 	import routes from '$routes'
 	import stammdaten from '$stammdaten'
-	import { page } from '$app/stores'
-	import { head } from 'lodash-es'
+	import { Nav, Toplink, Wrapper } from '$lib/boilerplate/components'
 
 	const { children } = $props()
 </script>

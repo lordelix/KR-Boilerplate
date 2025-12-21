@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import stammdaten from '$lib/stammdaten'
 
-	const { title, street, town, web } = stammdaten
+	const { title, web } = stammdaten
 </script>
 
 <svelte:head>

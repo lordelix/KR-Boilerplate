@@ -2,22 +2,20 @@
 	import './Checkbox.scss'
 
 	import type { CheckboxProps } from './Checkbox.d'
-	import { uniqueId } from 'lodash-es'
 
 	let {
 		class: classProp,
 		baseName = 'Checkbox',
-
-		checked,
+		checked = $bindable(),
 		label,
 		name,
 		required,
 		value = 'on',
 		onChange,
-
 		...restProps
 	}: CheckboxProps = $props()
 
+	// svelte-ignore state_referenced_locally
 	if (label && required) {
 		label += '*'
 	}
@@ -31,6 +29,6 @@
 		type="checkbox"
 		{value}
 		bind:checked
-		onchange={() => onChange?.()} />
+		onchange={() => onChange?.(!!checked)} />
 	<span class={baseName + '__label'}>{@html label}</span>
 </label>

@@ -6,12 +6,8 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id,
 		class: classProp,
 		baseName = 'NavBurger',
-
-		onClick,
-
 		active = false,
 		...restProps
 	}: NavBurgerProps = $props()
@@ -21,15 +17,9 @@
 	// -----------------------------------------------------------------------------------------------
 
 	const className = $derived([baseName, classProp, !active || bem.modifier('active')])
-
-	function onClickHandler() {
-		if (typeof onClick === 'function') {
-			onClick()
-		}
-	}
 </script>
 
-<button onclick={onClickHandler} aria-label="Menü" {...restProps} class={className}>
+<button aria-label="Menü" {...restProps} class={className}>
 	<!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
 	{#if active}
 		<svg class="NavBurger__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">

@@ -15,7 +15,7 @@ export function useMailer(clientOptions?: ClientOptions) {
 			const errorResponse = {
 				status: response.status,
 				messages: error.message,
-				details: (error as any).details || null
+				details: (error as Record<string, unknown>).details || null
 			}
 
 			if (dev) {

@@ -1,7 +1,6 @@
 import type { Snippet } from 'svelte'
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
 
-export type MessageProps = ComponentBaseProps & {
+export type MessageProps = {
 	type?: 'error' | 'info' | 'success'
 	title?: string | number
 	inline?: boolean
@@ -10,4 +9,4 @@ export type MessageProps = ComponentBaseProps & {
 	children?: Snippet
 	code?: Snippet
 	onClose?: () => unknown
-}
+} & ComponentBaseProps

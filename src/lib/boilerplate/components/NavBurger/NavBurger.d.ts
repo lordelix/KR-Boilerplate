@@ -1,6 +1,3 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
-
-export type NavBurgerProps = ComponentBaseProps & {
+export type NavBurgerProps = {
 	active?: boolean
-	onClick?: Function
-}
+} & ComponentBaseProps

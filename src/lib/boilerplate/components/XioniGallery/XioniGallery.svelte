@@ -20,7 +20,7 @@
 </script>
 
 <ul class={[baseName, classProp]} {...restProps}>
-	{#each gallery as { id, title, slug }}
+	{#each gallery as { id, title, slug } (id)}
 		<li class="{baseName}__item">
 			<a class="{baseName}__item-link" href={makeLink(slug, id)}>{title}</a>
 		</li>

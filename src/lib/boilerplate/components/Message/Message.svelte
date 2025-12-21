@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './Message.scss'
-	import { uniqueId } from 'lodash-es'
 
 	import type { MessageProps } from './Message.d'
 	import Fontello from '../Fontello/Fontello.svelte'
@@ -22,6 +21,7 @@
 		...restProps
 	}: MessageProps = $props()
 
+	// svelte-ignore state_referenced_locally
 	const { block, element, modifier } = makeBEM(baseName)
 </script>
 
@@ -38,7 +38,7 @@
 		}
 	]}>
 	{#if closable}
-		<Fontello name="cancel" class={element('close-button')} onClick={onClose} />
+		<Fontello name="cancel" class={element('close-button')} onclick={onClose} />
 	{/if}
 	{#if title}
 		<h4 class={element('title')}>

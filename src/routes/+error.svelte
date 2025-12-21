@@ -1,27 +1,25 @@
 <script lang="ts">
 	import '$lib/styles/styles.scss'
 
+	import { Link, Message } from '$lib/boilerplate/components'
+	import { page } from '$app/state'
 	import { browser } from '$app/environment'
-	import { goto } from '$app/navigation'
-	import { page } from '$app/stores'
-	import Message from '$lib/boilerplate/components/Message/Message.svelte'
-	import { Link } from '$lib/boilerplate/components'
+	import { pushState } from '$app/navigation'
 
-	if (browser && !$page.url.searchParams.has('error')) {
-		goto('?error=' + $page.status)
+	if (browser && !page.url.searchParams.has('error')) {
+		pushState('', '?error=' + page.status)
 	}
 
-	const status = $page.status || 500
-	const message = $page.error?.message || 'Ein Fehler ist aufgetreten'
+	const message = page.error?.message || 'Ein Fehler ist aufgetreten'
 </script>
 
 <div data-error>
 	<div class="$text-center">
 		<Message title="🥵 Ups…" type="error">
 			<em>
-				{#if status === 404}
+				{#if page.status === 404}
 					Die Seite wurde nicht gefunden.
-				{:else if status === 400}
+				{:else if page.status === 400}
 					Fehlerhafte Eingabe
 				{:else}
 					Ein interner Fehler ist aufgetreten

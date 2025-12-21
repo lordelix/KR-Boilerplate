@@ -53,7 +53,7 @@
 	<div class="glide__track" data-glide-el="track">
 		<div class="glide__slides">
 			{#if images.length}
-				{#each images as { src, alt }}
+				{#each images as { src, alt } (src)}
 					<img {src} {alt} />
 				{/each}
 			{:else}

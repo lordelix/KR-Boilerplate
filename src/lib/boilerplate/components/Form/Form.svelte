@@ -19,6 +19,7 @@
 		onError
 	}: FormProps = $props()
 
+	// svelte-ignore state_referenced_locally
 	const { block, element } = makeBEM(baseName)
 
 	// -----------------------------------------------------------------------------------------------
@@ -79,7 +80,7 @@
 <Modal bind:this={errorModalRef}>
 	<Message class={element('errors')} type="error">
 		<ul>
-			{#each Object.entries($formError?.details || []) as [key, values]}
+			{#each Object.entries($formError?.details || []) as [key, values] (key)}
 				<li>
 					<b>{key.toUpperCase()}:</b>
 					{values.map(value => value.message).join('<br />')}

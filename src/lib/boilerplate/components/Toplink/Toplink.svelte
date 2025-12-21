@@ -11,7 +11,7 @@
 	// -----------------------------------------------------------------------------------------------
 
 	let isVisible = false
-	const className = $derived([baseName, '$$props.class', !isVisible || baseName + '--visible'])
+	const className = $derived([baseName, classProp, !isVisible || baseName + '--visible'])
 
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' })

@@ -1,6 +1,6 @@
 import { ApiPaths } from '../api/api.d'
-import { dev } from '$app/environment'
 import { fetchWithErrorHandling } from '../utils/fetchWithErrorResponse'
+import { mapDtoImage } from '../mapper/dtoImageMapper'
 import createClient from '../api/client'
 import type { ClientOptions } from 'openapi-fetch'
 import type { XioniCMS } from '../types'
@@ -20,16 +20,28 @@ export default function useGallery(clientOptions?: ClientOptions) {
 	async function getGallery(moduleId: number): Promise<{
 		albums: XioniCMS.Gallery
 		meta: {
-			totalCount?: number
+			totalCount: number
 		}
 	}> {
-		return fetchWithErrorHandling(() =>
+		const data = await fetchWithErrorHandling(() =>
 			client.GET(ApiPaths.getAlbums, {
 				params: {
 					path: { moduleId }
 				}
 			})
 		)
+
+		return {
+			albums: data.albums.map(album => {
+				return {
+					...album,
+					images: album.images?.map(mapDtoImage) || []
+				}
+			}),
+			meta: {
+				totalCount: data.meta.totalCount || data.albums.length || 0
+			}
+		}
 	}
 
 	/**
@@ -45,7 +57,7 @@ export default function useGallery(clientOptions?: ClientOptions) {
 	): Promise<{
 		album: XioniCMS.Album
 	}> {
-		return fetchWithErrorHandling(() =>
+		const data = await fetchWithErrorHandling(() =>
 			client.GET(ApiPaths.getAlbum, {
 				params: {
 					path: {
@@ -55,6 +67,13 @@ export default function useGallery(clientOptions?: ClientOptions) {
 				}
 			})
 		)
+
+		return {
+			album: {
+				...data.album,
+				images: data.album.images?.map(mapDtoImage) || []
+			}
+		}
 	}
 
 	return {

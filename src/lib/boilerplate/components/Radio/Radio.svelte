@@ -12,7 +12,7 @@
 		class: classProp,
 		checked,
 		value,
-		group = checked ? value : '',
+		group = $bindable(checked ? value : ''),
 		label,
 		name,
 		required,

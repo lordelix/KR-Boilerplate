@@ -1,5 +1,4 @@
 import { ApiPaths } from '../api/api.d'
-import { dev } from '$app/environment'
 import createClient from '../api/client'
 import type { ClientOptions } from 'openapi-fetch'
 import type { XioniCMS } from '../types'

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { uniqueId } from 'lodash-es'
 	import './Figure.css'
 	import type { FigureProps } from './Figure.d'
 
@@ -20,6 +19,7 @@
 
 	// -----------------------------------------------------------------------------------------------
 
+	// svelte-ignore state_referenced_locally
 	const style = placeholder ? `background-image:url(${placeholder})` : undefined
 </script>
 

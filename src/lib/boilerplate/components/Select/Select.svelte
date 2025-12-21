@@ -12,7 +12,7 @@
 		options = [],
 		required = false,
 		values = options,
-		value = values[0],
+		value = $bindable(values[0]),
 		placeholder = '',
 		disabled = false,
 		id = 'select-' + randomString(),
@@ -24,6 +24,7 @@
 
 	// --- [ BEM ] -----------------------------------------------------------------------------------
 
+	// svelte-ignore state_referenced_locally
 	const { block, element } = makeBEM(baseName)
 </script>
 
@@ -43,7 +44,7 @@
 		{#if placeholder}
 			<option value="" selected>{placeholder}</option>
 		{/if}
-		{#each options as option, i}
+		{#each options as option, i (i)}
 			<option value={values[i]}>{option}</option>
 		{/each}
 	</select>

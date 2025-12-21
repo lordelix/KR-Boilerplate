@@ -79,7 +79,7 @@
 			{/if}
 			{#if images.length}
 				<Grid gap>
-					{#each imageRow as { src, alt }, index}
+					{#each imageRow as { src, alt }, index (src)}
 						<Grid size="1-5" class="$mt">
 							<!-- svelte-ignore a11y_click_events_have_key_events -->
 							<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->

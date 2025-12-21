@@ -1,8 +1,6 @@
 <script lang="ts">
 	import './XioniArticle.scss'
 
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
-
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Figure from '../Figure/Figure.svelte'
@@ -48,7 +46,7 @@
 
 	{#if content?.length}
 		<div class="{baseName}__content">
-			{#each content as { text, title, image }}
+			{#each content as { text, title, image }, i (i)}
 				<Content {text} {title} {image} />
 			{/each}
 		</div>

@@ -1,9 +1,6 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
-
-export type FontelloProps = ComponentBaseProps & {
+export type FontelloProps = {
 	name: IconName
-	onClick?: Function
-}
+} & ComponentBaseProps
 
 type IconName =
 	| 'angle-circled-left'

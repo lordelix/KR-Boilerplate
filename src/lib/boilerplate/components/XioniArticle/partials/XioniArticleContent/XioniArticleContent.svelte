@@ -1,8 +1,6 @@
 <script lang="ts">
 	import './XioniArticleContent.scss'
 
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
-
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import { Figure } from '$lib/boilerplate/components'
@@ -12,7 +10,6 @@
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		class: classProp,
 		baseName = 'XioniArticleContent',
 
 		title,

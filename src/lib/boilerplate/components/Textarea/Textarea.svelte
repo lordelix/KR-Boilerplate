@@ -11,17 +11,16 @@
 		id = uniqueId('textarea-'),
 		class: classProp,
 		baseName = 'Textarea',
-
 		label,
 		name,
 		rows = 4,
-		value,
+		value = $bindable(),
 		placeholder,
 		required = false,
-
 		...restProps
 	}: TextareaProps = $props()
 
+	// svelte-ignore state_referenced_locally
 	const bem = makeBEM(baseName)
 </script>
 

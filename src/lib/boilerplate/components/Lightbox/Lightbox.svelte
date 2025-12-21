@@ -97,6 +97,6 @@
 	<img class={bem.element('active-image')} src={activeImage.src} alt={activeImage.alt} />
 </Modal>
 
-{#each lightboxImages as { src, alt }}
+{#each lightboxImages as { src, alt } (src)}
 	<img {src} {alt} hidden aria-hidden="true" loading="lazy" />
 {/each}

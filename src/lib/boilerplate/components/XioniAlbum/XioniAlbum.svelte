@@ -19,7 +19,7 @@
 
 <Lightbox>
 	<ul class={[baseName, classProp]} {...restProps}>
-		{#each images as { src, srcset, description }}
+		{#each images as { src, srcset, description } (src)}
 			<li class="{baseName}__item">
 				<img
 					class="{baseName}__image"

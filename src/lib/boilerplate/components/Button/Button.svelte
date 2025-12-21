@@ -18,7 +18,6 @@
 		disabled = false,
 		fontello,
 		isLoading = false,
-		rel = 'nofollow noopener',
 		target,
 		to,
 		variant,
@@ -30,21 +29,22 @@
 
 	// -----------------------------------------------------------------------------------------------
 
+	// svelte-ignore state_referenced_locally
 	const { block, element, modifier } = makeBEM(baseName)
 
+	// svelte-ignore state_referenced_locally
 	if (to && !target && isExternalURL(to)) {
-		rel = 'nofollow noopener'
 		target = '_blank'
 	}
 
-	const classNames = [
+	const classNames = $derived([
 		block,
 		classProp,
 		variant ? modifier(variant) : null,
 		disabled ? modifier('disabled') : null,
 		!to || modifier('anchor'),
 		!isLoading || modifier('loading')
-	]
+	])
 
 	function handleClick() {
 		if (disabled || !onClick) return

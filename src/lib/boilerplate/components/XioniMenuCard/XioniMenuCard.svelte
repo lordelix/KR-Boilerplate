@@ -13,14 +13,14 @@
 </script>
 
 <ol class={[baseName, classProp]} {...restProps}>
-	{#each menuCard as group}
+	{#each menuCard as group, i (i)}
 		<li class="{baseName}__group">
 			<h3 class="{baseName}__group-name">{group.name}</h3>
 			{#if group.description}
 				<p class="{baseName}__group-description">{@html group.description}</p>
 			{/if}
 			<ul class="{baseName}__dishes">
-				{#each group.items as item}
+				{#each group.items as item, j (j)}
 					<li class="{baseName}__dish">
 						<h4 class="{baseName}__dish-title">{item.name}</h4>
 						{#if item.price.value > 0}

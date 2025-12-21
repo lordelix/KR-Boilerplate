@@ -56,7 +56,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <nav bind:this={nav} class={classNames} onclick={() => (active = false)}>
 	<ul class={baseName + '__ul'} aria-label="navigation path">
-		{#each routes as route, i}
+		{#each routes as route, i (i)}
 			<li
 				class={[baseName + '__li', route.class]}
 				onmouseenter={() => (hoverState = i)}
@@ -80,7 +80,7 @@
 
 				{#if !!route.routes?.length}
 					<ul class={[baseName + '__ul-ul', hoverState !== i || baseName + '__ul-ul--visible']}>
-						{#each route.routes as subRoute, o}
+						{#each route.routes as subRoute, o (o)}
 							<li class={baseName + '__li-li'}>
 								<a
 									id="route-{i}-{o}"

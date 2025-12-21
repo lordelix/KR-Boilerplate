@@ -15,7 +15,7 @@
 </script>
 
 <div class={[baseName, className]} {...restProps}>
-	{#each range(1, pagesCount) as page}
+	{#each range(1, pagesCount) as page (page)}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<span

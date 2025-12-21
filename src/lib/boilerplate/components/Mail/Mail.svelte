@@ -5,12 +5,10 @@
 	// --- [ Components ] ----------------------------------------------------------------------------
 
 	import Fontello from '../Fontello/Fontello.svelte'
-	import { uniqueId } from 'lodash-es'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('mail-'),
 		class: classProp,
 		baseName = 'Mail',
 		to,

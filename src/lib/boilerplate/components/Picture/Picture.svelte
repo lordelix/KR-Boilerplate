@@ -7,7 +7,6 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id,
 		class: classProp,
 		baseName = 'Picture',
 
@@ -18,7 +17,6 @@
 		align,
 		placeholder,
 		alt = '',
-
 		...restProps
 	}: PictureProps = $props()
 
@@ -57,5 +55,5 @@
 	{#if tablet}
 		<source {...extractProps(tablet)} media="(min-width: 621px)" />
 	{/if}
-	<img {...extractProps(src)} {style} {...restProps} class={className} />
+	<img {...extractProps(src)} {style} class={className} {alt} {...restProps} />
 </picture>
