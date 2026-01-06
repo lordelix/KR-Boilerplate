@@ -8,10 +8,8 @@
 	let {
 		class: classProp,
 		baseName = 'YouTube',
-
 		videoId = false,
 		allow = ['encrypted-media'],
-
 		...restProps
 	}: YouTubeProps = $props()
 </script>

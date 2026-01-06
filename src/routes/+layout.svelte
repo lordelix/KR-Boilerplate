@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '$styles/styles.scss'
-
 	import routes from '$routes'
 	import stammdaten from '$stammdaten'
 	import { Nav, Toplink, Wrapper } from '$lib/boilerplate/components'
