@@ -37,6 +37,7 @@
 		animationDuration: 1500,
 		startAt: 0,
 		type: 'slider',
+		// svelte-ignore state_referenced_locally
 		...options
 	} as Glide.Options
 
@@ -49,7 +50,7 @@
 	})
 </script>
 
-<div class={[baseName, classProp, 'glide']} bind:this={slider} {...restProps}>
+<div {id} class={[baseName, classProp, 'glide']} bind:this={slider} {...restProps}>
 	<div class="glide__track" data-glide-el="track">
 		<div class="glide__slides">
 			{#if images.length}
