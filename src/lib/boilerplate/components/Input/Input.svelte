@@ -1,13 +1,7 @@
 <script lang="ts">
 	import './Input.scss'
-
 	import randomString from '$lib/boilerplate/utils/randomString'
-
-	// --- [ Types ] ---------------------------------------------------------------------------------
-
 	import { type InputProps, InputType } from './Input.d'
-
-	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
 		id = 'input-' + randomString(),

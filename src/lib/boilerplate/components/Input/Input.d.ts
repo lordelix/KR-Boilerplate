@@ -9,13 +9,13 @@ export enum InputType {
 
 export type InputProps = ComponentBaseProps & {
 	label?: string
-	max?: number
-	min?: number
+	max?: string | number
+	min?: string | number
 	name?: string
 	placeholder?: string
 	readonly?: boolean
 	required?: boolean
-	type?: InputType
+	type?: InputType | 'date' | 'email' | 'file' | 'number' | 'tel' | 'text'
 	value?: string
 	error?: string
 	multiple?: boolean
