@@ -4,6 +4,6 @@ import type { Snippet } from 'svelte'
 export type SwiperProps = {
 	images?: { src: string; alt: string }[]
 	nav?: boolean
-	options?: Prettify<Glide.Options>
+	options?: Parial<Glide.Options>
 	children?: Snippet
 } & ComponentBaseProps

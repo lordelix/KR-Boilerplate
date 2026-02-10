@@ -4,7 +4,6 @@
 	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
 	import Fontello from '../Fontello/Fontello.svelte'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
-
 	import type { LinkProps } from './Link.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
@@ -23,9 +22,9 @@
 	// -----------------------------------------------------------------------------------------------
 
 	// svelte-ignore state_referenced_locally
-	const bem = makeBEM(baseName)
+	const BEM = makeBEM(baseName)
 	const tag = $derived(to ? 'a' : 'span')
-	const classNames = $derived([bem.block, className, !fontello || bem.modifier('has-icon')])
+	const classNames = $derived([BEM.block, className, !fontello || BEM.modifier('has-icon')])
 
 	$effect(() => {
 		if (to && !target && isExternalURL(to)) {
@@ -47,7 +46,7 @@
 
 <span class={classNames}>
 	{#if fontello}
-		<Fontello class={bem.element('icon')} name={fontello} />&nbsp;
+		<Fontello class={BEM.element('icon')} name={fontello} />&nbsp;
 	{/if}
 	<svelte:element this={tag} href={to} {target} {rel} aria-label={label}>
 		{#if children}

@@ -2,14 +2,8 @@
 	import './Lightbox.scss'
 	import type { LightboxProps } from './Lightbox.d'
 	import { onMount } from 'svelte'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
-	import Modal from '../Modal/Modal.svelte'
-	import Fontello from '../Fontello/Fontello.svelte'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
-
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	import { Fontello, Modal } from '..'
 
 	let {
 		images = [],
@@ -19,13 +13,12 @@
 		...restProps
 	}: LightboxProps = $props()
 
-	// --- [ Logic ] ---------------------------------------------------------------------------------
-
 	let lightbox: HTMLElement
 	let modal: Modal
 	let lightboxImages = $state([...images])
 	let index = $state(-1)
 
+	// svelte-ignore state_referenced_locally
 	const bem = makeBEM(baseName)
 	const activeImage = $derived(lightboxImages[index] || {})
 

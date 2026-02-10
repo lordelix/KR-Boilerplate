@@ -1,22 +1,21 @@
 <script lang="ts">
 	import './Picture.css'
-
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { PictureProps } from './Picture'
 
-	// --- [ Setup ] ---------------------------------------------------------------------------------
+	// --- [ Props ] ---------------------------------------------------------------------------------
 
 	let {
-		class: classProp,
 		baseName = 'Picture',
-
+		class: classProp,
+		id,
 		src,
 		tablet,
 		desktop,
 		widescreen,
 		align,
 		placeholder,
-		alt = '',
+		loading = 'eager',
 		...restProps
 	}: PictureProps = $props()
 
@@ -55,5 +54,5 @@
 	{#if tablet}
 		<source {...extractProps(tablet)} media="(min-width: 621px)" />
 	{/if}
-	<img {...extractProps(src)} {style} class={className} {alt} {...restProps} />
+	<img {...extractProps(src)} {style} {...restProps} class={className} {loading} />
 </picture>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './Toplink.scss'
-
 	import { onMount, tick } from 'svelte'
 	import type { ToplinkProps } from './Toplink'
 
@@ -10,7 +9,7 @@
 
 	// -----------------------------------------------------------------------------------------------
 
-	let isVisible = false
+	let isVisible = $state(false)
 	const className = $derived([baseName, classProp, !isVisible || baseName + '--visible'])
 
 	function scrollToTop() {

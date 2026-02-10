@@ -1,7 +1,8 @@
 <script lang="ts">
 	import './Input.scss'
 	import randomString from '$lib/boilerplate/utils/randomString'
-	import { type InputProps, InputType } from './Input.d'
+	import type { InputProps } from './Input'
+	import makeBEM from '$lib/boilerplate/utils/makeBem'
 
 	let {
 		id = 'input-' + randomString(),
@@ -12,19 +13,22 @@
 		placeholder,
 		readonly,
 		required,
-		type = InputType.TEXT,
+		type = 'text',
 		value = $bindable(),
 		error,
 		multiple = false,
 		...restProps
 	}: InputProps = $props()
+
+	// svelte-ignore state_referenced_locally
+	const BEM = makeBEM(baseName)
 </script>
 
 <div
 	class={[
 		baseName,
 		classProp,
-		{ [baseName + '--has-error']: !!error, [baseName + '--read-only']: !!readonly }
+		{ [BEM.modifier('has-error')]: !!error, [BEM.modifier('read-only')]: !!readonly }
 	]}>
 	{#if label}
 		<label class={baseName + '__label'} for={id}>
