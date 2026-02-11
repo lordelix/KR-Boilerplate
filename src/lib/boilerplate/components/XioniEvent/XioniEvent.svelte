@@ -37,11 +37,11 @@
 		website,
 		ticketshop,
 		organizer
-	} = event
+	} = $derived(event)
 
 	let lightbox = $state<Lightbox>()
 
-	const images = event.images || []
+	const images = $derived(event.images || [])
 	const maxImages = 5
 	const imageRow = (function () {
 		if (images.length === maxImages) {
@@ -63,7 +63,7 @@
 	itemtype="https://schema.org/Event"
 	{...restProps}
 	class={[bem.block, className]}
-	data-flags={flags.join()}>
+	data-flags={flags?.join()}>
 	<meta itemprop="startDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="endDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="organizer" content={organizer} />
