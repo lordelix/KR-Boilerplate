@@ -1,23 +1,11 @@
 <script lang="ts">
 	import './XioniEvent.scss'
 
+	import { Button, ButtonRow, Grid, Lightbox, Picture } from '..'
 	import { formatFromTo } from '$lib/boilerplate/utils/formatDate'
 	import { formatISO } from 'date-fns'
-
-	// --- [ Types ] ---------------------------------------------------------------------------------
-
-	import type { XioniEventProps } from './XioniEvent'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
-	import Picture from '../Picture/Picture.svelte'
-	import Grid from '../Grid/Grid.svelte'
-	import Lightbox from '../Lightbox/Lightbox.svelte'
-	import ButtonRow from '../ButtonRow/ButtonRow.svelte'
-	import Button from '../Button/Button.svelte'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
-
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	import type { XioniEventProps } from './XioniEvent'
 
 	let { baseName = 'XioniEvent', class: className, event, ...restProps }: XioniEventProps = $props()
 
@@ -34,22 +22,27 @@
 		flags,
 		starts,
 		title,
-		website,
-		ticketshop,
+		ownerURL,
+		ticketshopURL,
 		organizer
 	} = $derived(event)
 
 	let lightbox = $state<Lightbox>()
-
-	const images = $derived(event.images || [])
+	const imagesRaw = $derived(event.images || [])
+	const images = $derived(
+		imagesRaw.map(img => ({
+			src: img.src,
+			alt: img.description ?? ''
+		}))
+	)
 	const maxImages = 5
 	const imageRow = (function () {
-		if (images.length === maxImages) {
-			return [...images].splice(0, maxImages)
-		} else if ([...images].length > maxImages) {
-			return [...images].splice(0, maxImages - 1)
+		if (imagesRaw.length === maxImages) {
+			return [...imagesRaw].splice(0, maxImages)
+		} else if ([...imagesRaw].length > maxImages) {
+			return [...imagesRaw].splice(0, maxImages - 1)
 		} else {
-			return images
+			return imagesRaw
 		}
 	})()
 </script>
@@ -72,21 +65,21 @@
 		<div class={bem.element('image-wrapper')}>
 			{#if image}
 				<Picture
-					ex-class={baseName + '__image'}
+					class={baseName + '__image'}
 					src={image.src}
 					tablet={image.src}
 					alt={image.description} />
 			{/if}
 			{#if images.length}
 				<Grid gap>
-					{#each imageRow as { src, alt }, index (src)}
+					{#each imageRow as { src, description }, index (src)}
 						<Grid size="1-5" class="$mt">
 							<!-- svelte-ignore a11y_click_events_have_key_events -->
 							<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 							<img
 								class={baseName + '__piucture-row-image $pointer'}
 								{src}
-								{alt}
+								alt={description}
 								loading="lazy"
 								onclick={() => lightbox?.open(index)} />
 						</Grid>
@@ -130,12 +123,12 @@
 	{/if}
 
 	<ButtonRow class={baseName + '__metadata'}>
-		{#if ticketshop}
-			<Button to={ticketshop.toString()} fontello="ticket">Zum Ticketshop</Button>
+		{#if ticketshopURL}
+			<Button to={ticketshopURL.toString()} fontello="ticket">Zum Ticketshop</Button>
 		{/if}
 
-		{#if website}
-			<Button fontello="globe" to={website.toString()}>{website.hostname}</Button>
+		{#if ownerURL}
+			<Button fontello="globe" to={ownerURL.toString()}>{ownerURL.hostname}</Button>
 		{/if}
 
 		{#if pdf}

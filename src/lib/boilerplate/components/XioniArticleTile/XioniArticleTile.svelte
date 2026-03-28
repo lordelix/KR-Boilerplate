@@ -1,28 +1,20 @@
 <script lang="ts">
 	import './XioniArticleTile.scss'
-
 	import { format } from '$lib/boilerplate/utils/formatDate'
 	import { goto } from '$app/navigation'
 	import { LOCALE } from '$lib/boilerplate/constants'
 	import { page } from '$app/state'
-	import type { XioniArticleTileProps } from './XioniArticleTile'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
-	import Link from '../Link/Link.svelte'
 	import Fontello from '../Fontello/Fontello.svelte'
-
-	// --- [ Setup ] ---------------------------------------------------------------------------------
+	import Link from '../Link/Link.svelte'
+	import type { XioniArticleTileProps } from './XioniArticleTile'
 
 	let {
 		baseName = 'XioniArticleTile',
 		class: classProp,
-
 		article,
 		linkText = 'Weiterlesen',
 		tag = 'div',
 		link = `${page.url.pathname}${article.slug}_${article.id}`,
-
 		...restProps
 	}: XioniArticleTileProps = $props()
 

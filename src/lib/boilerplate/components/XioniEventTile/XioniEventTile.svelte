@@ -3,17 +3,11 @@
 
 	import { format } from '$lib/boilerplate/utils/formatDate'
 	import { goto } from '$app/navigation'
+	import { Link } from '..'
 	import { LOCALE } from '$lib/boilerplate/constants'
 	import { page } from '$app/state'
-
-	import type { XioniEventTileProps } from './XioniEventTile.d'
 	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
-
-	// --- [ Components ] ----------------------------------------------------------------------------
-
-	import Link from '../Link/Link.svelte'
-
-	// --- [ Props ] ---------------------------------------------------------------------------------
+	import type { XioniEventTileProps } from './XioniEventTile.d'
 
 	let {
 		class: className,
