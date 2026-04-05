@@ -21,7 +21,7 @@
 
 	// -----------------------------------------------------------------------------------------------
 
-	const { title, image, teaser, starts, ends, duration, organizer, tags } = event
+	const { title, image, teaser, starts, ends, duration, organizer, tags } = $derived(event)
 
 	function tagsToString(tags: XioniCMS.Event['tags']) {
 		return tags?.map(tag => tag.id).join(',')

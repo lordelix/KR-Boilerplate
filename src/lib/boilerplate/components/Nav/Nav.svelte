@@ -37,6 +37,8 @@
 		}
 	}
 
+	const throttledHandleOffset = throttle(handleOffset, 250)
+
 	let isCurrentPath = $derived((target: URL['pathname'] | undefined) => {
 		if (!target || target === '/') return false
 
@@ -50,7 +52,7 @@
 	})
 </script>
 
-<svelte:window on:scroll|passive={() => throttle(handleOffset, 250)} />
+<svelte:window on:scroll|passive={throttledHandleOffset} />
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->

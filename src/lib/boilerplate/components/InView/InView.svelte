@@ -13,7 +13,7 @@
 		transition = 'fade'
 	}: InViewProps = $props()
 
-	const bem = makeBEM(baseName)
+	const bem = $derived(makeBEM(baseName))
 
 	let wrapper: HTMLElement
 	let observer: IntersectionObserver

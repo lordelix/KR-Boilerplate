@@ -24,7 +24,7 @@
 		...restProps
 	}: AddressProps = $props()
 
-	const bem = makeBEM(baseName)
+	const bem = $derived(makeBEM(baseName))
 </script>
 
 <ol class={[bem.block, classProp]} {...restProps}>

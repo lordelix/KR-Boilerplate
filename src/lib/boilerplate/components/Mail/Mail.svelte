@@ -21,7 +21,9 @@
 
 	// --- [ Logic ] ---------------------------------------------------------------------------------
 
-	const obfuscatedEmail = to.replaceAll('@', '&#64;').replaceAll('.de', '&#8228;&#100;&#101;')
+	const obfuscatedEmail = $derived(
+		to.replaceAll('@', '&#64;').replaceAll('.de', '&#8228;&#100;&#101;')
+	)
 
 	function makeHref() {
 		const link = new URL('mailto:' + to)

@@ -21,7 +21,7 @@
 		...restProps
 	}: AccordionSlideProps = $props()
 
-	const bem = makeBEM(baseName)
+	const bem = $derived(makeBEM(baseName))
 
 	// -----------------------------------------------------------------------------------------------
 

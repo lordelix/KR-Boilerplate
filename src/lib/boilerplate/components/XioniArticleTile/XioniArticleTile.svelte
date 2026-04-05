@@ -18,7 +18,7 @@
 		...restProps
 	}: XioniArticleTileProps = $props()
 
-	const { title, date, image, teaser, author } = article
+	const { title, date, image, teaser, author } = $derived(article)
 </script>
 
 <svelte:element this={tag} class={[baseName, classProp]} {...restProps}>

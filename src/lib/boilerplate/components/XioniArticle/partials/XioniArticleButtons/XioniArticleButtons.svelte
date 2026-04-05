@@ -16,7 +16,7 @@
 		website
 	}: XioniArticleButtonsProps = $props()
 
-	const bem = makeBEM(baseName)
+	const bem = $derived(makeBEM(baseName))
 
 	// -----------------------------------------------------------------------------------------------
 </script>

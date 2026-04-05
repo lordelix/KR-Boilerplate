@@ -11,7 +11,7 @@
 
 	// -----------------------------------------------------------------------------------------------
 
-	const bem = makeBEM(baseName)
+	const bem = $derived(makeBEM(baseName))
 
 	const {
 		teaser,
@@ -36,7 +36,7 @@
 		}))
 	)
 	const maxImages = 5
-	const imageRow = (function () {
+	const imageRow = $derived.by(() => {
 		if (imagesRaw.length === maxImages) {
 			return [...imagesRaw].splice(0, maxImages)
 		} else if ([...imagesRaw].length > maxImages) {
@@ -44,7 +44,7 @@
 		} else {
 			return imagesRaw
 		}
-	})()
+	})
 </script>
 
 {#if images.length}

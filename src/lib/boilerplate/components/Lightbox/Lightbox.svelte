@@ -15,6 +15,7 @@
 
 	let lightbox: HTMLElement
 	let modal: Modal
+	// svelte-ignore state_referenced_locally
 	let lightboxImages = $state([...images])
 	let index = $state(-1)
 

@@ -17,8 +17,8 @@
 		text
 	}: XioniArticleContent = $props()
 
-	const bem = makeBEM(baseName)
-	const figureBem = makeBEM(baseName + 'Image')
+	const bem = $derived(makeBEM(baseName))
+	const figureBem = $derived(makeBEM(baseName + 'Image'))
 
 	// -----------------------------------------------------------------------------------------------
 </script>

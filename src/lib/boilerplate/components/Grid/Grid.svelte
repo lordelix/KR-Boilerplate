@@ -18,7 +18,7 @@
 
 	// --- [ BEM ] -----------------------------------------------------------------------------------
 
-	const { block, element, modifier } = makeBEM(baseName)
+	const bem = $derived(makeBEM(baseName))
 
 	// --- [ Logic ] ---------------------------------------------------------------------------------
 
@@ -26,22 +26,22 @@
 
 	function createChildClassName() {
 		return [
-			element('item'),
+			bem.element('item'),
 			!size ||
 				('' + size)
 					.split(' ')
-					.map(i => element('item--' + i))
+					.map(i => bem.element('item--' + i))
 					.join(' ')
 		]
 	}
 
 	function createParentClassName() {
-		const classNames = [block]
+		const classNames = [bem.block]
 
 		if (gap && typeof gap === 'number') {
-			classNames.push(modifier(`gap-${gap}`))
+			classNames.push(bem.modifier(`gap-${gap}`))
 		} else if (gap) {
-			classNames.push(modifier('gap'))
+			classNames.push(bem.modifier('gap'))
 		}
 
 		return [...classNames]

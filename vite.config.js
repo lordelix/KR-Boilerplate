@@ -12,6 +12,7 @@ export default defineConfig({
 	},
 	plugins: [
 		autoImport({
+			configFile: false,
 			components: [
 				{
 					name: './src/lib/boilerplate/components',
