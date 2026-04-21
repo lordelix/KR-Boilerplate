@@ -7,7 +7,13 @@
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import type { XioniEventProps } from './XioniEvent'
 
-	let { baseName = 'XioniEvent', class: className, event, ...restProps }: XioniEventProps = $props()
+	let {
+		baseName = 'XioniEvent',
+		class: className,
+		event,
+		children,
+		...restProps
+	}: XioniEventProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -135,4 +141,5 @@
 			<Button fontello="file-pdf" to={pdf.src}>{pdf.title}</Button>
 		{/if}
 	</ButtonRow>
+	{@render children?.()}
 </div>

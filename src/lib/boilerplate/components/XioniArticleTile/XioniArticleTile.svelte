@@ -15,6 +15,7 @@
 		linkText = 'Weiterlesen',
 		tag = 'div',
 		link = `${page.url.pathname}${article.slug}_${article.id}`,
+		children,
 		...restProps
 	}: XioniArticleTileProps = $props()
 
@@ -63,4 +64,5 @@
 			{linkText}
 		</Link>
 	{/if}
+	{@render children?.()}
 </svelte:element>

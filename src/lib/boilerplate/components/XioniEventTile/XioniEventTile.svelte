@@ -16,6 +16,7 @@
 		linkText = 'Mehr erfahren',
 		tag = 'div',
 		link = `${page.url.pathname}${event.slug}_${event.id}/`,
+		children,
 		...restProps
 	}: XioniEventTileProps = $props()
 
@@ -68,4 +69,5 @@
 			{linkText}
 		</Link>
 	{/if}
+	{@render children?.()}
 </svelte:element>

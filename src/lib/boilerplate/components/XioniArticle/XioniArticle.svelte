@@ -14,9 +14,8 @@
 	const {
 		class: classProp,
 		baseName = 'XioniArticle',
-
 		article,
-
+		children,
 		...restProps
 	}: XioniArticleProps = $props()
 
@@ -31,19 +30,15 @@
 			caption={image.description || undefined}
 			alt={title} />
 	{/if}
-
 	<h1 class="{baseName}__title">
 		{title}
 	</h1>
-
 	{#if author || date}
 		<Meta {author} {date} />
 	{/if}
-
 	<p class="{baseName}__teaser">
 		{@html teaser}
 	</p>
-
 	{#if content?.length}
 		<div class="{baseName}__content">
 			{#each content as { text, title, image }, i (i)}
@@ -51,8 +46,8 @@
 			{/each}
 		</div>
 	{/if}
-
 	{#if pdf || website}
 		<Buttons {pdf} {website} />
 	{/if}
+	{@render children?.()}
 </article>
