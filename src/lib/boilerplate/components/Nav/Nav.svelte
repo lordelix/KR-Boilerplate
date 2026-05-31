@@ -11,7 +11,7 @@
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 
-	let { routes, baseName = 'Nav', sticky, class: className }: NavProps = $props()
+	let { routes, baseName = 'Nav', sticky, class: className, children }: NavProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
@@ -103,6 +103,7 @@
 				{/if}
 			</li>
 		{/each}
+		{@render children?.()}
 	</ul>
 </nav>
 
