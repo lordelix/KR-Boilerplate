@@ -1,4 +1,4 @@
-export type NavProps = {
+export type NavProps = ComponentBaseProps & {
 	baseName?: string
 	class?: string
 	routes: NavRoute[]
