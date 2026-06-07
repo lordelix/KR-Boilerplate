@@ -11,10 +11,18 @@ export { type AddressProps } from './Address/Address.d'
 export { default as AddressbookEntry } from './AddressbookEntry/AddressbookEntry.svelte'
 export { type AddressbookEntryProps } from './AddressbookEntry/AddressbookEntry.d'
 
+// BookingPlan
+export { default as BookingPlan } from './BookingPlan/BookingPlan.svelte'
+export type { BookingPlanProps } from './BookingPlan/BookingPlan.d'
+
 // Button
 export { default as Button } from './Button/Button.svelte'
 export type { ButtonProps } from './Button/Button.d'
 export { default as ButtonRow } from './ButtonRow/ButtonRow.svelte'
+
+// Calendar
+export { default as Calendar } from './Calendar/Calendar.svelte'
+export type { CalendarProps } from './Calendar/Calendar.d'
 
 // Checkbox
 export { default as Checkbox } from './Checkbox/Checkbox.svelte'
