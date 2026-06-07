@@ -53,7 +53,6 @@
 										<img {src} alt={description || event.title} loading="lazy" />
 									</Grid>
 								{/each}
-									{/each}
 								</Grid>
 							{/if}
 							<Link
