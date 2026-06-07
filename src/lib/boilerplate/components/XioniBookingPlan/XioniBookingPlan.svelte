@@ -1,11 +1,11 @@
 <script lang="ts">
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import { Calendar, Grid } from '..'
-	import type { BookingPlanProps } from './BookingPlan.d'
+	import type { XioniBookingPlanProps } from './XioniBookingPlan.d'
 
 	let {
 		class: classProp,
-		baseName = 'BookingPlan',
+		baseName = 'XioniBookingPlan',
 
 		bookedDays = [],
 		bookedDaysLastUpdate,
