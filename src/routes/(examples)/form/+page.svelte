@@ -2,7 +2,7 @@
 
 <Form moduleId="1594">
 	<div class="$gap $flex $flex-column">
-		<Input name="fistname" label="Vorname" placeholder="Max" />
+		<Input name="firstname" label="Vorname" placeholder="Max" />
 		<Input name="lastname" label="Nachname" placeholder="Mustermann" required />
 		<Input name="street" label="Straße & Hausnummer" />
 		<Input name="email" label="E-Mail" required />
@@ -10,7 +10,7 @@
 
 		<div class="$gap $flex">
 			<Radio name="voice" value="rye-bun" label="Roggen Vollkorn Brötchen" />
-			<Radio name="voice" value="weat-bun" label="Weizenbrötchen" />
+			<Radio name="voice" value="wheat-bun" label="Weizenbrötchen" />
 		</div>
 
 		<Select
@@ -29,7 +29,7 @@
 	<Button>Abschicken</Button>
 
 	{#snippet done()}
-		<p class="$font-bold">Vielen dank für Ihre Anfrage.</p>
+		<p class="$font-bold">Vielen Dank für Ihre Anfrage.</p>
 		<p>Wir werden uns schnellstmöglich bei Ihnen melden.</p>
 	{/snippet}
 </Form>

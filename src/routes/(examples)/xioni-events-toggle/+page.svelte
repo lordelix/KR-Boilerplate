@@ -13,7 +13,10 @@
 				{#each events as event (event.id)}
 					<li>
 						{#if event.image}
-							<img src={event.image.thumbSrc} alt={event.image.alt} loading="lazy" />
+							<img
+								src={event.image.srcset?.small || event.image.src}
+								alt={event.image.description || event.title}
+								loading="lazy" />
 						{/if}
 						<h2>
 							{event.title}
@@ -45,10 +48,11 @@
 							</ul>
 							{#if event.images}
 								<Grid gap class="$mt">
-									{#each event.images as { src, alt } (src)}
-										<Grid size="tablet-1-5">
-											<img {src} {alt} loading="lazy" />
-										</Grid>
+								{#each event.images as { src, description } (src)}
+									<Grid size="tablet-1-5">
+										<img {src} alt={description || event.title} loading="lazy" />
+									</Grid>
+								{/each}
 									{/each}
 								</Grid>
 							{/if}

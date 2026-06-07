@@ -2,9 +2,10 @@
 	import { format } from '$lib/boilerplate/utils/formatDate'
 	import { isWithinInterval } from 'date-fns'
 
-	const periodStartDate = new Date('2024-01-01')
-	const periodEndDate = new Date('2030-12-31 23:59')
-	const isWithinPeriod = isWithinInterval(new Date(), {
+	const now = new Date()
+	const periodStartDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7)
+	const periodEndDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 14, 23, 59)
+	const isWithinPeriod = isWithinInterval(now, {
 		start: periodStartDate,
 		end: periodEndDate
 	})

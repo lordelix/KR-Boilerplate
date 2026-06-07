@@ -13,7 +13,7 @@
 		{#if events.length}
 			<ol class="$flex $flex-column $gap">
 				{#each events as event (event.id)}
-					<XioniEventTile tag="li" {event} link="./{event.slug}_{event.module}-{event.id}" />
+					<XioniEventTile tag="li" {event} link={`./${event.slug}_${event.module}-${event.id}/`} />
 				{/each}
 			</ol>
 		{:else}

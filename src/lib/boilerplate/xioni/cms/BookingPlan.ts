@@ -26,10 +26,10 @@ export default function useBookingPlan(clientOptions?: ClientOptions) {
 		)
 
 		return {
-			bookedDays: data.blockedDays,
+			bookedDays: data.blockedDays ?? [],
 			meta: {
 				updatedAt: data.lastChange || null,
-				totalCount: data.blockedDays?.length || 0
+				totalCount: (data.blockedDays ?? []).length
 			}
 		}
 	}

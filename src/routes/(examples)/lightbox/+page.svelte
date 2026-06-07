@@ -14,5 +14,5 @@
 	<img
 		src="https://picsum.photos/id/827/400/300"
 		data-lightbox="https://picsum.photos/id/827/1000/750"
-		alt="Fujiama in the distace" />
+		alt="Fujiama in the distance" />
 </Lightbox>
