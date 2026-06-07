@@ -8,7 +8,8 @@
 		baseName = 'BookingPlan',
 
 		bookedDays = [],
-		bookedDaysLastUpdate
+		bookedDaysLastUpdate,
+		...restProps
 	}: BookingPlanProps = $props()
 
 	// svelte-ignore state_referenced_locally
@@ -25,7 +26,7 @@
 	})
 </script>
 
-<div class={[block, classProp]}>
+<div class={[block, classProp]} {...restProps}>
 	<Grid gap>
 		{#each upcomingMonths as { month, year }, i (i)}
 			<Grid size="tablet-1-2">

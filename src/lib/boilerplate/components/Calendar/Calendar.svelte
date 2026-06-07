@@ -22,15 +22,18 @@
 		...restProps
 	}: CalendarProps = $props()
 
+	const parseMarkedDay = (markedDay: Date | string) => {
+		if (markedDay instanceof Date) return markedDay
+		// `YYYY-MM-DD` is parsed as UTC by `new Date()`, so normalise date-only strings to local midnight.
+		return new Date(markedDay.includes('T') ? markedDay : `${markedDay}T00:00:00`)
+	}
+
+	const markedDayKeys = $derived(
+		new Set(markedDays.map(day => format(parseMarkedDay(day), 'yyyy-MM-dd')))
+	)
+
 	const isMarkedDay = (date: Date) => {
-		return markedDays.some(markedDay => {
-			const markedDate = typeof markedDay === 'string' ? new Date(markedDay) : markedDay
-			return (
-				date.getFullYear() === markedDate.getFullYear() &&
-				date.getMonth() === markedDate.getMonth() &&
-				date.getDate() === markedDate.getDate()
-			)
-		})
+		return markedDayKeys.has(format(date, 'yyyy-MM-dd'))
 	}
 
 	const currentMonth = $derived(new Date(year, month - 1, 1))
