@@ -1,0 +1,93 @@
+.Calendar {
+	background-color: white;
+	padding: 0.5rem;
+}
+
+.Calendar__title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 0.5rem;
+	padding: 0.5rem;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.Calendar__weekdays {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-gap: 1em;
+	margin: 0 auto 1em;
+	max-width: 64em;
+	padding: 0;
+}
+
+.Calendar__weekdays abbr[title] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	text-decoration: none;
+	cursor: default;
+}
+
+.Calendar__day-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-gap: 0.5rem;
+	margin: 0 auto;
+	max-width: 64em;
+	padding: 0;
+	list-style: none;
+}
+
+.Calendar__day {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	list-style: none;
+	margin-left: 0;
+	background-color: #eaeaea;
+	aspect-ratio: 1 / 1;
+	user-select: none;
+}
+
+.Calendar__day--month-prev,
+.Calendar__day--month-next {
+	background-color: transparent;
+	color: lightgray;
+}
+
+.Calendar__day--today {
+	font-weight: 700;
+}
+
+.Calendar__day--marked {
+	position: relative;
+	background-color: rgb(255, 200, 200);
+	overflow: hidden;
+
+	&::before,
+	&::after {
+		content: '';
+		opacity: 0.333;
+		display: block;
+		width: 2px;
+		height: 150%;
+		background-color: red;
+		border-radius: 2px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+
+	&::before {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	&::after {
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+}
