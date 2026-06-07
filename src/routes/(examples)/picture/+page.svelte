@@ -12,5 +12,4 @@
 		src={["https://cdn.klickrhein.de/boilerplate/placeholder/sweden-small.webp", 620, 413]}
 		tablet={["https://cdn.klickrhein.de/boilerplate/placeholder/sweden.webp", 1024, 576]}
 		caption="Schweden ist sehr schön!" />
-		caption="Schweden ist sehr schön!" />
 </Wrapper>

@@ -10,7 +10,7 @@
 		bookedDays = [],
 		bookedDaysLastUpdate,
 		...restProps
-	}: BookingPlanProps = $props()
+	}: XioniBookingPlanProps = $props()
 
 	// svelte-ignore state_referenced_locally
 	const { block, element } = makeBEM(baseName)
