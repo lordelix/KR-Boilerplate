@@ -11,10 +11,6 @@ export { type AddressProps } from './Address/Address.d'
 export { default as AddressbookEntry } from './AddressbookEntry/AddressbookEntry.svelte'
 export { type AddressbookEntryProps } from './AddressbookEntry/AddressbookEntry.d'
 
-// BookingPlan
-export { default as BookingPlan } from './BookingPlan/BookingPlan.svelte'
-export type { BookingPlanProps } from './BookingPlan/BookingPlan.d'
-
 // Button
 export { default as Button } from './Button/Button.svelte'
 export type { ButtonProps } from './Button/Button.d'
@@ -107,6 +103,9 @@ export { default as Wrapper } from './Wrapper/Wrapper.svelte'
 
 // Xioni
 export { default as XioniAlbum } from './XioniAlbum/XioniAlbum.svelte'
+
+export { default as XioniBookingPlan } from './XioniBookingPlan/XioniBookingPlan.svelte'
+export type { XioniBookingPlanProps } from './XioniBookingPlan/XioniBookingPlan.d'
 
 export { default as XioniArticle } from './XioniArticle/XioniArticle.svelte'
 export { default as XioniArticleButtons } from './XioniArticle/partials/XioniArticleButtons/XioniArticleButtons.svelte'
