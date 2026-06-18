@@ -2,6 +2,8 @@ import { flatten, sortBy } from 'lodash-es'
 import { getEvents } from '$lib/boilerplate/xioni/cms/Events'
 import xioniLoader from '$lib/boilerplate/xioni/utils/xioniLoader'
 
+export const prerender = false
+
 export async function load() {
 	const endsAfter = new Date()
 	const limit = 5
