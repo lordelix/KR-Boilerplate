@@ -82,7 +82,7 @@
 <Modal bind:this={errorModalRef} onClose={onErrorModalClose}>
 	<Message class={element('errors')} type="error">
 		<ul>
-			{#each Object.entries($formError?.details || []) as [key, values] (key)}
+			{#each Object.entries($formError?.details || {}) as [key, values] (key)}
 				<li>
 					<b>{key.toUpperCase()}:</b>
 					{values.map(value => value.message).join('<br />')}
