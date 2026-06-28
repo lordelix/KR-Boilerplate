@@ -54,6 +54,14 @@ export namespace XioniCMS {
 
 	export type Gallery = Album[]
 
+	export type BookingPlan = {
+		bookedDays: string[]
+		meta: {
+			updatedAt: string | null
+			totalCount: number
+		}
+	}
+
 	export interface MenuItem {
 		id: number
 		name: string

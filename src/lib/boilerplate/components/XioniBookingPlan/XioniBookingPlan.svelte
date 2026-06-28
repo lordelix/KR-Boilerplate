@@ -1,16 +1,16 @@
 <script lang="ts">
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
 	import { Calendar, Grid } from '..'
-	import type { BookingPlanProps } from './BookingPlan.d'
+	import type { XioniBookingPlanProps } from './XioniBookingPlan.d'
 
 	let {
 		class: classProp,
-		baseName = 'BookingPlan',
+		baseName = 'XioniBookingPlan',
 
 		bookedDays = [],
 		bookedDaysLastUpdate,
 		...restProps
-	}: BookingPlanProps = $props()
+	}: XioniBookingPlanProps = $props()
 
 	// svelte-ignore state_referenced_locally
 	const { block, element } = makeBEM(baseName)
