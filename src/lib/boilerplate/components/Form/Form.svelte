@@ -16,7 +16,9 @@
 		children,
 		done,
 		onSuccess,
-		onError
+		onError,
+		onSuccessModalClose = () => undefined,
+		onErrorModalClose = () => undefined
 	}: FormProps = $props()
 
 	// svelte-ignore state_referenced_locally
@@ -69,7 +71,7 @@
 	{@render children?.()}
 </form>
 
-<Modal bind:this={doneModalRef}>
+<Modal bind:this={doneModalRef} onClose={onSuccessModalClose}>
 	{#if done}
 		{@render done?.()}
 	{:else}
@@ -77,7 +79,7 @@
 	{/if}
 </Modal>
 
-<Modal bind:this={errorModalRef}>
+<Modal bind:this={errorModalRef} onClose={onErrorModalClose}>
 	<Message class={element('errors')} type="error">
 		<ul>
 			{#each Object.entries($formError?.details || []) as [key, values] (key)}

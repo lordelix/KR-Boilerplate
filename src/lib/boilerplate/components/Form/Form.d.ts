@@ -6,5 +6,7 @@ export type FormProps = ComponentBaseProps & {
 	children?: Snippet
 	done?: Snippet
 	onSuccess?: () => void
+	onSuccessModalClose?: () => void
 	onError?: (error: XioniApiErrorResponse) => void
+	onErrorModalClose?: () => void
 }
