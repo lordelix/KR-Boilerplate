@@ -15,7 +15,6 @@ export function mapDtoAddressbookEntry(dto: SchemaAddressbookEntry): XioniCMS.Ad
 		title: dto.title || null,
 		subtitle: dto.subtitle || null,
 		name: dto.name || null,
-		room: dto.room || null,
 		address: dto.address || null,
 		city: [dto.zip, dto.city].filter(Boolean).join(' ').trim() || null,
 		phone: dto.phone || null,

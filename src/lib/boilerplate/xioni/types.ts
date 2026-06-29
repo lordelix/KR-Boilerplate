@@ -98,7 +98,6 @@ export namespace XioniCMS {
 		title: string | null
 		subtitle: string | null
 		name: string | null
-		room: string | null
 		address: string | null
 		city: string | null
 		phone: string | null
