@@ -23,6 +23,7 @@
 		teaser,
 		description,
 		ends,
+		address,
 		image,
 		pdf,
 		flags,
@@ -66,6 +67,7 @@
 	<meta itemprop="startDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="endDate" content={formatISO(starts, { representation: 'date' })} />
 	<meta itemprop="organizer" content={organizer} />
+	<meta itemprop="location" content={address} />
 
 	{#if image || images?.length}
 		<div class={bem.element('image-wrapper')}>
