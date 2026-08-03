@@ -11,7 +11,10 @@
 				{#each events as event (event.id)}
 					<li>
 						{#if event.image}
-						<img src={event.image.src} alt={event.image.description || event.title} loading="lazy" />
+							<img
+								src={event.image.src}
+								alt={event.image.description || event.title}
+								loading="lazy" />
 						{/if}
 						<h2>
 							{event.title}

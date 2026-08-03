@@ -48,11 +48,11 @@
 							</ul>
 							{#if event.images}
 								<Grid gap class="$mt">
-								{#each event.images as { src, description } (src)}
-									<Grid size="tablet-1-5">
-										<img {src} alt={description || event.title} loading="lazy" />
-									</Grid>
-								{/each}
+									{#each event.images as { src, description } (src)}
+										<Grid size="tablet-1-5">
+											<img {src} alt={description || event.title} loading="lazy" />
+										</Grid>
+									{/each}
 								</Grid>
 							{/if}
 							<Link
