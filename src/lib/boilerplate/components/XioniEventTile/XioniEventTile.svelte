@@ -1,10 +1,9 @@
 <script lang="ts">
 	import './XioniEventTile.scss'
 
-	import { format } from '$lib/boilerplate/utils/formatDate'
+	import { formatISO } from 'date-fns'
 	import { goto } from '$app/navigation'
 	import { Link } from '..'
-	import { LOCALE } from '$lib/boilerplate/constants'
 	import { page } from '$app/state'
 	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
 	import type { XioniEventTileProps } from './XioniEventTile.d'
@@ -22,7 +21,7 @@
 
 	// -----------------------------------------------------------------------------------------------
 
-	const { title, image, teaser, starts, ends, duration, organizer, tags } = $derived(event)
+	const { title, image, teaser, starts, ends, duration, organizer, address, tags } = $derived(event)
 
 	function tagsToString(tags: XioniCMS.Event['tags']) {
 		return tags?.map(tag => tag.id).join(',')
@@ -36,9 +35,19 @@
 	itemtype="https://schema.org/Event"
 	class={[baseName, className]}
 	{...restProps}>
-	<meta itemprop="startDate" content={format(starts, 'yyyy-MM-dd')} />
-	<meta itemprop="endDate" content={format(ends, 'yyyy-MM-dd')} />
-	<meta itemprop="organizer" content={organizer} />
+	<meta itemprop="startDate" content={formatISO(starts)} />
+	<meta itemprop="endDate" content={formatISO(ends)} />
+	{#if organizer}
+		<div itemprop="organizer" itemscope itemtype="https://schema.org/Organization">
+			<meta itemprop="name" content={organizer} />
+		</div>
+	{/if}
+	{#if address}
+		<div itemprop="location" itemscope itemtype="https://schema.org/Place">
+			<meta itemprop="name" content={address} />
+		</div>
+	{/if}
+
 	{#if image}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -55,7 +64,7 @@
 		{title}
 	</h2>
 	<h3 class="{baseName}__date">
-		<time datetime={starts.toLocaleDateString(LOCALE)}>
+		<time datetime={formatISO(starts)}>
 			{duration}
 		</time>
 	</h3>
