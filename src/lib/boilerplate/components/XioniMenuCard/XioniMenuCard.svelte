@@ -40,6 +40,9 @@
 								itemtype="https://schema.org/Offer"
 								class="{baseName}__dish-price">
 								<meta itemprop="price" content={String(item.price.value)} />
+								{#if item.price.currency}
+									<meta itemprop="priceCurrency" content={item.price.currency} />
+								{/if}
 								{item.price.formatted}
 							</div>
 						{/if}
