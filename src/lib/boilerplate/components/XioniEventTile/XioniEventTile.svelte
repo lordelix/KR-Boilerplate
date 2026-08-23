@@ -44,7 +44,7 @@
 	{/if}
 	{#if address}
 		<div itemprop="location" itemscope itemtype="https://schema.org/Place">
-			<meta itemprop="name" content={address} />
+			<meta itemprop="address" content={address} />
 		</div>
 	{/if}
 

@@ -45,7 +45,9 @@
 		{title}
 	</h2>
 	{#if author}
-		<meta itemprop="author" content={author} />
+		<div itemprop="author" itemscope itemtype="https://schema.org/Person">
+			<meta itemprop="name" content={author} />
+		</div>
 	{/if}
 	{#if author || date}
 		<ul class="{baseName}__metadata">
