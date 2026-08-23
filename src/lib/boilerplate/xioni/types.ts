@@ -73,6 +73,7 @@ export namespace XioniCMS {
 		price: {
 			value: number
 			formatted: string
+			currency?: string
 		}
 	}
 

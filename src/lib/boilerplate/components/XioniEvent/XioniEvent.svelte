@@ -64,10 +64,18 @@
 	{...restProps}
 	class={[bem.block, className]}
 	data-flags={flags?.join()}>
-	<meta itemprop="startDate" content={formatISO(starts, { representation: 'date' })} />
-	<meta itemprop="endDate" content={formatISO(starts, { representation: 'date' })} />
-	<meta itemprop="organizer" content={organizer} />
-	<meta itemprop="location" content={address} />
+	<meta itemprop="startDate" content={formatISO(starts)} />
+	<meta itemprop="endDate" content={formatISO(ends)} />
+	{#if organizer}
+		<div itemprop="organizer" itemscope itemtype="https://schema.org/Organization">
+			<meta itemprop="name" content={organizer} />
+		</div>
+	{/if}
+	{#if address}
+		<div itemprop="location" itemscope itemtype="https://schema.org/Place">
+			<meta itemprop="address" content={address} />
+		</div>
+	{/if}
 
 	{#if image || images?.length}
 		<div class={bem.element('image-wrapper')}>
@@ -76,7 +84,8 @@
 					class={baseName + '__image'}
 					src={image.src}
 					tablet={image.src}
-					alt={image.description} />
+					alt={image.description}
+					itemprop="image" />
 			{/if}
 			{#if images.length}
 				<Grid gap>
@@ -113,9 +122,9 @@
 	</h2>
 
 	<h3 class={baseName + '__date'}>
-		<date datetime={starts.toDateString()}>
+		<time datetime={formatISO(starts)}>
 			{@html formatFromTo(starts, ends)}
-		</date>
+		</time>
 	</h3>
 
 	{#if teaser}

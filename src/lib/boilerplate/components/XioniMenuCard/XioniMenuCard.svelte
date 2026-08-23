@@ -12,19 +12,37 @@
 	}: XioniMenuCardProps = $props()
 </script>
 
-<ol class={[baseName, classProp]} {...restProps}>
+<ol itemscope itemtype="https://schema.org/Menu" class={[baseName, classProp]} {...restProps}>
 	{#each menuCard as group, i (i)}
-		<li class="{baseName}__group">
-			<h3 class="{baseName}__group-name">{group.name}</h3>
+		<li
+			itemprop="hasMenuSection"
+			itemscope
+			itemtype="https://schema.org/MenuSection"
+			class="{baseName}__group">
+			<h3 itemprop="name" class="{baseName}__group-name">{group.name}</h3>
 			{#if group.description}
-				<p class="{baseName}__group-description">{@html group.description}</p>
+				<p itemprop="description" class="{baseName}__group-description">
+					{@html group.description}
+				</p>
 			{/if}
 			<ul class="{baseName}__dishes">
 				{#each group.items as item, j (j)}
-					<li class="{baseName}__dish">
-						<h4 class="{baseName}__dish-title">{item.name}</h4>
+					<li
+						itemprop="hasMenuItem"
+						itemscope
+						itemtype="https://schema.org/MenuItem"
+						class="{baseName}__dish">
+						<h4 itemprop="name" class="{baseName}__dish-title">{item.name}</h4>
 						{#if item.price.value > 0}
-							<div class="{baseName}__dish-price">
+							<div
+								itemprop="offers"
+								itemscope
+								itemtype="https://schema.org/Offer"
+								class="{baseName}__dish-price">
+								<meta itemprop="price" content={String(item.price.value)} />
+								{#if item.price.currency}
+									<meta itemprop="priceCurrency" content={item.price.currency} />
+								{/if}
 								{item.price.formatted}
 							</div>
 						{/if}
@@ -36,7 +54,7 @@
 								loading="lazy" />
 						{/if}
 						{#if item.description}
-							<p class="{baseName}__dish-description">
+							<p itemprop="description" class="{baseName}__dish-description">
 								{@html item.description}
 							</p>
 						{/if}
