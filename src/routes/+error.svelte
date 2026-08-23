@@ -13,6 +13,10 @@
 	const message = page.error?.message || 'Ein Fehler ist aufgetreten'
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
 <div data-error>
 	<div class="$text-center">
 		<Message title="🥵 Ups…" type="error">
