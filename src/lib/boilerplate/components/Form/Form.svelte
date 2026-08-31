@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { format, parseISO } from 'date-fns'
 	import { useMailer } from '$lib/boilerplate/xioni/mailer/Message'
 	import { writable } from 'svelte/store'
 	import type { XioniApiErrorResponse } from '$lib/boilerplate/xioni/types'
@@ -35,10 +36,22 @@
 	const isFormDone = writable(false)
 	const isLoading = writable(false)
 
+	function normalizeDateFields(formData: FormData) {
+		for (const element of formRef.querySelectorAll<HTMLInputElement>('input[type="date"]')) {
+			if (!element.name || !element.value) continue
+
+			const parsedDate = parseISO(element.value)
+			if (!Number.isNaN(parsedDate.getTime())) {
+				formData.set(element.name, format(parsedDate, 'dd.MM.yyyy'))
+			}
+		}
+	}
+
 	export function submit(e: Event) {
 		e.preventDefault()
 
 		const formData = new FormData(formRef)
+		normalizeDateFields(formData)
 
 		formData.set('module-id', moduleId.toString())
 		isLoading.set(true)
