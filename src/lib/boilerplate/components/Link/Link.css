@@ -1,8 +1,9 @@
 :where(.Link) {
 	cursor: pointer;
+	text-decoration: none;
 }
 
-:where(.Link) a {
+:where(.Link__text) {
 	text-decoration: underline;
 }
 

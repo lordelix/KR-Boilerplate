@@ -44,15 +44,15 @@
 	}
 </script>
 
-<span class={classNames}>
+<svelte:element this={tag} href={to} {target} {rel} aria-label={label} class={classNames}>
 	{#if fontello}
 		<Fontello class={BEM.element('icon')} name={fontello} />&nbsp;
 	{/if}
-	<svelte:element this={tag} href={to} {target} {rel} aria-label={label}>
+	<span class={BEM.element('text')}>
 		{#if children}
 			{@render children()}
 		{:else}
 			{trimScheme(to)}
 		{/if}
-	</svelte:element>
-</span>
+	</span>
+</svelte:element>
