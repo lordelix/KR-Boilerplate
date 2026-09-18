@@ -1,7 +1,7 @@
 <h1>Accordion</h1>
 
 <Accordion>
-	<AccordionSlide title="Charybdis">
+	<AccordionSlide title="Charybdis" open>
 		<p>
 			Charybdis (altgriechisch Χάρυβδις Chárybdis) ist ein gestaltloses Meeresungeheuer aus der
 			griechischen Mythologie, das gemeinsam mit der Skylla an einer Meerenge gelebt haben soll.

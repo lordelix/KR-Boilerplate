@@ -11,14 +11,13 @@
 	let {
 		class: classProp,
 		baseName = 'Accordion',
-
 		children,
 		...restProps
 	}: AccordionProps = $props()
 
 	// -----------------------------------------------------------------------------------------------
 
-	let activeItem = writable(null)
+	let activeItem = writable<null | string>(null)
 
 	setContext('Accordion:active-item', activeItem)
 </script>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './AccordionSlide.scss'
 
-	import { getContext } from 'svelte'
+	import { getContext, onMount } from 'svelte'
 	import { slide } from 'svelte/transition'
 	import { uniqueId } from 'lodash-es'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
@@ -11,12 +11,11 @@
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 
 	let {
-		id = uniqueId('accordion-side-'),
+		id = uniqueId('accordion-slide-'),
 		class: classProp,
 		baseName = 'AccordionSlide',
-
 		title,
-
+		open = false,
 		children,
 		...restProps
 	}: AccordionSlideProps = $props()
@@ -34,6 +33,12 @@
 		!!collapsed || bem.modifier('expanded'),
 		!collapsed || bem.modifier('collapsed')
 	])
+
+	onMount(() => {
+		if (open && $activeItem === null) {
+			activeItem.set(id)
+		}
+	})
 
 	function handleClick() {
 		activeItem.set($activeItem === id ? null : id)
