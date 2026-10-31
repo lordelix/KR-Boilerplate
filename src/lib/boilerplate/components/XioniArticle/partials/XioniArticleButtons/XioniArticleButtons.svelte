@@ -17,7 +17,7 @@
 	}: XioniArticleButtonsProps = $props()
 
 	const bem = $derived(makeBEM(baseName))
-	const pdfTitle = $derived(pdf?.title?.trim() || 'weitere Informationen')
+	const pdfTitle = $derived(pdf?.title?.trim() || 'Weitere Informationen')
 
 	// -----------------------------------------------------------------------------------------------
 </script>
