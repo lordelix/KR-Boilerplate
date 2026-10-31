@@ -42,7 +42,7 @@
 					if (link) goto(link)
 				}} />
 			{#if image.description}
-				<figcaption class="{baseName}__caption">{image.description}</figcaption>
+				<figcaption class="{baseName}__caption" aria-hidden="true">{image.description}</figcaption>
 			{/if}
 		</figure>
 	{/if}

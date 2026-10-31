@@ -20,10 +20,11 @@
 
 :where(.XioniEventTile__image) {
 	display: block;
-	width: 100%;
+	max-width: 100%;
 	cursor: pointer;
 
 	@include mixins.breakpoint('tablet-up') {
+		width: 100%;
 		aspect-ratio: 1/1;
 		object-fit: cover;
 	}

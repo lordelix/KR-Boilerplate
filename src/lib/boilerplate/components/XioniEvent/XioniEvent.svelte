@@ -88,7 +88,9 @@
 						alt={image.description}
 						itemprop="image" />
 					{#if image.description}
-						<figcaption class={bem.element('caption')}>{image.description}</figcaption>
+						<figcaption class={bem.element('caption')} aria-hidden="true">
+							{image.description}
+						</figcaption>
 					{/if}
 				</figure>
 			{/if}
