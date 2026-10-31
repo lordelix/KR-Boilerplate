@@ -49,16 +49,21 @@
 	{/if}
 
 	{#if image}
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-		<img
-			itemprop="image"
-			class="{baseName}__image"
-			src={image.srcset.small || image.src}
-			alt={image.description || title}
-			onclick={() => {
-				if (link) goto(link)
-			}} />
+		<figure class="{baseName}__figure">
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+			<img
+				itemprop="image"
+				class="{baseName}__image"
+				src={image.srcset.small || image.src}
+				alt={image.description || title}
+				onclick={() => {
+					if (link) goto(link)
+				}} />
+			{#if image.description}
+				<figcaption class="{baseName}__caption">{image.description}</figcaption>
+			{/if}
+		</figure>
 	{/if}
 	<h2 itemprop="name" class="{baseName}__title">
 		{title}

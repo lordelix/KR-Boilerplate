@@ -80,12 +80,17 @@
 	{#if image || images?.length}
 		<div class={bem.element('image-wrapper')}>
 			{#if image}
-				<Picture
-					class={baseName + '__image'}
-					src={image.src}
-					tablet={image.src}
-					alt={image.description}
-					itemprop="image" />
+				<figure class={bem.element('figure')}>
+					<Picture
+						class={baseName + '__image'}
+						src={image.src}
+						tablet={image.src}
+						alt={image.description}
+						itemprop="image" />
+					{#if image.description}
+						<figcaption class={bem.element('caption')}>{image.description}</figcaption>
+					{/if}
+				</figure>
 			{/if}
 			{#if images.length}
 				<Grid gap>
