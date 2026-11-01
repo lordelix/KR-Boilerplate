@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './XioniEvent.scss'
 
-	import { Button, ButtonRow, Grid, Lightbox, Picture } from '..'
+	import { Button, ButtonRow, Grid, Picture } from '..'
 	import { formatFromTo } from '$lib/boilerplate/utils/formatDate'
 	import { formatISO } from 'date-fns'
 	import makeBEM from '$lib/boilerplate/utils/makeBem'
@@ -34,29 +34,23 @@
 		organizer
 	} = $derived(event)
 
-	let lightbox = $state<Lightbox>()
-	const imagesRaw = $derived(event.images || [])
-	const images = $derived(
-		imagesRaw.map(img => ({
-			src: img.src,
-			alt: img.description ?? ''
-		}))
-	)
+	const images = $derived(event.images || [])
+	const gallery = $derived(image ? [image, ...images.filter(img => img.src !== image.src)] : images)
+
+	let selectedIndex = $state(0)
+	let showAllThumbnails = $state(false)
+	const selectedImage = $derived(gallery[selectedIndex] ?? gallery[0])
+
 	const maxImages = 5
-	const imageRow = $derived.by(() => {
-		if (imagesRaw.length === maxImages) {
-			return [...imagesRaw].splice(0, maxImages)
-		} else if ([...imagesRaw].length > maxImages) {
-			return [...imagesRaw].splice(0, maxImages - 1)
-		} else {
-			return imagesRaw
-		}
+	const hasOverflow = $derived(!showAllThumbnails && gallery.length > maxImages)
+	const thumbnails = $derived(hasOverflow ? gallery.slice(0, maxImages - 1) : gallery)
+
+	$effect(() => {
+		void event.id
+		selectedIndex = 0
+		showAllThumbnails = false
 	})
 </script>
-
-{#if images.length}
-	<Lightbox bind:this={lightbox} {images} />
-{/if}
 
 <div
 	itemscope
@@ -77,46 +71,52 @@
 		</div>
 	{/if}
 
-	{#if image || images?.length}
+	{#if selectedImage}
 		<div class={bem.element('image-wrapper')}>
-			{#if image}
-				<figure class={bem.element('figure')}>
+			<figure class={bem.element('figure')}>
+				{#key selectedImage.src}
 					<Picture
 						class={baseName + '__image'}
-						src={image.src}
-						tablet={image.src}
-						alt={image.description}
+						src={selectedImage.src}
+						tablet={selectedImage.src}
+						alt={selectedImage.description}
 						itemprop="image" />
-					{#if image.description}
-						<figcaption class={bem.element('caption')} aria-hidden="true">
-							{image.description}
-						</figcaption>
-					{/if}
-				</figure>
-			{/if}
-			{#if images.length}
+				{/key}
+				{#if selectedImage.description}
+					<figcaption class={bem.element('caption')} aria-hidden="true">
+						{selectedImage.description}
+					</figcaption>
+				{/if}
+			</figure>
+			{#if gallery.length > 1}
 				<Grid gap>
-					{#each imageRow as { src, description }, index (src)}
+					{#each thumbnails as { src, description }, index (src)}
 						<Grid size="1-5" class="$mt">
-							<!-- svelte-ignore a11y_click_events_have_key_events -->
-							<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-							<img
-								class={baseName + '__piucture-row-image $pointer'}
-								{src}
-								alt={description}
-								loading="lazy"
-								onclick={() => lightbox?.open(index)} />
+							<button
+								type="button"
+								class={[
+									baseName + '__picture-row-button',
+									index === selectedIndex && baseName + '__picture-row-button--active'
+								]}
+								aria-pressed={index === selectedIndex}
+								onclick={() => (selectedIndex = index)}>
+								<img
+									class={baseName + '__picture-row-image'}
+									{src}
+									alt={description ?? ''}
+									loading="lazy" />
+							</button>
 						</Grid>
 					{/each}
-					{#if images.length > maxImages}
+					{#if hasOverflow}
 						<Grid size="1-5" class="$mt">
-							<!-- svelte-ignore a11y_click_events_have_key_events -->
-							<!-- svelte-ignore a11y_no_static_element_interactions -->
-							<div
-								class={baseName + '__piucture-row-overflow-indicator $pointer'}
-								onclick={() => lightbox?.open(4)}>
-								+{images.length - maxImages}
-							</div>
+							<button
+								type="button"
+								class={baseName + '__picture-row-overflow-indicator'}
+								aria-label="Alle Bilder anzeigen"
+								onclick={() => (showAllThumbnails = true)}>
+								+{gallery.length - thumbnails.length}
+							</button>
 						</Grid>
 					{/if}
 				</Grid>

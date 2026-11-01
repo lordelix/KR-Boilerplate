@@ -9,7 +9,33 @@
 	margin-bottom: 1.25rem;
 }
 
-:where(.XioniEvent__piucture-row-overflow-indicator) {
+:where(.XioniEvent__picture-row-button, .XioniEvent__picture-row-overflow-indicator) {
+	display: block;
+	width: 100%;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	cursor: pointer;
+}
+
+:where(.XioniEvent__picture-row-button) {
+	opacity: 0.7;
+	transition: opacity 0.15s;
+
+	&:hover,
+	&:focus-visible {
+		opacity: 1;
+	}
+}
+
+:where(.XioniEvent__picture-row-button--active) {
+	opacity: 1;
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+:where(.XioniEvent__picture-row-overflow-indicator) {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(black, 0.05);
@@ -42,7 +68,7 @@
 	display: block;
 }
 
-:where(.XioniEvent__piucture-row-image) {
+:where(.XioniEvent__picture-row-image) {
 	width: 100%;
 	object-fit: cover;
 	aspect-ratio: 16/9;
