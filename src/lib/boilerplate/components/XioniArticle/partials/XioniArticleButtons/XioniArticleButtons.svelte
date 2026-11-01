@@ -17,6 +17,7 @@
 	}: XioniArticleButtonsProps = $props()
 
 	const bem = $derived(makeBEM(baseName))
+	const pdfTitle = $derived(pdf?.title?.trim() || 'Weitere Informationen')
 
 	// -----------------------------------------------------------------------------------------------
 </script>
@@ -24,7 +25,7 @@
 <ButtonRow class={[bem.block, classProp]}>
 	{#if pdf}
 		<Button to={pdf.src} class={bem.element('pdf')} fontello="file-pdf">
-			{pdf.title}
+			{pdfTitle}
 		</Button>
 	{/if}
 
