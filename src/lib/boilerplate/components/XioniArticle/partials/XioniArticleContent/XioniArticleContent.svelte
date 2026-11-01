@@ -29,7 +29,7 @@
 	</h3>
 {/if}
 {#if text || image}
-	<p class={bem.element('text')}>
+	<div class={bem.element('paragraph')}>
 		{#if image}
 			<Figure
 				baseName={figureBem.block}
@@ -38,8 +38,6 @@
 				alt={image.description}
 				caption={image.description} />
 		{/if}
-		{#if text}
-			{@html text}
-		{/if}
-	</p>
+		{@html text || ''}
+	</div>
 {/if}

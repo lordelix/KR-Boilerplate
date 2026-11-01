@@ -4,30 +4,11 @@
 	margin: 0;
 }
 
-@include mixin.breakpoint('tablet-up') {
-	:where(.XioniArticleContentImage) {
-		display: inline-block;
-		max-width: calc(100% / 3) !important;
-	}
-}
-
 :where(.XioniArticleContentImage__caption) {
 	display: block;
 	text-align: center;
 	font-size: 0.75rem;
 	padding: 0.25rem;
-}
-
-:where(.XioniArticleContentImage--right) {
-	float: right;
-	margin-left: 1rem;
-	clear: left;
-}
-
-:where(.XioniArticleContentImage--left) {
-	float: left;
-	margin-right: 1rem;
-	clear: left;
 }
 
 :where(.XioniArticleContent ul) {
@@ -37,4 +18,24 @@
 
 :where(.XioniArticleContent) {
 	display: flow-root;
+}
+
+@include mixin.breakpoint('tablet-up') {
+	:where(.XioniArticleContentImage--right, .XioniArticleContentImage--left) {
+		min-width: 14rem;
+		width: calc(100% / 3);
+		clear: left;
+		transform: translateY(0.5rem);
+		margin-bottom: 1rem;
+	}
+
+	:where(.XioniArticleContentImage--right) {
+		float: right;
+		margin-left: 1rem;
+	}
+
+	:where(.XioniArticleContentImage--left) {
+		float: left;
+		margin-right: 1rem;
+	}
 }
