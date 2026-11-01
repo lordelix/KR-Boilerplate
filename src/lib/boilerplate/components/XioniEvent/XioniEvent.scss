@@ -27,6 +27,15 @@
 	margin-top: 2rem;
 }
 
+:where(.XioniEvent__figure) {
+	margin: 0;
+}
+
+:where(.XioniEvent__caption) {
+	font-size: 0.85rem;
+	padding-top: 0.25rem;
+}
+
 :where(.XioniEvent__image) {
 	max-height: 40rem;
 	object-fit: cover;

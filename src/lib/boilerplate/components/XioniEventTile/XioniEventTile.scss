@@ -8,17 +8,31 @@
 	width: 100%;
 }
 
-:where(.XioniEventTile__image) {
-	margin-bottom: 1rem;
-	cursor: pointer;
+:where(.XioniEventTile__figure) {
+	margin: 0 0 1rem;
 
 	@include mixins.breakpoint('tablet-up') {
 		width: 12.5rem;
+		margin: 0 0 1rem 2rem;
+		float: right;
+	}
+}
+
+:where(.XioniEventTile__image) {
+	display: block;
+	max-width: 100%;
+	cursor: pointer;
+
+	@include mixins.breakpoint('tablet-up') {
+		width: 100%;
 		aspect-ratio: 1/1;
 		object-fit: cover;
-		float: right;
-		margin-left: 2rem;
 	}
+}
+
+:where(.XioniEventTile__caption) {
+	font-size: 0.85rem;
+	padding-top: 0.25rem;
 }
 
 :where(.XioniEventTile__metadata) {

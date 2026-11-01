@@ -30,16 +30,21 @@
 	{...restProps}>
 	{#if image}
 		<meta itemprop="image" content={image.src} />
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-		<img
-			class="{baseName}__image"
-			class:$pointer={!!link}
-			src={image.srcset?.small}
-			alt={image.description}
-			onclick={() => {
-				if (link) goto(link)
-			}} />
+		<figure class="{baseName}__figure">
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+			<img
+				class="{baseName}__image"
+				class:$pointer={!!link}
+				src={image.srcset?.small || image.src}
+				alt={image.description}
+				onclick={() => {
+					if (link) goto(link)
+				}} />
+			{#if image.description}
+				<figcaption class="{baseName}__caption" aria-hidden="true">{image.description}</figcaption>
+			{/if}
+		</figure>
 	{/if}
 	<h2 itemprop="headline" class="{baseName}__title">
 		{title}
