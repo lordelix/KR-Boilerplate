@@ -99,12 +99,9 @@
 									index === selectedIndex && baseName + '__picture-row-button--active'
 								]}
 								aria-pressed={index === selectedIndex}
+								aria-label={`Bild ${index + 1} anzeigen${description ? `: ${description}` : ''}`}
 								onclick={() => (selectedIndex = index)}>
-								<img
-									class={baseName + '__picture-row-image'}
-									{src}
-									alt={description ?? ''}
-									loading="lazy" />
+								<img class={baseName + '__picture-row-image'} {src} alt="" loading="lazy" />
 							</button>
 						</Grid>
 					{/each}
