@@ -1,7 +1,5 @@
-import * as ENV from '$env/static/public'
-
-const { PUBLIC_KR_API_KEY } = ENV
+import { PUBLIC_KR_API_KEY } from '$app/env/public'
 
 export default {
-	krApiKey: PUBLIC_KR_API_KEY || ''
+	krApiKey: PUBLIC_KR_API_KEY
 }
