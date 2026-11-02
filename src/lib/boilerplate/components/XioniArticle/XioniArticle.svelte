@@ -50,9 +50,9 @@
 	{#if author || date}
 		<Meta {author} {date} />
 	{/if}
-	<p itemprop="description" class="{baseName}__teaser">
+	<div itemprop="description" class="{baseName}__teaser">
 		{@html teaser}
-	</p>
+	</div>
 	{#if content?.length}
 		<div class="{baseName}__content">
 			{#each content as { text, title, image }, i (i)}

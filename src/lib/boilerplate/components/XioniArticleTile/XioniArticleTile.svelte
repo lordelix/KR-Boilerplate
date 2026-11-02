@@ -72,9 +72,9 @@
 			{/if}
 		</ul>
 	{/if}
-	<p itemprop="description" class="{baseName}__teaser">
+	<div itemprop="description" class="{baseName}__teaser">
 		{@html teaser}
-	</p>
+	</div>
 	{#if link}
 		<Link to={link} class="{baseName}__link $flex $pointer $row-reverse" fontello="angle-right">
 			{linkText}

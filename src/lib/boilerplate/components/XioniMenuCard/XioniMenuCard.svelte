@@ -21,9 +21,9 @@
 			class="{baseName}__group">
 			<h3 itemprop="name" class="{baseName}__group-name">{group.name}</h3>
 			{#if group.description}
-				<p itemprop="description" class="{baseName}__group-description">
+				<div itemprop="description" class="{baseName}__group-description">
 					{@html group.description}
-				</p>
+				</div>
 			{/if}
 			<ul class="{baseName}__dishes">
 				{#each group.items as item, j (j)}
@@ -54,9 +54,9 @@
 								loading="lazy" />
 						{/if}
 						{#if item.description}
-							<p itemprop="description" class="{baseName}__dish-description">
+							<div itemprop="description" class="{baseName}__dish-description">
 								{@html item.description}
-							</p>
+							</div>
 						{/if}
 					</li>
 				{/each}
