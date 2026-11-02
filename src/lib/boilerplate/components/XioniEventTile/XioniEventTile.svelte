@@ -74,9 +74,9 @@
 		</time>
 	</h3>
 	{#if teaser}
-		<p itemprop="description" class="{baseName}__teaser">
+		<div itemprop="description" class="{baseName}__teaser">
 			{@html teaser}
-		</p>
+		</div>
 	{/if}
 	{#if link}
 		<Link to={link} class="{baseName}__link $row-reverse" fontello="angle-right">

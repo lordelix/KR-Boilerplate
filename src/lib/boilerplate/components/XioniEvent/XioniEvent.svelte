@@ -135,15 +135,15 @@
 	</h3>
 
 	{#if teaser}
-		<p class={baseName + '__teaser'}>
+		<div class={baseName + '__teaser'}>
 			{@html teaser}
-		</p>
+		</div>
 	{/if}
 
 	{#if description}
-		<p itemprop="description" class={baseName + '__description'}>
+		<div itemprop="description" class={baseName + '__description'}>
 			{@html description}
-		</p>
+		</div>
 	{/if}
 
 	<ButtonRow class={baseName + '__metadata'}>
