@@ -5,7 +5,7 @@
 		XioniArticleButtons,
 		XioniArticleContent,
 		XioniArticleMeta
-	} from '$lib/boilerplate/components'
+	} from '#lib/boilerplate/components/index.js'
 
 	let { data } = $props()
 	let { articles } = $derived(data)

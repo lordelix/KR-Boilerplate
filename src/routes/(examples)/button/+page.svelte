@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, ButtonRow } from '$lib/boilerplate/components'
+	import { Button, ButtonRow } from '#lib/boilerplate/components/index.js'
 </script>
 
 <h1>Button</h1>

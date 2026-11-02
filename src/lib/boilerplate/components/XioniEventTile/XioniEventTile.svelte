@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation'
 	import { Link } from '..'
 	import { page } from '$app/state'
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types'
+	import type { XioniCMS } from '#lib/boilerplate/xioni/types.js'
 	import type { XioniEventTileProps } from './XioniEventTile.d'
 
 	let {

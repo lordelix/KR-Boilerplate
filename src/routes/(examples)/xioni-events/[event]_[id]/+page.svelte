@@ -8,7 +8,7 @@
 		Textarea,
 		Wrapper,
 		XioniEvent
-	} from '$lib/boilerplate/components/index.js'
+	} from '#lib/boilerplate/components/index.js'
 
 	const { data } = $props()
 	const event = $derived(data.event)

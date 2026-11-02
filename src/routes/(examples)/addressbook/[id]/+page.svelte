@@ -1,8 +1,8 @@
 <script lang="ts">
-	import stammdaten from '$stammdaten'
-	import type { XioniCMS } from '$lib/boilerplate/xioni/types.js'
-	import { Address } from '$lib/boilerplate/components/index.js'
-	import mapAddressbookEntryToAddress from '$lib/boilerplate/utils/mapAddressbookEntryToAddress.js'
+	import stammdaten from '#stammdaten'
+	import type { XioniCMS } from '#lib/boilerplate/xioni/types.js'
+	import { Address } from '#lib/boilerplate/components/index.js'
+	import mapAddressbookEntryToAddress from '#lib/boilerplate/utils/mapAddressbookEntryToAddress.js'
 
 	let { data } = $props()
 	const entry = $derived(data.entry as XioniCMS.AddressbookEntry)

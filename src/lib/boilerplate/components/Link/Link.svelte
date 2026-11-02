@@ -1,9 +1,9 @@
 <script lang="ts">
 	import './Link.css'
 
-	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
+	import isExternalURL from '#lib/boilerplate/utils/isExternalURL.js'
 	import Fontello from '../Fontello/Fontello.svelte'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { LinkProps } from './Link.d'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------

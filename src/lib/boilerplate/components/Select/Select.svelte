@@ -1,8 +1,8 @@
 <script lang="ts">
 	import './Select.css'
 	import type { SelectProps } from './Select.d'
-	import randomString from '$lib/boilerplate/utils/randomString'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import randomString from '#lib/boilerplate/utils/randomString.js'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

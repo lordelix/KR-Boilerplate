@@ -3,7 +3,7 @@
 	import { onMount, onDestroy } from 'svelte'
 	import type { InViewProps } from './InView'
 
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	let {
 		baseName = 'InView',

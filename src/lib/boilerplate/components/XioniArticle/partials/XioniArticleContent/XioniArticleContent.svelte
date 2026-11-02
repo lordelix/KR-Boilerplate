@@ -3,9 +3,9 @@
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import { Figure } from '$lib/boilerplate/components'
+	import { Figure } from '#lib/boilerplate/components/index.js'
 	import type { XioniArticleContent } from './XioniArticleContent'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

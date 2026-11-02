@@ -1,6 +1,6 @@
 <script lang="ts">
-	import stammdaten from '$stammdaten'
-	import { AddressbookEntry, Client, Message } from '$lib/boilerplate/components'
+	import stammdaten from '#stammdaten'
+	import { AddressbookEntry, Client, Message } from '#lib/boilerplate/components/index.js'
 	import { goto } from '$app/navigation'
 
 	let { data } = $props()

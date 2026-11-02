@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { format, parseISO } from 'date-fns'
-	import { useMailer } from '$lib/boilerplate/xioni/mailer/Message'
+	import { useMailer } from '#lib/boilerplate/xioni/mailer/Message.js'
 	import { writable } from 'svelte/store'
-	import type { XioniApiErrorResponse } from '$lib/boilerplate/xioni/types'
-	import type { SchemaMailerMessageRequestBody } from '$lib/boilerplate/xioni/api/api.d'
+	import type { XioniApiErrorResponse } from '#lib/boilerplate/xioni/types.js'
+	import type { SchemaMailerMessageRequestBody } from '#lib/boilerplate/xioni/api/api.js'
 	import type { FormProps } from './Form.d'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import { Message, Modal } from '..'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------

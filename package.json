@@ -1,6 +1,6 @@
 {
 	"name": "boilerplate.ts",
-	"version": "5.4.16",
+	"version": "5.5.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -44,6 +44,12 @@
 		"vite": "8.3.5"
 	},
 	"type": "module",
+	"imports": {
+		"#lib/*": "./src/lib/*",
+		"#styles/*": "./src/lib/styles/*",
+		"#routes": "./src/routes.js",
+		"#stammdaten": "./src/lib/stammdaten.js"
+	},
 	"dependencies": {
 		"@glidejs/glide": "3.7.1",
 		"@types/glidejs__glide": "3.6.6",

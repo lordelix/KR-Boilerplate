@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './Grid.scss'
 	import type { GridProps } from './Grid.d'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

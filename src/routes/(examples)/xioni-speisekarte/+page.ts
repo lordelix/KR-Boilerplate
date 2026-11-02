@@ -1,5 +1,5 @@
-import { getMenuCard } from '$lib/boilerplate/xioni/cms/MenuCards'
-import xioniLoader from '$lib/boilerplate/xioni/utils/xioniLoader'
+import { getMenuCard } from '#lib/boilerplate/xioni/cms/MenuCards.js'
+import xioniLoader from '#lib/boilerplate/xioni/utils/xioniLoader.js'
 
 export const prerender = false
 

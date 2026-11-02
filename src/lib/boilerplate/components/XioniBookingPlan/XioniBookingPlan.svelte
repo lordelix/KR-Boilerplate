@@ -1,5 +1,5 @@
 <script lang="ts">
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import { Calendar, Grid } from '..'
 	import type { XioniBookingPlanProps } from './XioniBookingPlan.d'
 

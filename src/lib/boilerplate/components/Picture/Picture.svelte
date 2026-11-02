@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './Picture.css'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { PictureProps } from './Picture'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------

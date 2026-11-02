@@ -1,4 +1,4 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
+import type { ComponentBaseProps } from '#lib/boilerplate/boilerplate.js'
 import type { Snippet } from 'svelte'
 import type { FontelloProps } from '../Fontello/Fontello'
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import './Input.scss'
-	import randomString from '$lib/boilerplate/utils/randomString'
+	import randomString from '#lib/boilerplate/utils/randomString.js'
 	import type { InputProps } from './Input'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	let {
 		id = 'input-' + randomString(),

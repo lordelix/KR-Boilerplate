@@ -1,5 +1,5 @@
-import { getEntry } from '$lib/boilerplate/xioni/cms/Addressbook'
-import xioniLoader from '$lib/boilerplate/xioni/utils/xioniLoader'
+import { getEntry } from '#lib/boilerplate/xioni/cms/Addressbook.js'
+import xioniLoader from '#lib/boilerplate/xioni/utils/xioniLoader.js'
 
 export const prerender = false
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './Wrapper.scss'
 
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { WrapperProps } from './Wrapper.d'
 
 	let {

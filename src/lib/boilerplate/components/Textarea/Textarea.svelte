@@ -3,7 +3,7 @@
 
 	import type { TextareaProps } from './Textarea'
 	import { uniqueId } from 'lodash-es'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

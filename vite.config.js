@@ -38,13 +38,7 @@ export default defineConfig({
 				fallback: '200.html',
 				strict: false,
 				precompress: false
-			}),
-			alias: {
-				$lib: './src/lib',
-				$styles: './src/lib/styles/',
-				$routes: './src/routes.js',
-				$stammdaten: './src/lib/stammdaten.js'
-			}
+			})
 		})
 	],
 	server: {

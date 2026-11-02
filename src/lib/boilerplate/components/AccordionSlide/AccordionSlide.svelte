@@ -4,7 +4,7 @@
 	import { getContext, onMount } from 'svelte'
 	import { slide } from 'svelte/transition'
 	import { uniqueId } from 'lodash-es'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { AccordionSlideProps } from './AccordionSlide'
 	import type { Writable } from 'svelte/store'
 

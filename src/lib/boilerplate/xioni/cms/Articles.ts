@@ -1,6 +1,6 @@
 import { ApiPaths, type operations } from '../api/api.d'
 import { fetchWithErrorHandling } from '../utils/fetchWithErrorResponse'
-import { LOCALE } from '$lib/boilerplate/constants'
+import { LOCALE } from '#lib/boilerplate/constants.js'
 import { mapDtoArticle } from '../mapper/dtoArticleMapper'
 import { type ClientOptions } from 'openapi-fetch'
 import createClient from '../api/client'

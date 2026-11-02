@@ -1,6 +1,6 @@
 <script lang="ts">
-	import stammdaten from '$lib/stammdaten'
-	import { Address, Link } from '$lib/boilerplate/components'
+	import stammdaten from '#lib/stammdaten.js'
+	import { Address, Link } from '#lib/boilerplate/components/index.js'
 
 	const { title, web } = stammdaten
 </script>

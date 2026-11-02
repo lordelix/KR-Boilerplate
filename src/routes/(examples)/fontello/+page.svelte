@@ -1,5 +1,5 @@
 <script>
-	import fontello from '$lib/boilerplate/actions/fontello'
+	import fontello from '#lib/boilerplate/actions/fontello.js'
 
 	const icons = [
 		'angle-circled-left',

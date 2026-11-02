@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './XioniArticleTile.scss'
-	import { format } from '$lib/boilerplate/utils/formatDate'
+	import { format } from '#lib/boilerplate/utils/formatDate.js'
 	import { formatISO } from 'date-fns'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/state'

@@ -1,4 +1,4 @@
-import type { ComponentBaseProps } from '$lib/boilerplate/boilerplate'
+import type { ComponentBaseProps } from '#lib/boilerplate/boilerplate.js'
 
 type Source = [string, number, number] | [string, number] | string
 

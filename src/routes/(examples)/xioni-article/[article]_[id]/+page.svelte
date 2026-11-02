@@ -1,6 +1,6 @@
 <script lang="ts">
-	import stammdaten from '$stammdaten'
-	import { Link, Wrapper, XioniArticle } from '$lib/boilerplate/components'
+	import stammdaten from '#stammdaten'
+	import { Link, Wrapper, XioniArticle } from '#lib/boilerplate/components/index.js'
 
 	let { data } = $props()
 	const { article } = $derived(data)

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Client, Wrapper, XioniArticleTile } from '$lib/boilerplate/components'
+	import { Client, Wrapper, XioniArticleTile } from '#lib/boilerplate/components/index.js'
 
 	let { data } = $props()
 	let { articles, articlesMeta } = $derived(data)

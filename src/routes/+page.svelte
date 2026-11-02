@@ -1,5 +1,5 @@
 <script>
-	import stammdaten from '$stammdaten'
+	import stammdaten from '#stammdaten'
 </script>
 
 <svelte:head>

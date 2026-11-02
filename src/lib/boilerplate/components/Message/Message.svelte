@@ -3,7 +3,7 @@
 
 	import type { MessageProps } from './Message.d'
 	import Fontello from '../Fontello/Fontello.svelte'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

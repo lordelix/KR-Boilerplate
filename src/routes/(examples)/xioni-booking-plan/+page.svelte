@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Wrapper, XioniBookingPlan } from '$lib/boilerplate/components'
+	import { Wrapper, XioniBookingPlan } from '#lib/boilerplate/components/index.js'
 
 	const today = Date.now()
 

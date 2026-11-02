@@ -6,7 +6,7 @@
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import { Fontello } from '$lib/boilerplate/components'
+	import { Fontello } from '#lib/boilerplate/components/index.js'
 	import type { XioniArticleMetaProps } from './XioniArticleMeta'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------

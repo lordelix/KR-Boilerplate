@@ -3,8 +3,8 @@
 
 	// --- [ Components ] ----------------------------------------------------------------------------
 
-	import { Button, ButtonRow } from '$lib/boilerplate/components'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import { Button, ButtonRow } from '#lib/boilerplate/components/index.js'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 
 	// --- [ Setup ] ---------------------------------------------------------------------------------
 

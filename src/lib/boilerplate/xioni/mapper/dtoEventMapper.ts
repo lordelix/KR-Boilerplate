@@ -1,4 +1,4 @@
-import { formatFromTo } from '$lib/boilerplate/utils/formatDate'
+import { formatFromTo } from '#lib/boilerplate/utils/formatDate.js'
 import { mapDtoImage } from './dtoImageMapper'
 import { type SchemaEvent } from '../api/api.d'
 import { type XioniCMS } from '../types'

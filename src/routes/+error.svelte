@@ -1,7 +1,7 @@
 <script lang="ts">
-	import '$lib/styles/styles.scss'
+	import '#lib/styles/styles.scss'
 
-	import { Link, Message } from '$lib/boilerplate/components'
+	import { Link, Message } from '#lib/boilerplate/components/index.js'
 	import { page } from '$app/state'
 	import { browser } from '$app/environment'
 	import { pushState } from '$app/navigation'

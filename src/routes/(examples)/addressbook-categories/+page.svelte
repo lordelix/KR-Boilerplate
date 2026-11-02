@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AddressbookEntry, Client } from '$lib/boilerplate/components'
+	import { AddressbookEntry, Client } from '#lib/boilerplate/components/index.js'
 
 	let { data } = $props()
 	const categories = $derived(data.categories || [])

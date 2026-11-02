@@ -1,5 +1,5 @@
 import createOpenApiClient, { type ClientOptions } from 'openapi-fetch'
-import appConfig from '$lib/app.config'
+import appConfig from '#lib/app.config.js'
 import type { paths } from './api'
 
 export default function createClient(clientOptions?: ClientOptions) {

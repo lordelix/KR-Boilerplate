@@ -1,5 +1,5 @@
 <script>
-	import { format } from '$lib/boilerplate/utils/formatDate'
+	import { format } from '#lib/boilerplate/utils/formatDate.js'
 	import { isWithinInterval } from 'date-fns'
 
 	const now = new Date()

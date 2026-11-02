@@ -1,5 +1,5 @@
-import { getGallery } from '$lib/boilerplate/xioni/cms/Galleries'
-import xioniLoader from '$lib/boilerplate/xioni/utils/xioniLoader'
+import { getGallery } from '#lib/boilerplate/xioni/cms/Galleries.js'
+import xioniLoader from '#lib/boilerplate/xioni/utils/xioniLoader.js'
 
 export const prerender = false
 

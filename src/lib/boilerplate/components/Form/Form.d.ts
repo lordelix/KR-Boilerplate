@@ -1,4 +1,4 @@
-import type { XioniApiErrorResponse } from '$lib/boilerplate/xioni/types'
+import type { XioniApiErrorResponse } from '#lib/boilerplate/xioni/types.js'
 import type { Snippet } from 'svelte'
 
 export type FormProps = ComponentBaseProps & {

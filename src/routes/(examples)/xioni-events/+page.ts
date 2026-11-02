@@ -1,5 +1,5 @@
-import { getEvents } from '$lib/boilerplate/xioni/cms/Events'
-import xioniLoader from '$lib/boilerplate/xioni/utils/xioniLoader'
+import { getEvents } from '#lib/boilerplate/xioni/cms/Events.js'
+import xioniLoader from '#lib/boilerplate/xioni/utils/xioniLoader.js'
 
 export const prerender = false
 

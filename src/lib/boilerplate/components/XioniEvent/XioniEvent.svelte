@@ -2,9 +2,9 @@
 	import './XioniEvent.scss'
 
 	import { Button, ButtonRow, Grid, Lightbox, Picture } from '..'
-	import { formatFromTo } from '$lib/boilerplate/utils/formatDate'
+	import { formatFromTo } from '#lib/boilerplate/utils/formatDate.js'
 	import { formatISO } from 'date-fns'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { XioniEventProps } from './XioniEvent'
 
 	let {

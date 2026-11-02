@@ -2,7 +2,7 @@
 	import './Lightbox.scss'
 	import type { LightboxProps } from './Lightbox.d'
 	import { onMount } from 'svelte'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import { Fontello, Modal } from '..'
 
 	let {

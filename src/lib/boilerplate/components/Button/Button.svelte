@@ -1,8 +1,8 @@
 <script lang="ts">
 	import './Button.scss'
 
-	import isExternalURL from '$lib/boilerplate/utils/isExternalURL'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import isExternalURL from '#lib/boilerplate/utils/isExternalURL.js'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { ButtonProps } from './Button'
 
 	// --- [ Components ] ----------------------------------------------------------------------------

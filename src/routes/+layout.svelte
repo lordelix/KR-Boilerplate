@@ -1,10 +1,10 @@
 <script lang="ts">
-	import '$styles/styles.scss'
+	import '#styles/styles.scss'
 
-	import { Nav, Toplink, Wrapper } from '$lib/boilerplate/components'
+	import { Nav, Toplink, Wrapper } from '#lib/boilerplate/components/index.js'
 	import { page } from '$app/state'
-	import routes from '$routes'
-	import stammdaten from '$stammdaten'
+	import routes from '#routes'
+	import stammdaten from '#stammdaten'
 
 	const { children } = $props()
 	const canonicalUrl = $derived(`https://${stammdaten.web}${page.url.pathname}`)

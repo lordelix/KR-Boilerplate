@@ -1,5 +1,5 @@
-import { getArticles } from '$lib/boilerplate/xioni/cms/Articles'
-import xioniLoader from '$lib/boilerplate/xioni/utils/xioniLoader'
+import { getArticles } from '#lib/boilerplate/xioni/cms/Articles.js'
+import xioniLoader from '#lib/boilerplate/xioni/utils/xioniLoader.js'
 
 export const prerender = false
 

@@ -3,7 +3,7 @@
 	import type { AddressbookEntryProps } from './AddressbookEntry.d'
 	import { Address } from '..'
 	import { uniqueId } from 'lodash-es'
-	import mapAddressbookEntryToAddress from '$lib/boilerplate/utils/mapAddressbookEntryToAddress'
+	import mapAddressbookEntryToAddress from '#lib/boilerplate/utils/mapAddressbookEntryToAddress.js'
 
 	// --- [ Props ] ---------------------------------------------------------------------------------
 

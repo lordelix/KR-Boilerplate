@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './Address.css'
-	import makeBEM from '$lib/boilerplate/utils/makeBem'
+	import makeBEM from '#lib/boilerplate/utils/makeBem.js'
 	import type { AddressProps } from './Address.d'
 	import { Fontello, Mail } from '..'
 	import Link from '../Link/Link.svelte'

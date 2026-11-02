@@ -1,4 +1,4 @@
-import type { XioniCMS } from '$lib/boilerplate/xioni/types'
+import type { XioniCMS } from '#lib/boilerplate/xioni/types.js'
 
 export type XioniEventTileProps = ComponentBaseProps & {
 	event: XioniCMS.Event
