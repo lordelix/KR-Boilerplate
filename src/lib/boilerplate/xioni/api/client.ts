@@ -1,5 +1,5 @@
 import createOpenApiClient, { type ClientOptions } from 'openapi-fetch'
-import appConfig from '#lib/app.config.js'
+import { KR_API_KEY } from '$app/env/public'
 import type { paths } from './api'
 
 export default function createClient(clientOptions?: ClientOptions) {
@@ -8,7 +8,7 @@ export default function createClient(clientOptions?: ClientOptions) {
 		...clientOptions,
 		headers: {
 			accept: 'application/json',
-			'api-key': appConfig.krApiKey,
+			'api-key': KR_API_KEY,
 			...clientOptions?.headers
 		}
 	})

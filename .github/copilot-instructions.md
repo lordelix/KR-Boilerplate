@@ -86,7 +86,6 @@ import { someFn } from '$lib/boilerplate/utils/helpers'
 - Legacy Peer Dependencies verwenden: `npm install --legacy-peer-deps`
 - Build Output: `htdocs/` Ordner
 - Beispiel-Routen unter `src/routes/(examples)/`
-- Config in `src/lib/app.config.js`
 
 ## Code-Generierung Präferenzen
 
