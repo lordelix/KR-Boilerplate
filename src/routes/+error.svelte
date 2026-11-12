@@ -3,11 +3,11 @@
 
 	import { Link, Message } from '#lib/boilerplate/components/index.js'
 	import { page } from '$app/state'
-	import { browser } from '$app/environment'
-	import { pushState } from '$app/navigation'
+	import { browser } from '$app/env'
+	import { goto } from '$app/navigation'
 
 	if (browser && !page.url.searchParams.has('error')) {
-		pushState('', '?error=' + page.status)
+		goto('?error=' + page.status, { shallow: true })
 	}
 
 	const message = page.error?.message || 'Ein Fehler ist aufgetreten'

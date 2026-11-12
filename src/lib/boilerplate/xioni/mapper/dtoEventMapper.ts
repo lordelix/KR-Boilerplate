@@ -3,7 +3,10 @@ import { mapDtoImage } from './dtoImageMapper'
 import { type SchemaEvent } from '../api/api.d'
 import { type XioniCMS } from '../types'
 
-export function mapDtoEvent(dto: SchemaEvent): XioniCMS.Event {
+/** openapi-fetch delivers `coordinates` as `number[]` (its `Readable<T>` widens tuples to arrays) */
+type DtoEvent = Omit<SchemaEvent, 'coordinates'> & { coordinates?: number[] | null }
+
+export function mapDtoEvent(dto: DtoEvent): XioniCMS.Event {
 	const starts = new Date(dto.starts)
 	const ends = new Date(dto.ends)
 	const event: XioniCMS.Event = {

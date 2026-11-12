@@ -38,7 +38,7 @@ export namespace XioniCMS {
 		ticketshopURL: URL | null
 		organizer: string | null
 		ownerURL: URL | null
-		coordinates: [number, number] | null
+		coordinates: number[] | null
 		images?: Image[]
 		tags?: { id: number; name: string }[]
 		flags?: string[]

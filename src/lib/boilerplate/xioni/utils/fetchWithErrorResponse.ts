@@ -1,4 +1,4 @@
-import { dev } from '$app/environment'
+import { dev } from '$app/env'
 
 export async function fetchWithErrorHandling<T>(
 	fetchFn: () => Promise<{ data?: T; error?: { message: string }; response: Response }>

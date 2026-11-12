@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { browser as isBrowser, building as isBuilding } from '$app/environment'
+	import { browser as isBrowser, building as isBuilding } from '$app/env'
 	import type { ClientProps } from './Client.d'
 
 	let { browser, server, children }: ClientProps = $props()

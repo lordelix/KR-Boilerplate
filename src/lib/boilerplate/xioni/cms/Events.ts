@@ -1,5 +1,5 @@
 import { ApiPaths, type operations, type SchemaEvent } from '../api/api.d'
-import { dev } from '$app/environment'
+import { dev } from '$app/env'
 import { fetchWithErrorHandling } from '../utils/fetchWithErrorResponse'
 import { mapDtoEvent } from '../mapper/dtoEventMapper'
 import createClient from '../api/client'

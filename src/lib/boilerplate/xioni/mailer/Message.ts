@@ -1,5 +1,5 @@
 import { ApiPaths, type SchemaMailerMessageRequestBody } from '../api/api.d'
-import { dev } from '$app/environment'
+import { dev } from '$app/env'
 import createClient from '../api/client'
 import type { ClientOptions } from 'openapi-fetch'
 
